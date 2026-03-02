@@ -4,7 +4,6 @@ import (
 	"database/sql"
 	"errors"
 	"fmt"
-	"slices"
 	"sort"
 	"strings"
 
@@ -618,23 +617,4 @@ func (r *Repository) GetByUUID(uuid string) (*Task, error) {
 		return nil, nil
 	}
 	return &tasks[0], nil
-}
-
-func uniqueTasks(tasks []Task) []Task {
-	seen := make(map[string]struct{}, len(tasks))
-	out := make([]Task, 0, len(tasks))
-	for _, task := range tasks {
-		if _, ok := seen[task.UUID]; ok {
-			continue
-		}
-		seen[task.UUID] = struct{}{}
-		out = append(out, task)
-	}
-	return out
-}
-
-func containsTaskUUID(tasks []Task, uuid string) bool {
-	return slices.ContainsFunc(tasks, func(task Task) bool {
-		return task.UUID == uuid
-	})
 }

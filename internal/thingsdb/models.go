@@ -38,11 +38,11 @@ type ChecklistItem struct {
 }
 
 type Area struct {
-	UUID  string `json:"uuid"`
-	Type  string `json:"type"`
-	Title string `json:"title"`
-	Tags  []string
-	Items []Task `json:"items,omitempty"`
+	UUID  string   `json:"uuid"`
+	Type  string   `json:"type"`
+	Title string   `json:"title"`
+	Tags  []string `json:"tags,omitempty"`
+	Items []Task   `json:"items,omitempty"`
 }
 
 type Tag struct {

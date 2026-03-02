@@ -186,7 +186,10 @@ func buildTaskQuery(filter TaskFilter) (string, []any, error) {
 	}
 
 	if filter.Type != "" {
-		taskType := typeValueToInt[filter.Type]
+		taskType, ok := typeValueToInt[filter.Type]
+		if !ok {
+			return "", nil, fmt.Errorf("invalid type value %q", filter.Type)
+		}
 		conditions = append(conditions, "TASK.type = ?")
 		args = append(args, taskType)
 	}

@@ -2,6 +2,7 @@ package thingsdb
 
 import (
 	"fmt"
+	"sort"
 	"strings"
 )
 
@@ -29,7 +30,7 @@ func (r *Repository) ListView(view string, logbookPeriod string, logbookLimit in
 		return r.Someday()
 	case ViewLogbook:
 		if logbookPeriod != "" {
-			tasks, err := r.Tasks(TaskFilter{
+			completed, err := r.Tasks(TaskFilter{
 				Status:         "completed",
 				Last:           logbookPeriod,
 				Trashed:        boolPtr(false),
@@ -38,6 +39,19 @@ func (r *Repository) ListView(view string, logbookPeriod string, logbookLimit in
 			if err != nil {
 				return nil, err
 			}
+			canceled, err := r.Tasks(TaskFilter{
+				Status:         "canceled",
+				Last:           logbookPeriod,
+				Trashed:        boolPtr(false),
+				ContextTrashed: boolPtr(false),
+			}, true)
+			if err != nil {
+				return nil, err
+			}
+			tasks := append(completed, canceled...)
+			sort.SliceStable(tasks, func(i, j int) bool {
+				return tasks[i].StopDate > tasks[j].StopDate
+			})
 			if logbookLimit > 0 && len(tasks) > logbookLimit {
 				tasks = tasks[:logbookLimit]
 			}

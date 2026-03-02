@@ -5,7 +5,6 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"os"
 	"strings"
 
 	"github.com/spf13/cobra"
@@ -98,13 +97,6 @@ func (a *app) printTags(tags []thingsdb.Tag) error {
 		return a.printResult(tags, "")
 	}
 	return a.printResult(tags, format.RenderTags(tags))
-}
-
-func exitOnError(err error) {
-	if err != nil {
-		fmt.Fprintln(os.Stderr, err)
-		os.Exit(1)
-	}
 }
 
 func boolPtr(v bool) *bool {

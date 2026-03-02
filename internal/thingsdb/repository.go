@@ -285,7 +285,7 @@ func (r *Repository) Search(query string) ([]Task, error) {
 
 func (r *Repository) SearchAdvanced(filter SearchAdvancedFilter) ([]Task, error) {
 	taskFilter := defaultTaskFilter(TaskFilter{
-		Status:    filter.Status,
+		Status:    strings.ToLower(filter.Status),
 		StartDate: strings.ToLower(filter.StartDate),
 		Deadline:  strings.ToLower(filter.Deadline),
 		Tag:       filter.Tag,
@@ -293,7 +293,7 @@ func (r *Repository) SearchAdvanced(filter SearchAdvancedFilter) ([]Task, error)
 		Last:      strings.ToLower(filter.Last),
 	})
 	if filter.Type != "" {
-		taskFilter.Type = filter.Type
+		taskFilter.Type = strings.ToLower(filter.Type)
 		return r.queryTasks(taskFilter, true)
 	}
 	taskFilter.Type = "to-do"

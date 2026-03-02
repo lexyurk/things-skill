@@ -177,8 +177,7 @@ func buildTaskQuery(filter TaskFilter) (string, []any, error) {
 
 	if filter.ContextTrashed != nil {
 		if *filter.ContextTrashed {
-			conditions = append(conditions, "COALESCE(PROJECT.trashed, 0) = 1")
-			conditions = append(conditions, "COALESCE(PROJECT_OF_HEADING.trashed, 0) = 1")
+			conditions = append(conditions, "(COALESCE(PROJECT.trashed, 0) = 1 OR COALESCE(PROJECT_OF_HEADING.trashed, 0) = 1)")
 		} else {
 			conditions = append(conditions, "COALESCE(PROJECT.trashed, 0) = 0")
 			conditions = append(conditions, "COALESCE(PROJECT_OF_HEADING.trashed, 0) = 0")

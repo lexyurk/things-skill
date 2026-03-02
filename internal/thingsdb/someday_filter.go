@@ -1,10 +1,5 @@
 package thingsdb
 
-type somedayContext struct {
-	projectIDs       map[string]struct{}
-	headingToProject map[string]string
-}
-
 func (r *Repository) GetSomedayContext() (map[string]struct{}, map[string]string, error) {
 	somedayProjects, err := r.queryTasks(defaultTaskFilter(TaskFilter{
 		Type:  "project",

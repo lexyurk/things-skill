@@ -642,9 +642,9 @@ WHERE uuid = ?
 }
 
 func (r *Repository) GetByUUID(uuid string) (*Task, error) {
-	tasks, err := r.queryTasks(defaultTaskFilter(TaskFilter{
+	tasks, err := r.queryTasks(TaskFilter{
 		UUID: uuid,
-	}), true)
+	}, true)
 	if err != nil {
 		return nil, err
 	}

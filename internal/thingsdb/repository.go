@@ -32,6 +32,7 @@ func OpenPath(path string) (*Repository, error) {
 		return nil, err
 	}
 	if err := db.Ping(); err != nil {
+		_ = db.Close()
 		return nil, err
 	}
 
@@ -61,6 +62,36 @@ func nullToInt(v sql.NullInt64) int {
 		return int(v.Int64)
 	}
 	return 0
+}
+
+func (r *Repository) checklistCreatedExpr() (string, error) {
+	rows, err := r.db.Query(`PRAGMA table_info(TMChecklistItem)`)
+	if err != nil {
+		return "", err
+	}
+	defer rows.Close()
+
+	for rows.Next() {
+		var (
+			columnID   int
+			columnName string
+			columnType string
+			notNull    int
+			defaultVal sql.NullString
+			primaryKey int
+		)
+		if err := rows.Scan(&columnID, &columnName, &columnType, &notNull, &defaultVal, &primaryKey); err != nil {
+			return "", err
+		}
+		if columnName == "creationDate" {
+			return "datetime(CHECKLIST_ITEM.creationDate, 'unixepoch', 'localtime')", nil
+		}
+	}
+	if err := rows.Err(); err != nil {
+		return "", err
+	}
+
+	return "datetime(CHECKLIST_ITEM.userModificationDate, 'unixepoch', 'localtime')", nil
 }
 
 func defaultTaskFilter(filter TaskFilter) TaskFilter {
@@ -489,7 +520,11 @@ func (r *Repository) TaggedItems(tag string) ([]Task, error) {
 }
 
 func (r *Repository) ChecklistItems(todoUUID string) ([]ChecklistItem, error) {
-	rows, err := r.db.Query(`
+	createdExpr, err := r.checklistCreatedExpr()
+	if err != nil {
+		return nil, err
+	}
+	rows, err := r.db.Query(fmt.Sprintf(`
 SELECT
 	CHECKLIST_ITEM.title,
 	CASE
@@ -500,12 +535,12 @@ SELECT
 	date(CHECKLIST_ITEM.stopDate, 'unixepoch', 'localtime') AS stop_date,
 	'checklist-item' AS type,
 	CHECKLIST_ITEM.uuid,
-	datetime(CHECKLIST_ITEM.userModificationDate, 'unixepoch', 'localtime') AS created,
+	%s AS created,
 	datetime(CHECKLIST_ITEM.userModificationDate, 'unixepoch', 'localtime') AS modified
 FROM TMChecklistItem CHECKLIST_ITEM
 WHERE CHECKLIST_ITEM.task = ?
 ORDER BY CHECKLIST_ITEM."index"
-`, todoUUID)
+`, createdExpr), todoUUID)
 	if err != nil {
 		return nil, err
 	}

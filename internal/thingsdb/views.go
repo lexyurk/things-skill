@@ -32,7 +32,7 @@ func (r *Repository) ListView(view string, logbookPeriod string, logbookLimit in
 		if logbookPeriod != "" {
 			completed, err := r.Tasks(TaskFilter{
 				Status:         "completed",
-				Last:           logbookPeriod,
+				LastStopDate:   logbookPeriod,
 				Trashed:        boolPtr(false),
 				ContextTrashed: boolPtr(false),
 			}, true)
@@ -41,7 +41,7 @@ func (r *Repository) ListView(view string, logbookPeriod string, logbookLimit in
 			}
 			canceled, err := r.Tasks(TaskFilter{
 				Status:         "canceled",
-				Last:           logbookPeriod,
+				LastStopDate:   logbookPeriod,
 				Trashed:        boolPtr(false),
 				ContextTrashed: boolPtr(false),
 			}, true)

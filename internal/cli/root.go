@@ -98,7 +98,3 @@ func (a *app) printTags(tags []thingsdb.Tag) error {
 	}
 	return a.printResult(tags, format.RenderTags(tags))
 }
-
-func boolPtr(v bool) *bool {
-	return &v
-}

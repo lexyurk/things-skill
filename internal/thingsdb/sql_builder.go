@@ -260,6 +260,15 @@ func buildTaskQuery(filter TaskFilter) (string, []any, error) {
 		args = append(args, modifier)
 	}
 
+	if filter.LastStopDate != "" {
+		modifier, err := parseLastOffset(filter.LastStopDate)
+		if err != nil {
+			return "", nil, err
+		}
+		conditions = append(conditions, "datetime(TASK.stopDate, 'unixepoch', 'localtime') > datetime('now', ?)")
+		args = append(args, modifier)
+	}
+
 	if filter.SearchQuery != "" {
 		like := "%" + filter.SearchQuery + "%"
 		conditions = append(conditions, "(TASK.title LIKE ? OR TASK.notes LIKE ? OR AREA.title LIKE ?)")

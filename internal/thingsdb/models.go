@@ -69,6 +69,7 @@ type TaskFilter struct {
 	Trashed            *bool
 	ContextTrashed     *bool
 	Last               string
+	LastStopDate       string
 	SearchQuery        string
 	Index              string
 	CountOnly          bool

@@ -83,6 +83,9 @@ func (a *app) addWriteCommands(rootCmd *cobra.Command) {
 				if err != nil {
 					return err
 				}
+				if token == "" {
+					return fmt.Errorf("things URL auth token unavailable; enable Things URLs in app settings")
+				}
 				var reveal *bool
 				if cmd.Flags().Changed("reveal") {
 					reveal = &jsonReveal

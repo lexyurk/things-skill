@@ -25,44 +25,9 @@ func (a *app) addReadCommands(rootCmd *cobra.Command) {
 				view = strings.ToLower(args[0])
 			}
 			return a.withRepository(func(repo *thingsdb.Repository) error {
-				var (
-					tasks []thingsdb.Task
-					err   error
-				)
-				switch view {
-				case "inbox":
-					tasks, err = repo.Inbox()
-				case "today":
-					tasks, err = repo.Today()
-				case "upcoming":
-					tasks, err = repo.Upcoming()
-				case "anytime":
-					tasks, err = repo.Anytime()
-				case "someday":
-					tasks, err = repo.Someday()
-				case "logbook":
-					tasks, err = repo.Logbook()
-					if err == nil && logbookLimit > 0 && len(tasks) > logbookLimit {
-						tasks = tasks[:logbookLimit]
-					}
-				case "trash":
-					tasks, err = repo.Trash()
-				default:
-					return fmt.Errorf("unknown view %q", view)
-				}
+				tasks, err := repo.ListView(view, logbookPeriod, logbookLimit)
 				if err != nil {
 					return err
-				}
-				if view == "logbook" && logbookPeriod != "" {
-					filtered, err := repo.Tasks(thingsdb.TaskFilter{
-						Status:         "completed",
-						Last:           logbookPeriod,
-						Trashed:        boolPtr(false),
-						ContextTrashed: boolPtr(false),
-					}, true)
-					if err == nil {
-						tasks = filtered
-					}
 				}
 				return a.printTasks(tasks)
 			})
@@ -157,8 +122,8 @@ func (a *app) addReadCommands(rootCmd *cobra.Command) {
 		Use:   "tagged",
 		Short: "Get items with a specific tag",
 		RunE: func(_ *cobra.Command, _ []string) error {
-			if strings.TrimSpace(taggedTag) == "" {
-				return fmt.Errorf("--tag is required")
+			if err := requireFlag("tag", taggedTag); err != nil {
+				return err
 			}
 			return a.withRepository(func(repo *thingsdb.Repository) error {
 				tasks, err := repo.TaggedItems(taggedTag)
@@ -200,8 +165,8 @@ func (a *app) addReadCommands(rootCmd *cobra.Command) {
 		Use:   "search",
 		Short: "Search todos by title/notes",
 		RunE: func(_ *cobra.Command, _ []string) error {
-			if strings.TrimSpace(searchQuery) == "" {
-				return fmt.Errorf("--query is required")
+			if err := requireFlag("query", searchQuery); err != nil {
+				return err
 			}
 			return a.withRepository(func(repo *thingsdb.Repository) error {
 				tasks, err := repo.Search(searchQuery)
@@ -249,8 +214,8 @@ func (a *app) addReadCommands(rootCmd *cobra.Command) {
 		Use:   "recent",
 		Short: "Get recently created items",
 		RunE: func(_ *cobra.Command, _ []string) error {
-			if strings.TrimSpace(recentPeriod) == "" {
-				return fmt.Errorf("--period is required")
+			if err := requireFlag("period", recentPeriod); err != nil {
+				return err
 			}
 			return a.withRepository(func(repo *thingsdb.Repository) error {
 				tasks, err := repo.Recent(recentPeriod)

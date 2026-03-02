@@ -54,8 +54,8 @@ func (a *app) addWriteCommands(rootCmd *cobra.Command) {
 		Use:   "app-search",
 		Short: "Search for items in the Things app UI",
 		RunE: func(_ *cobra.Command, _ []string) error {
-			if strings.TrimSpace(appSearchQuery) == "" {
-				return fmt.Errorf("--query is required")
+			if err := requireFlag("query", appSearchQuery); err != nil {
+				return err
 			}
 			url := thingsurl.SearchURL(appSearchQuery)
 			if err := a.executeURL(context.Background(), url); err != nil {
@@ -75,8 +75,8 @@ func (a *app) addWriteCommands(rootCmd *cobra.Command) {
 		Use:   "json",
 		Short: "Execute advanced Things URL JSON operations",
 		RunE: func(cmd *cobra.Command, _ []string) error {
-			if strings.TrimSpace(jsonData) == "" {
-				return fmt.Errorf("--data is required")
+			if err := requireFlag("data", jsonData); err != nil {
+				return err
 			}
 			return a.withRepository(func(repo *thingsdb.Repository) error {
 				token, err := repo.AuthToken()
@@ -117,8 +117,8 @@ func (a *app) addTodoWriteCommands(todoCmd *cobra.Command) {
 		Use:   "add",
 		Short: "Create a new todo",
 		RunE: func(_ *cobra.Command, _ []string) error {
-			if strings.TrimSpace(addTitle) == "" {
-				return fmt.Errorf("--title is required")
+			if err := requireFlag("title", addTitle); err != nil {
+				return err
 			}
 			url := thingsurl.AddTodoURL(thingsurl.AddTodoInput{
 				Title:          addTitle,
@@ -168,8 +168,8 @@ func (a *app) addTodoWriteCommands(todoCmd *cobra.Command) {
 		Use:   "update",
 		Short: "Update an existing todo",
 		RunE: func(cmd *cobra.Command, _ []string) error {
-			if strings.TrimSpace(updateID) == "" {
-				return fmt.Errorf("--id is required")
+			if err := requireFlag("id", updateID); err != nil {
+				return err
 			}
 			return a.withRepository(func(repo *thingsdb.Repository) error {
 				token, err := repo.AuthToken()
@@ -230,8 +230,8 @@ func (a *app) addTodoWriteCommands(todoCmd *cobra.Command) {
 		Use:   "delete",
 		Short: "Delete todo (soft-delete: marks canceled)",
 		RunE: func(_ *cobra.Command, _ []string) error {
-			if strings.TrimSpace(deleteID) == "" {
-				return fmt.Errorf("--id is required")
+			if err := requireFlag("id", deleteID); err != nil {
+				return err
 			}
 			return a.withRepository(func(repo *thingsdb.Repository) error {
 				token, err := repo.AuthToken()
@@ -273,8 +273,8 @@ func (a *app) addProjectWriteCommands(projectCmd *cobra.Command) {
 		Use:   "add",
 		Short: "Create a new project",
 		RunE: func(_ *cobra.Command, _ []string) error {
-			if strings.TrimSpace(addTitle) == "" {
-				return fmt.Errorf("--title is required")
+			if err := requireFlag("title", addTitle); err != nil {
+				return err
 			}
 			url := thingsurl.AddProjectURL(thingsurl.AddProjectInput{
 				Title:     addTitle,
@@ -316,8 +316,8 @@ func (a *app) addProjectWriteCommands(projectCmd *cobra.Command) {
 		Use:   "update",
 		Short: "Update an existing project",
 		RunE: func(cmd *cobra.Command, _ []string) error {
-			if strings.TrimSpace(updateID) == "" {
-				return fmt.Errorf("--id is required")
+			if err := requireFlag("id", updateID); err != nil {
+				return err
 			}
 			return a.withRepository(func(repo *thingsdb.Repository) error {
 				token, err := repo.AuthToken()
@@ -370,8 +370,8 @@ func (a *app) addProjectWriteCommands(projectCmd *cobra.Command) {
 		Use:   "delete",
 		Short: "Delete project (soft-delete: marks canceled)",
 		RunE: func(_ *cobra.Command, _ []string) error {
-			if strings.TrimSpace(deleteID) == "" {
-				return fmt.Errorf("--id is required")
+			if err := requireFlag("id", deleteID); err != nil {
+				return err
 			}
 			return a.withRepository(func(repo *thingsdb.Repository) error {
 				token, err := repo.AuthToken()

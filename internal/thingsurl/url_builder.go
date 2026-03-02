@@ -41,7 +41,8 @@ func BuildURL(command string, params map[string]any) string {
 	if len(values) == 0 {
 		return fmt.Sprintf("things:///%s", command)
 	}
-	return fmt.Sprintf("things:///%s?%s", command, values.Encode())
+	encoded := strings.ReplaceAll(values.Encode(), "+", "%20")
+	return fmt.Sprintf("things:///%s?%s", command, encoded)
 }
 
 type AddTodoInput struct {

@@ -19,8 +19,8 @@ func TestAddTodoURL(t *testing.T) {
 
 	expectedContains := []string{
 		"things:///add?",
-		"title=Test+Todo",
-		"notes=Test+notes",
+		"title=Test%20Todo",
+		"notes=Test%20notes",
 		"when=today",
 		"deadline=2099-12-31",
 		"tags=work%2Curgent",
@@ -32,6 +32,9 @@ func TestAddTodoURL(t *testing.T) {
 		if !contains(url, part) {
 			t.Fatalf("url missing %q: %s", part, url)
 		}
+	}
+	if contains(url, "title=Test+Todo") || contains(url, "notes=Test+notes") {
+		t.Fatalf("spaces should be percent-encoded, got: %s", url)
 	}
 }
 
@@ -58,6 +61,18 @@ func TestShowURL(t *testing.T) {
 	}
 	if !contains(url, "id=today") || !contains(url, "filter=work%2Chome") {
 		t.Fatalf("expected id and filter in url: %s", url)
+	}
+}
+
+func TestBuildURLSpaceEncodingAndLiteralPlus(t *testing.T) {
+	url := BuildURL("search", map[string]any{
+		"query": "Buy milk + eggs",
+	})
+	if !contains(url, "query=Buy%20milk%20%2B%20eggs") {
+		t.Fatalf("expected RFC 3986 encoding for query, got: %s", url)
+	}
+	if contains(url, "query=Buy+milk") {
+		t.Fatalf("did not expect application/x-www-form-urlencoded space encoding: %s", url)
 	}
 }
 

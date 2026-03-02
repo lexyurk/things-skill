@@ -36,7 +36,47 @@ This port includes Someday inheritance behavior to align with Things MCP:
 - Things 3 database available locally (or provide `--db-path`)
 - For write/navigation commands: macOS + Things URL scheme enabled
 
-## Build
+## Install `things` command (recommended)
+
+```bash
+# installs to ~/.local/bin/things by default
+make install
+```
+
+Then run directly:
+
+```bash
+things list today
+```
+
+If `things` is not found, add your install directory to PATH:
+
+```bash
+export PATH="$HOME/.local/bin:$PATH"
+```
+
+Install to a different directory:
+
+```bash
+# e.g. /usr/local/bin/things
+make install BINDIR=/usr/local/bin
+```
+
+Alternative installer script (auto-picks a writable PATH dir, or uses provided dir):
+
+```bash
+bash scripts/install.sh
+# or
+bash scripts/install.sh /usr/local/bin
+```
+
+Uninstall:
+
+```bash
+make uninstall
+```
+
+## Build (manual)
 
 ```bash
 go build -o things ./cmd/things
@@ -52,22 +92,19 @@ go test ./...
 
 ```bash
 # Inbox (default)
-go run ./cmd/things list
-
-# View list
-go run ./cmd/things list today
+things list
 
 # Todos in a project
-go run ./cmd/things todos --project <project-uuid>
+things todos --project <project-uuid>
 
 # Create todo
-go run ./cmd/things todo add --title "Buy milk" --notes "2%"
+things todo add --title "Buy milk" --notes "2%"
 
 # Update todo
-go run ./cmd/things todo update --id <todo-uuid> --when tomorrow
+things todo update --id <todo-uuid> --when tomorrow
 
 # Soft delete (cancel)
-go run ./cmd/things todo delete --id <todo-uuid>
+things todo delete --id <todo-uuid>
 ```
 
 ## Delete semantics

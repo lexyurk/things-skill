@@ -5,6 +5,7 @@ import (
 	"os"
 	"path/filepath"
 	"runtime"
+	"strings"
 	"testing"
 
 	_ "modernc.org/sqlite"
@@ -184,6 +185,56 @@ func TestGetByUUIDReturnsAnyTaskState(t *testing.T) {
 			}
 			if task.Trashed != tt.trashed {
 				t.Fatalf("expected trashed=%v, got %v", tt.trashed, task.Trashed)
+			}
+		})
+	}
+}
+
+func TestOpenPathEscapesURIReservedCharacters(t *testing.T) {
+	tests := []struct {
+		name     string
+		filename string
+	}{
+		{
+			name:     "question_mark",
+			filename: "things?fixture.sqlite",
+		},
+		{
+			name:     "hash",
+			filename: "things#fixture.sqlite",
+		},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			originalPath := createFixtureDB(t)
+			escapedPath := filepath.Join(filepath.Dir(originalPath), tc.filename)
+			if err := os.Rename(originalPath, escapedPath); err != nil {
+				t.Fatal(err)
+			}
+
+			repo, err := OpenPath(escapedPath)
+			if err != nil {
+				t.Fatalf("OpenPath(%q) failed: %v", escapedPath, err)
+			}
+			t.Cleanup(func() {
+				_ = repo.Close()
+			})
+
+			token, err := repo.AuthToken()
+			if err != nil {
+				t.Fatal(err)
+			}
+			if token != "test-auth-token" {
+				t.Fatalf("expected auth token from escaped path db, got %q", token)
+			}
+
+			_, err = repo.db.Exec(`PRAGMA user_version = 1`)
+			if err == nil {
+				t.Fatalf("expected read-only database mode for %q", escapedPath)
+			}
+			if !strings.Contains(strings.ToLower(err.Error()), "readonly") {
+				t.Fatalf("expected readonly error, got %v", err)
 			}
 		})
 	}

@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"errors"
 	"fmt"
+	"net/url"
 	"sort"
 	"strings"
 
@@ -26,7 +27,7 @@ func Open(dbPathOverride string) (*Repository, error) {
 }
 
 func OpenPath(path string) (*Repository, error) {
-	dsn := fmt.Sprintf("file:%s?mode=ro", path)
+	dsn := sqliteReadOnlyDSN(path)
 	db, err := sql.Open("sqlite", dsn)
 	if err != nil {
 		return nil, err
@@ -37,6 +38,17 @@ func OpenPath(path string) (*Repository, error) {
 	}
 
 	return &Repository{db: db, path: path}, nil
+}
+
+func sqliteReadOnlyDSN(path string) string {
+	query := url.Values{}
+	query.Set("mode", "ro")
+
+	return (&url.URL{
+		Scheme:   "file",
+		Path:     path,
+		RawQuery: query.Encode(),
+	}).String()
 }
 
 func (r *Repository) Close() error {

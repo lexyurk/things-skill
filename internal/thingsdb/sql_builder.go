@@ -11,9 +11,9 @@ import (
 var dateMatcher = regexp.MustCompile(`^(=|==|<|<=|>|>=)?(\d{4}-\d{2}-\d{2})$`)
 
 var startValueToInt = map[string]int{
-	"Inbox":   0,
-	"Anytime": 1,
-	"Someday": 2,
+	"inbox":   0,
+	"anytime": 1,
+	"someday": 2,
 }
 
 var statusValueToInt = map[string]int{
@@ -194,8 +194,7 @@ func buildTaskQuery(filter TaskFilter) (string, []any, error) {
 	}
 
 	if filter.Start != "" {
-		start := strings.Title(filter.Start)
-		startValue, ok := startValueToInt[start]
+		startValue, ok := startValueToInt[strings.ToLower(filter.Start)]
 		if !ok {
 			return "", nil, fmt.Errorf("invalid start value %q", filter.Start)
 		}

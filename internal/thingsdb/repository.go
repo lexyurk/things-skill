@@ -320,9 +320,7 @@ func (r *Repository) SearchAdvanced(filter SearchAdvancedFilter) ([]Task, error)
 	})
 	if filter.Type != "" {
 		taskFilter.Type = strings.ToLower(filter.Type)
-		return r.queryTasks(taskFilter, true)
 	}
-	taskFilter.Type = "to-do"
 	return r.queryTasks(taskFilter, true)
 }
 

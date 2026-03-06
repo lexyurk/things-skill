@@ -37,6 +37,23 @@ func TestSearchAdvancedTypeProject(t *testing.T) {
 	}
 }
 
+func TestSearchAdvancedWithoutTypeReturnsMultipleItemTypes(t *testing.T) {
+	repo := openFixtureRepo(t)
+	tasks, err := repo.SearchAdvanced(SearchAdvancedFilter{})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !taskExists(tasks, "todo-anytime-active") {
+		t.Fatalf("expected to-do result when no type filter is provided")
+	}
+	if !taskExists(tasks, "project-active") {
+		t.Fatalf("expected project result when no type filter is provided")
+	}
+	if !taskExists(tasks, "heading-active") {
+		t.Fatalf("expected heading result when no type filter is provided")
+	}
+}
+
 func TestSearchAdvancedInvalidTypeReturnsError(t *testing.T) {
 	repo := openFixtureRepo(t)
 	_, err := repo.SearchAdvanced(SearchAdvancedFilter{

@@ -39,7 +39,7 @@ func (r *Repository) IsInSomedayProject(task Task, projectIDs map[string]struct{
 		_, ok := projectIDs[task.ProjectUUID]
 		return ok
 	}
-	if task.ProjectUUID == "" && task.HeadingUUID != "" {
+	if task.HeadingUUID != "" {
 		_, ok := headingToProject[task.HeadingUUID]
 		return ok
 	}

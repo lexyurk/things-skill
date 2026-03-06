@@ -16,10 +16,10 @@ var (
 
 func ResolveDBPath(override string) (string, error) {
 	if override != "" {
-		return override, nil
+		return filepath.Abs(override)
 	}
 	if env := os.Getenv(EnvDBPath); env != "" {
-		return env, nil
+		return filepath.Abs(env)
 	}
 
 	home, err := os.UserHomeDir()

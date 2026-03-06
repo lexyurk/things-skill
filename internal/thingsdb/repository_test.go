@@ -239,3 +239,36 @@ func TestOpenPathEscapesURIReservedCharacters(t *testing.T) {
 		})
 	}
 }
+
+func TestOpenPathWithRelativePath(t *testing.T) {
+	absolutePath := createFixtureDB(t)
+	dbDir := filepath.Dir(absolutePath)
+	relativePath := filepath.Join(".", filepath.Base(absolutePath))
+
+	originalWD, err := os.Getwd()
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err := os.Chdir(dbDir); err != nil {
+		t.Fatal(err)
+	}
+	t.Cleanup(func() {
+		_ = os.Chdir(originalWD)
+	})
+
+	repo, err := OpenPath(relativePath)
+	if err != nil {
+		t.Fatalf("OpenPath(%q) failed: %v", relativePath, err)
+	}
+	t.Cleanup(func() {
+		_ = repo.Close()
+	})
+
+	token, err := repo.AuthToken()
+	if err != nil {
+		t.Fatal(err)
+	}
+	if token != "test-auth-token" {
+		t.Fatalf("expected auth token from relative path db, got %q", token)
+	}
+}

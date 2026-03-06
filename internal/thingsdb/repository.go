@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"net/url"
+	"path/filepath"
 	"sort"
 	"strings"
 
@@ -41,6 +42,13 @@ func OpenPath(path string) (*Repository, error) {
 }
 
 func sqliteReadOnlyDSN(path string) string {
+	if !filepath.IsAbs(path) {
+		absPath, err := filepath.Abs(path)
+		if err == nil {
+			path = absPath
+		}
+	}
+
 	query := url.Values{}
 	query.Set("mode", "ro")
 

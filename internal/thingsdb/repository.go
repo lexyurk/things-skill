@@ -259,8 +259,9 @@ func (r *Repository) queryTasks(filter TaskFilter, includeItems bool) ([]Task, e
 
 func (r *Repository) projectItems(project Task) ([]Task, error) {
 	filter := TaskFilter{
-		Project:        project.UUID,
-		ContextTrashed: nil,
+		Project:            project.UUID,
+		DirectProjectItems: true,
+		ContextTrashed:     nil,
 	}
 
 	// Keep active project expansion behavior unchanged, while allowing archived

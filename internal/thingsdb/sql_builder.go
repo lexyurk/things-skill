@@ -212,8 +212,13 @@ func buildTaskQuery(filter TaskFilter) (string, []any, error) {
 	}
 
 	if filter.Project != "" {
-		conditions = append(conditions, "(TASK.project = ? OR PROJECT_OF_HEADING.uuid = ?)")
-		args = append(args, filter.Project, filter.Project)
+		if filter.DirectProjectItems {
+			conditions = append(conditions, "TASK.project = ?")
+			args = append(args, filter.Project)
+		} else {
+			conditions = append(conditions, "(TASK.project = ? OR PROJECT_OF_HEADING.uuid = ?)")
+			args = append(args, filter.Project, filter.Project)
+		}
 	}
 
 	if filter.Heading != "" {

@@ -94,3 +94,47 @@ func TestBuildTaskQueryLastFiltersUseLocaltimeOnBothSides(t *testing.T) {
 		t.Fatalf("expected second arg %q, got %#v", "-1 days", args[1])
 	}
 }
+
+func TestBuildTaskQueryProjectFilterIncludesHeadingProjectTodos(t *testing.T) {
+	query, args, err := buildTaskQuery(TaskFilter{Project: "project-1"})
+	if err != nil {
+		t.Fatalf("buildTaskQuery() error = %v", err)
+	}
+
+	projectClause := "(TASK.project = ? OR PROJECT_OF_HEADING.uuid = ?)"
+	if !strings.Contains(query, projectClause) {
+		t.Fatalf("expected query to contain %q", projectClause)
+	}
+
+	if len(args) != 2 {
+		t.Fatalf("expected two args, got %d", len(args))
+	}
+	if args[0] != "project-1" || args[1] != "project-1" {
+		t.Fatalf("expected args [project-1 project-1], got %#v", args)
+	}
+}
+
+func TestBuildTaskQueryProjectFilterDirectItemsOnly(t *testing.T) {
+	query, args, err := buildTaskQuery(TaskFilter{
+		Project:            "project-1",
+		DirectProjectItems: true,
+	})
+	if err != nil {
+		t.Fatalf("buildTaskQuery() error = %v", err)
+	}
+
+	projectClause := "TASK.project = ?"
+	if !strings.Contains(query, projectClause) {
+		t.Fatalf("expected query to contain %q", projectClause)
+	}
+	if strings.Contains(query, "PROJECT_OF_HEADING.uuid = ?") {
+		t.Fatalf("expected direct project query to exclude heading-project clause")
+	}
+
+	if len(args) != 1 {
+		t.Fatalf("expected one arg, got %d", len(args))
+	}
+	if args[0] != "project-1" {
+		t.Fatalf("expected arg project-1, got %#v", args[0])
+	}
+}

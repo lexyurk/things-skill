@@ -59,6 +59,7 @@ type TaskFilter struct {
 	Start              string
 	Area               string
 	Project            string
+	DirectProjectItems bool
 	Heading            string
 	Tag                string
 	StartDate          string

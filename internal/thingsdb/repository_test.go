@@ -185,6 +185,43 @@ func TestProjectItemsPreserveDatabaseIndexOrder(t *testing.T) {
 	}
 }
 
+func TestProjectItemsDoNotDuplicateHeadingTodos(t *testing.T) {
+	repo := openFixtureRepo(t)
+	projects, err := repo.Projects(true)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	var somedayProject *Task
+	for i := range projects {
+		if projects[i].UUID == "project-someday" {
+			somedayProject = &projects[i]
+			break
+		}
+	}
+	if somedayProject == nil {
+		t.Fatalf("expected someday project to exist")
+	}
+
+	if taskExists(somedayProject.Items, "todo-heading-someday") {
+		t.Fatalf("expected heading-based todo to be nested only under heading")
+	}
+
+	var somedayHeading *Task
+	for i := range somedayProject.Items {
+		if somedayProject.Items[i].UUID == "heading-someday" {
+			somedayHeading = &somedayProject.Items[i]
+			break
+		}
+	}
+	if somedayHeading == nil {
+		t.Fatalf("expected heading-someday to be included in project items")
+	}
+	if !taskExists(somedayHeading.Items, "todo-heading-someday") {
+		t.Fatalf("expected heading-based todo to exist under heading items")
+	}
+}
+
 func TestAuthToken(t *testing.T) {
 	repo := openFixtureRepo(t)
 	token, err := repo.AuthToken()

@@ -262,9 +262,9 @@ func (r *Repository) queryTasks(filter TaskFilter, includeItems bool) ([]Task, e
 
 func (r *Repository) projectItems(projectUUID string) ([]Task, error) {
 	filter := defaultTaskFilter(TaskFilter{
-		Project:        projectUUID,
-		ContextTrashed: nil,
+		Project: projectUUID,
 	})
+	filter.ContextTrashed = nil
 	return r.queryTasks(filter, true)
 }
 

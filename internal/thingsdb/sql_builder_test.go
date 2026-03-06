@@ -1,6 +1,9 @@
 package thingsdb
 
-import "testing"
+import (
+	"strings"
+	"testing"
+)
 
 func TestBuildTaskQueryStartFilterNormalizesCase(t *testing.T) {
 	tests := []struct {
@@ -59,5 +62,35 @@ func TestBuildTaskQueryLastRejectsZeroPeriod(t *testing.T) {
 	}
 	if err != ErrInvalidOffset {
 		t.Fatalf("expected %v, got %v", ErrInvalidOffset, err)
+	}
+}
+
+func TestBuildTaskQueryLastFiltersUseLocaltimeOnBothSides(t *testing.T) {
+	query, args, err := buildTaskQuery(TaskFilter{
+		Last:         "1d",
+		LastStopDate: "1d",
+	})
+	if err != nil {
+		t.Fatalf("buildTaskQuery() error = %v", err)
+	}
+
+	lastCreationClause := "datetime(TASK.creationDate, 'unixepoch', 'localtime') > datetime('now', ?, 'localtime')"
+	if !strings.Contains(query, lastCreationClause) {
+		t.Fatalf("expected query to contain %q", lastCreationClause)
+	}
+
+	lastStopClause := "datetime(TASK.stopDate, 'unixepoch', 'localtime') > datetime('now', ?, 'localtime')"
+	if !strings.Contains(query, lastStopClause) {
+		t.Fatalf("expected query to contain %q", lastStopClause)
+	}
+
+	if len(args) != 2 {
+		t.Fatalf("expected two args, got %d", len(args))
+	}
+	if args[0] != "-1 days" {
+		t.Fatalf("expected first arg %q, got %#v", "-1 days", args[0])
+	}
+	if args[1] != "-1 days" {
+		t.Fatalf("expected second arg %q, got %#v", "-1 days", args[1])
 	}
 }

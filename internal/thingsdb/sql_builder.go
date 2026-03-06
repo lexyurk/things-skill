@@ -249,7 +249,7 @@ func buildTaskQuery(filter TaskFilter) (string, []any, error) {
 		if err != nil {
 			return "", nil, err
 		}
-		conditions = append(conditions, "datetime(TASK.creationDate, 'unixepoch', 'localtime') > datetime('now', ?)")
+		conditions = append(conditions, "datetime(TASK.creationDate, 'unixepoch', 'localtime') > datetime('now', ?, 'localtime')")
 		args = append(args, modifier)
 	}
 
@@ -258,7 +258,7 @@ func buildTaskQuery(filter TaskFilter) (string, []any, error) {
 		if err != nil {
 			return "", nil, err
 		}
-		conditions = append(conditions, "datetime(TASK.stopDate, 'unixepoch', 'localtime') > datetime('now', ?)")
+		conditions = append(conditions, "datetime(TASK.stopDate, 'unixepoch', 'localtime') > datetime('now', ?, 'localtime')")
 		args = append(args, modifier)
 	}
 

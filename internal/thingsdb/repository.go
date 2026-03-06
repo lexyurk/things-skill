@@ -240,9 +240,6 @@ func (r *Repository) queryTasks(filter TaskFilter, includeItems bool) ([]Task, e
 				if err != nil {
 					return nil, err
 				}
-				sort.SliceStable(task.Items, func(i, j int) bool {
-					return task.Items[i].Type > task.Items[j].Type
-				})
 			case "heading":
 				task.Items, err = r.Todos("", true, task.UUID)
 				if err != nil {

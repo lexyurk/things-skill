@@ -155,6 +155,36 @@ func TestTodayComposition(t *testing.T) {
 	}
 }
 
+func TestProjectItemsPreserveDatabaseIndexOrder(t *testing.T) {
+	repo := openFixtureRepo(t)
+	projects, err := repo.Projects(true)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	var activeProject *Task
+	for i := range projects {
+		if projects[i].UUID == "project-active" {
+			activeProject = &projects[i]
+			break
+		}
+	}
+	if activeProject == nil {
+		t.Fatalf("expected active project to exist")
+	}
+	if len(activeProject.Items) < 2 {
+		t.Fatalf("expected active project to include heading and task, got %#v", activeProject.Items)
+	}
+
+	if activeProject.Items[0].UUID != "heading-active" || activeProject.Items[1].UUID != "todo-anytime-active" {
+		t.Fatalf(
+			"expected project items to follow database index order [heading-active, todo-anytime-active], got [%s, %s]",
+			activeProject.Items[0].UUID,
+			activeProject.Items[1].UUID,
+		)
+	}
+}
+
 func TestAuthToken(t *testing.T) {
 	repo := openFixtureRepo(t)
 	token, err := repo.AuthToken()

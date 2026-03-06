@@ -61,6 +61,32 @@ func openFixtureRepo(t *testing.T) *Repository {
 	return repo
 }
 
+func openMutatedFixtureRepo(t *testing.T, mutate func(*sql.DB) error) *Repository {
+	t.Helper()
+
+	dbPath := createFixtureDB(t)
+	db, err := sql.Open("sqlite", "file:"+dbPath+"?mode=rw")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err := mutate(db); err != nil {
+		_ = db.Close()
+		t.Fatal(err)
+	}
+	if err := db.Close(); err != nil {
+		t.Fatal(err)
+	}
+
+	repo, err := OpenPath(dbPath)
+	if err != nil {
+		t.Fatal(err)
+	}
+	t.Cleanup(func() {
+		_ = repo.Close()
+	})
+	return repo
+}
+
 func taskExists(tasks []Task, uuid string) bool {
 	for _, task := range tasks {
 		if task.UUID == uuid {
@@ -187,6 +213,76 @@ func TestGetByUUIDReturnsAnyTaskState(t *testing.T) {
 				t.Fatalf("expected trashed=%v, got %v", tt.trashed, task.Trashed)
 			}
 		})
+	}
+}
+
+func TestTrashProjectIncludesTrashedChildItems(t *testing.T) {
+	repo := openMutatedFixtureRepo(t, func(db *sql.DB) error {
+		if _, err := db.Exec(`
+INSERT INTO TMTask (uuid, type, trashed, title, status, start, creationDate, userModificationDate, "index", todayIndex, rt1_recurrenceRule)
+VALUES ('project-trash-parent', 1, 1, 'Trashed Project', 0, 1, strftime('%s','now','-2 day'), strftime('%s','now','-1 day'), 1000, 0, NULL)
+`); err != nil {
+			return err
+		}
+		_, err := db.Exec(`
+INSERT INTO TMTask (uuid, type, trashed, title, status, project, start, creationDate, userModificationDate, "index", todayIndex, rt1_recurrenceRule)
+VALUES ('todo-trash-child', 0, 1, 'Trashed Child', 0, 'project-trash-parent', 1, strftime('%s','now','-2 day'), strftime('%s','now','-1 day'), 1001, 0, NULL)
+`)
+		return err
+	})
+
+	tasks, err := repo.Trash()
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	var project *Task
+	for i := range tasks {
+		if tasks[i].UUID == "project-trash-parent" {
+			project = &tasks[i]
+			break
+		}
+	}
+	if project == nil {
+		t.Fatalf("expected trashed project in trash view")
+	}
+	if !taskExists(project.Items, "todo-trash-child") {
+		t.Fatalf("expected trashed child item in trashed project's items")
+	}
+}
+
+func TestLogbookCompletedProjectIncludesCompletedChildItems(t *testing.T) {
+	repo := openMutatedFixtureRepo(t, func(db *sql.DB) error {
+		if _, err := db.Exec(`
+INSERT INTO TMTask (uuid, type, trashed, title, status, start, stopDate, creationDate, userModificationDate, "index", todayIndex, rt1_recurrenceRule)
+VALUES ('project-logbook-parent', 1, 0, 'Completed Project', 3, 1, strftime('%s','now','-1 day'), strftime('%s','now','-8 day'), strftime('%s','now','-1 day'), 1010, 0, NULL)
+`); err != nil {
+			return err
+		}
+		_, err := db.Exec(`
+INSERT INTO TMTask (uuid, type, trashed, title, status, project, start, stopDate, creationDate, userModificationDate, "index", todayIndex, rt1_recurrenceRule)
+VALUES ('todo-logbook-child', 0, 0, 'Completed Child', 3, 'project-logbook-parent', 1, strftime('%s','now','-1 day'), strftime('%s','now','-6 day'), strftime('%s','now','-1 day'), 1011, 0, NULL)
+`)
+		return err
+	})
+
+	tasks, err := repo.Logbook()
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	var project *Task
+	for i := range tasks {
+		if tasks[i].UUID == "project-logbook-parent" {
+			project = &tasks[i]
+			break
+		}
+	}
+	if project == nil {
+		t.Fatalf("expected completed project in logbook view")
+	}
+	if !taskExists(project.Items, "todo-logbook-child") {
+		t.Fatalf("expected completed child item in completed project's items")
 	}
 }
 

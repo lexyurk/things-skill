@@ -236,7 +236,7 @@ func (r *Repository) queryTasks(filter TaskFilter, includeItems bool) ([]Task, e
 					}
 				}
 			case "project":
-				task.Items, err = r.projectItems(task.UUID)
+				task.Items, err = r.projectItems(task)
 				if err != nil {
 					return nil, err
 				}
@@ -260,11 +260,19 @@ func (r *Repository) queryTasks(filter TaskFilter, includeItems bool) ([]Task, e
 	return tasks, nil
 }
 
-func (r *Repository) projectItems(projectUUID string) ([]Task, error) {
-	filter := defaultTaskFilter(TaskFilter{
-		Project: projectUUID,
-	})
-	filter.ContextTrashed = nil
+func (r *Repository) projectItems(project Task) ([]Task, error) {
+	filter := TaskFilter{
+		Project:        project.UUID,
+		ContextTrashed: nil,
+	}
+
+	// Keep active project expansion behavior unchanged, while allowing archived
+	// projects in Trash/Logbook to include their archived children.
+	if !project.Trashed && project.Status != "completed" && project.Status != "canceled" {
+		filter = defaultTaskFilter(filter)
+		filter.ContextTrashed = nil
+	}
+
 	return r.queryTasks(filter, true)
 }
 

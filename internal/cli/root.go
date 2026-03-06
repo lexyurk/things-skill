@@ -71,7 +71,10 @@ func (a *app) printResult(data any, text string) error {
 
 func (a *app) executeURL(ctx context.Context, url string) error {
 	if a.dryRun {
-		fmt.Println(url)
+		// Keep dry-run output machine-parseable in JSON mode.
+		if strings.ToLower(a.output) != "json" {
+			fmt.Println(url)
+		}
 		return nil
 	}
 	executor := thingsurl.DefaultExecutor{}

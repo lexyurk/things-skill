@@ -61,7 +61,7 @@ func parseLastOffset(period string) (string, error) {
 	unit := period[len(period)-1]
 	numText := period[:len(period)-1]
 	n, err := strconv.Atoi(numText)
-	if err != nil || n < 0 {
+	if err != nil || n <= 0 {
 		return "", ErrInvalidOffset
 	}
 

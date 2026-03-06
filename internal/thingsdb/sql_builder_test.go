@@ -51,3 +51,13 @@ func TestBuildTaskQueryStartFilterRejectsInvalidValue(t *testing.T) {
 		t.Fatal("expected invalid start value error")
 	}
 }
+
+func TestBuildTaskQueryLastRejectsZeroPeriod(t *testing.T) {
+	_, _, err := buildTaskQuery(TaskFilter{Last: "0d"})
+	if err == nil {
+		t.Fatal("expected invalid offset error")
+	}
+	if err != ErrInvalidOffset {
+		t.Fatalf("expected %v, got %v", ErrInvalidOffset, err)
+	}
+}

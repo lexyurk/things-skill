@@ -166,56 +166,6 @@ func TestAuthToken(t *testing.T) {
 	}
 }
 
-func TestGetByUUIDReturnsAnyTaskState(t *testing.T) {
-	repo := openFixtureRepo(t)
-	tests := []struct {
-		name    string
-		uuid    string
-		status  string
-		trashed bool
-	}{
-		{
-			name:    "completed task",
-			uuid:    "todo-completed",
-			status:  "completed",
-			trashed: false,
-		},
-		{
-			name:    "canceled task",
-			uuid:    "todo-canceled",
-			status:  "canceled",
-			trashed: false,
-		},
-		{
-			name:    "trashed task",
-			uuid:    "todo-trash",
-			status:  "incomplete",
-			trashed: true,
-		},
-	}
-
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			task, err := repo.GetByUUID(tt.uuid)
-			if err != nil {
-				t.Fatal(err)
-			}
-			if task == nil {
-				t.Fatalf("expected task %q to be returned", tt.uuid)
-			}
-			if task.UUID != tt.uuid {
-				t.Fatalf("expected uuid %q, got %q", tt.uuid, task.UUID)
-			}
-			if task.Status != tt.status {
-				t.Fatalf("expected status %q, got %q", tt.status, task.Status)
-			}
-			if task.Trashed != tt.trashed {
-				t.Fatalf("expected trashed=%v, got %v", tt.trashed, task.Trashed)
-			}
-		})
-	}
-}
-
 func TestTrashProjectIncludesTrashedChildItems(t *testing.T) {
 	repo := openMutatedFixtureRepo(t, func(db *sql.DB) error {
 		if _, err := db.Exec(`

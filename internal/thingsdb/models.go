@@ -54,7 +54,6 @@ type Tag struct {
 }
 
 type TaskFilter struct {
-	UUID               string
 	Type               string
 	Status             string
 	Start              string

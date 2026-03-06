@@ -162,11 +162,6 @@ func buildTaskQuery(filter TaskFilter) (string, []any, error) {
 	}
 	args := make([]any, 0, 16)
 
-	if filter.UUID != "" {
-		conditions = append(conditions, "TASK.uuid = ?")
-		args = append(args, filter.UUID)
-	}
-
 	if filter.Trashed != nil {
 		if *filter.Trashed {
 			conditions = append(conditions, "TASK.trashed = 1")

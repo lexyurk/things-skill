@@ -668,16 +668,3 @@ WHERE uuid = ?
 	}
 	return nullToString(token), nil
 }
-
-func (r *Repository) GetByUUID(uuid string) (*Task, error) {
-	tasks, err := r.queryTasks(TaskFilter{
-		UUID: uuid,
-	}, true)
-	if err != nil {
-		return nil, err
-	}
-	if len(tasks) == 0 {
-		return nil, nil
-	}
-	return &tasks[0], nil
-}

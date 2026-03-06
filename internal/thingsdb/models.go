@@ -71,7 +71,6 @@ type TaskFilter struct {
 	LastStopDate       string
 	SearchQuery        string
 	Index              string
-	CountOnly          bool
 }
 
 type SearchAdvancedFilter struct {

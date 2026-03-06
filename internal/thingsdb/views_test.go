@@ -60,3 +60,17 @@ func TestListViewLogbookPeriodIncludesCanceled(t *testing.T) {
 		t.Fatalf("expected canceled task in logbook period")
 	}
 }
+
+func TestListViewLogbookPeriodUppercaseUnit(t *testing.T) {
+	repo := openFixtureRepo(t)
+	tasks, err := repo.ListView(ViewLogbook, "10D", 0)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !taskExists(tasks, "todo-completed") {
+		t.Fatalf("expected completed task in logbook period")
+	}
+	if !taskExists(tasks, "todo-canceled") {
+		t.Fatalf("expected canceled task in logbook period")
+	}
+}

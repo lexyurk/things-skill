@@ -424,7 +424,7 @@ func (r *Repository) Someday() ([]Task, error) {
 		seen[task.UUID] = struct{}{}
 	}
 	for _, task := range anytime {
-		if r.IsInSomedayProject(task, somedayProjectIDs, headingToProject) {
+		if isInSomedayProject(task, somedayProjectIDs, headingToProject) {
 			if _, ok := seen[task.UUID]; ok {
 				continue
 			}

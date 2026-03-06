@@ -34,7 +34,8 @@ func (r *Repository) GetSomedayContext() (map[string]struct{}, map[string]string
 	return projectIDs, headingToProject, nil
 }
 
-func (r *Repository) IsInSomedayProject(task Task, projectIDs map[string]struct{}, headingToProject map[string]string) bool {
+// isInSomedayProject is intentionally pure and does not require repository state.
+func isInSomedayProject(task Task, projectIDs map[string]struct{}, headingToProject map[string]string) bool {
 	if task.ProjectUUID != "" {
 		_, ok := projectIDs[task.ProjectUUID]
 		return ok
@@ -57,7 +58,7 @@ func (r *Repository) FilterSomedayProjectTasks(tasks []Task) ([]Task, error) {
 
 	filtered := make([]Task, 0, len(tasks))
 	for _, task := range tasks {
-		if r.IsInSomedayProject(task, projectIDs, headingToProject) {
+		if isInSomedayProject(task, projectIDs, headingToProject) {
 			continue
 		}
 		filtered = append(filtered, task)

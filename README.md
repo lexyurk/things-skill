@@ -18,6 +18,18 @@ The CLI mirrors the practical feature set of the Things MCP server:
 - Delete operations: implemented as **soft delete** (`canceled=true`)
 - App navigation: show item/list, app search, JSON URL command passthrough
 
+### Why reads are still database-backed
+
+Things URLs are useful for navigation and write operations, but the documented URL
+scheme does not expose task data for CLI-style reads:
+
+- `show` and `search` open Things UI views and return no data on `x-success`
+- `add`, `update`, `update-project`, and `json` return IDs for changed items, not
+  full task payloads
+
+Because of that, commands such as `things list`, `things todos`, and `things search`
+still read from the Things database when structured output is required.
+
 ### Inbox-first behavior
 
 - `things list` defaults to Inbox.

@@ -11,6 +11,10 @@ metadata:
 
 Use this skill whenever you need to operate on a user's Things 3 data from the terminal using the `things` command.
 
+Structured reads come from the Things database. The Things URL scheme is still used
+for create/update/navigation flows, but its documented `show` and `search` commands
+do not return task payloads.
+
 ## When to use
 
 - User asks to list inbox/today/upcoming/anytime/someday/logbook/trash tasks.

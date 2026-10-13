@@ -39,6 +39,7 @@ func newRootCommand(a *app) *cobra.Command {
 
 	a.addReadCommands(rootCmd)
 	a.addWriteCommands(rootCmd)
+	a.addCloudCommands(rootCmd)
 
 	return rootCmd
 }

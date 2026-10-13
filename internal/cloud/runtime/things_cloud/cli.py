@@ -17,7 +17,7 @@ def parser():
     root.add_argument("--version", action="version", version=__version__)
     root.add_argument("--data-dir", help="Private state directory; defaults to XDG_DATA_HOME/things-cloud-plugin.")
     sub = root.add_subparsers(dest="command", required=True)
-    connect = sub.add_parser("connect", help="Authenticate locally; password is hidden and never stored.")
+    connect = sub.add_parser("connect", aliases=["login"], help="Authenticate locally; password is hidden and never stored.")
     connect.add_argument("--email")
     connect.add_argument("--env-file", help="Explicit owner-only .env file; password stays out of arguments and logs.")
     for name in ("disconnect", "status", "sync", "serve", "tools"):
@@ -61,6 +61,7 @@ def parser():
     recover = sub.add_parser("mark-not-applied", help="Release an unknown write after checking your Apple client; never retries it.")
     recover.add_argument("request_id")
     recover.add_argument("--checked-in-things", action="store_true", required=True)
+    sub.add_parser("compat", help=argparse.SUPPRESS)
     return root
 
 
@@ -84,7 +85,7 @@ def main(argv=None):
         if cmd == "serve":
             serve(service)
             return 0
-        if cmd == "connect":
+        if cmd in ("connect", "login"):
             if args.env_file:
                 if args.email:
                     raise ThingsError("Use either --env-file or --email, not both.")
@@ -96,6 +97,8 @@ def main(argv=None):
                 password = getpass.getpass("Things Cloud password: ")
             result = service.connect(email, password)
             password = None
+            result.update(service.sync())
+            result["message"] = "Account connected and tasks synchronized. Future commands reuse this login."
         elif cmd in ("disconnect", "status", "sync"):
             result = getattr(service, cmd)()
         elif cmd == "tools":
@@ -119,6 +122,10 @@ def main(argv=None):
             result = service.delete_task(args.task_id, args.permanent, args.request_id)
         elif cmd == "call":
             result = call(service, args.tool, json_argument(args.arguments))
+        elif cmd == "compat":
+            from .compat import run
+
+            result = run(service, json_argument("-"))
         elif cmd == "mark-not-applied":
             result = service.abandon_uncertain(args.request_id)
         elif cmd == "watch":

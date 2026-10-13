@@ -52,7 +52,7 @@ def read_private_json(path):
     try:
         fd = os.open(path, os.O_RDONLY | os.O_NOFOLLOW)
     except FileNotFoundError:
-        raise ThingsError("No account connected. Run: things-cloud connect") from None
+        raise ThingsError("No account connected. Run: things-cli login (or things-cloud connect)") from None
     except OSError:
         raise ThingsError("Cannot read the private account file.") from None
     with os.fdopen(fd, encoding="utf-8") as stream:

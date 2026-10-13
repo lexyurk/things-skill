@@ -15,9 +15,12 @@ import (
 )
 
 type app struct {
-	dbPath string
-	output string
-	dryRun bool
+	dbPath       string
+	output       string
+	dryRun       bool
+	backend      string
+	cloudPython  string
+	cloudDataDir string
 }
 
 func Execute() error {
@@ -40,6 +43,7 @@ func newRootCommand(a *app) *cobra.Command {
 	a.addReadCommands(rootCmd)
 	a.addWriteCommands(rootCmd)
 	a.addCloudCommands(rootCmd)
+	a.routeCloudCommands(rootCmd)
 
 	return rootCmd
 }

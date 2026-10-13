@@ -1,26 +1,13 @@
-# Things CLI limitations and behavior notes
+# Things backend behavior
 
-## 1) Platform for write/navigation
+Cloud needs Python 3.9+, network access to cloud.culturedcode.com, and a persisted Things Cloud login. It runs on Linux and macOS without the Things app. The bundled protocol package is dependency-free and uses owner-only account/cache files and a process-shared write lock.
 
-- Create/update/delete/show/app-search/json operations rely on Things URL scheme execution via `open -g`.
-- That execution path is available on **macOS only**.
-- On non-macOS platforms, read operations still work against a valid Things DB path, while write/navigation returns a platform error.
+Cloud `todo delete` and `project delete` move items to Trash. Restore with `things-cli cloud update ID '{"trashed":false}'`. Permanent deletion is limited to leaves; containers with children must be emptied first. Entity deletion similarly requires removing references first.
 
-## 2) Delete semantics
+Task titles, notes, scheduling, deadlines, reminder times, tags, placement, ordering, completion, cancellation, checklists, projects, headings, areas, and tags have protocol implementations. Repeating tasks remain read-only. Headings support title, parent, and order edits. Account management, Apple push, Linux desktop notifications, calendar integration, attachments, and repeat-rule mutation are unsupported. Read-back verifies cloud history; it does not verify notification delivery or that a phone has downloaded a change.
 
-- Things URL scheme does **not** provide permanent deletion commands.
-- `things todo delete` and `things project delete` are implemented as:
-  - `update` / `update-project` with `canceled=true`.
-- This is a **soft delete** (item moves to Logbook semantics), not a hard delete.
+Cloud `show`/`app-search` return matching data. The Things URL `json` batch command requires `--backend local`; use documented cloud tools for individual mutations. Creation with reminders or child items consists of separate verified commits. Use a stable request ID to resume it without duplicating items; partial or uncertain outcomes stop further writes until reconciled.
 
-## 3) Auth token requirement
+The native macOS backend reads Things SQLite and writes through Things URLs. Its deletes cancel the item (`canceled=true`) and its update/delete operations require the URL auth token in TMSettings. `--dry-run` previews URLs. Existing native view semantics remain available with `--backend local`.
 
-- Update-style URL scheme operations require an auth token from Things.
-- The CLI reads it from `TMSettings.uriSchemeAuthenticationToken`.
-- If the token is unavailable, update/delete operations fail with actionable guidance.
-
-## 4) Inbox-first defaults
-
-- `things list` defaults to `inbox`.
-- `things todo add` without explicit `--list/--list-id/--when` follows Things default add behavior (Inbox).
-
+This is an unofficial protocol integration. See [evidence and coverage](../../../docs/EVIDENCE.md) for the basis of each operation and the live-test boundary.

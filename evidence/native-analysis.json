@@ -1,0 +1,704 @@
+{
+  "artifacts": [
+    {
+      "architecture": "arm64",
+      "digest": {
+        "sha256": "6b8547b85b8b8643d5a41c1e16cb76343b33ff9f34d788449cb947360dae534e"
+      },
+      "format": "mach-o"
+    },
+    {
+      "architecture": "arm64",
+      "digest": {
+        "sha256": "b1f0ae860163737a6c92f89b6f9008585f9c4eb8c44797faf354e13a67b0aeb1"
+      },
+      "format": "mach-o"
+    }
+  ],
+  "captures": [],
+  "environments": [],
+  "providers": [
+    {
+      "id": "hopper",
+      "name": "Hopper Disassembler",
+      "version": "launcher-sha256:dad6f886261fad0d4cdd01aee6fcf57439c60d7b5c54e62fc97f0180116690e0"
+    }
+  ],
+  "records": [
+    {
+      "analysis_profile": {
+        "digest": "c178d9e166de653782da081aa624ac593ad8add9d43b2f3ecdff2bb064539bc1",
+        "parameters": {
+          "architecture": "arm64",
+          "available_architectures": [
+            "arm64",
+            "x86_64"
+          ],
+          "loader": {
+            "arguments": [
+              "-l",
+              "FAT",
+              "--aarch64",
+              "-l",
+              "Mach-O"
+            ],
+            "source": "derived"
+          },
+          "macho_container": "fat32",
+          "target_format": "mach-o",
+          "target_kind": "executable"
+        },
+        "provider": {
+          "id": "hopper",
+          "name": "Hopper Disassembler",
+          "version": "launcher-sha256:dad6f886261fad0d4cdd01aee6fcf57439c60d7b5c54e62fc97f0180116690e0"
+        }
+      },
+      "authority": "shipped-artifact",
+      "confidence": "observed",
+      "environment": null,
+      "evidence_id": "ev_62ed635379d85c3305ca682b38480480f1f015a024e8244c9e3fa9db5fabbd34",
+      "evidence_links": [],
+      "limitations": [
+        "Results depend on Hopper's completed static analysis.",
+        "Regex mode uses ECMAScript Unicode semantics in a supervised worker with a five-second matching deadline. Cancellation or deadline failure stops matching without blocking Hopper; literal mode retains native casefold semantics.",
+        "String values cover native typed objects. Hopper may split long literals into adjacent unterminated fragments; string searches match each object independently.",
+        "Undecodable typed objects retain native display text with an explicit decoding unknown; these values do not establish decoded source literals.",
+        "Reported string encodings are inferred from typed bytes and native display; the original source's intended encoding is unknown."
+      ],
+      "locations": [],
+      "normalized_result": [
+        {
+          "address": "0x10f1da",
+          "provider_value": "Task7",
+          "string": {
+            "byte_length": 6,
+            "encoding": "utf-8",
+            "encoding_status": "inferred",
+            "termination": "present_or_not_required"
+          },
+          "value": "Task7"
+        }
+      ],
+      "operation": "search_strings",
+      "parameters": {
+        "case_sensitive": false,
+        "mode": "regex",
+        "pattern": "cloud.culturedcode|version/|Task7|Task6|own-history|Content-Type|application/json"
+      },
+      "predicate_type": "rea.analysis",
+      "provider": {
+        "id": "hopper",
+        "name": "Hopper Disassembler",
+        "version": "launcher-sha256:dad6f886261fad0d4cdd01aee6fcf57439c60d7b5c54e62fc97f0180116690e0"
+      },
+      "subject": {
+        "architecture": "arm64",
+        "digest": {
+          "sha256": "6b8547b85b8b8643d5a41c1e16cb76343b33ff9f34d788449cb947360dae534e"
+        },
+        "format": "mach-o",
+        "local_path": "/Applications/Things3.app/Contents/Frameworks/ThingsModel.framework/Versions/A/ThingsModel",
+        "name": "ThingsModel"
+      }
+    },
+    {
+      "analysis_profile": {
+        "digest": "c178d9e166de653782da081aa624ac593ad8add9d43b2f3ecdff2bb064539bc1",
+        "parameters": {
+          "architecture": "arm64",
+          "available_architectures": [
+            "arm64",
+            "x86_64"
+          ],
+          "loader": {
+            "arguments": [
+              "-l",
+              "FAT",
+              "--aarch64",
+              "-l",
+              "Mach-O"
+            ],
+            "source": "derived"
+          },
+          "macho_container": "fat32",
+          "target_format": "mach-o",
+          "target_kind": "executable"
+        },
+        "provider": {
+          "id": "hopper",
+          "name": "Hopper Disassembler",
+          "version": "launcher-sha256:dad6f886261fad0d4cdd01aee6fcf57439c60d7b5c54e62fc97f0180116690e0"
+        }
+      },
+      "authority": "shipped-artifact",
+      "confidence": "observed",
+      "environment": null,
+      "evidence_id": "ev_9fdb0c8acac8d6b110cc4d7cfef37a95cc00dad359388be2c795ed69927b3fd7",
+      "evidence_links": [],
+      "limitations": [
+        "Results depend on Hopper's completed static analysis.",
+        "Regex mode uses ECMAScript Unicode semantics in a supervised worker with a five-second matching deadline. Cancellation or deadline failure stops matching without blocking Hopper; literal mode retains native casefold semantics.",
+        "String values cover native typed objects. Hopper may split long literals into adjacent unterminated fragments; string searches match each object independently.",
+        "Undecodable typed objects retain native display text with an explicit decoding unknown; these values do not establish decoded source literals.",
+        "Reported string encodings are inferred from typed bytes and native display; the original source's intended encoding is unknown."
+      ],
+      "locations": [],
+      "normalized_result": [
+        {
+          "address": "0x2404f",
+          "provider_value": "%@version/1/history/%@/items?start-index=%ld",
+          "string": {
+            "byte_length": 45,
+            "encoding": "utf-8",
+            "encoding_status": "inferred",
+            "termination": "present_or_not_required"
+          },
+          "value": "%@version/1/history/%@/items?start-index=%ld"
+        },
+        {
+          "address": "0x24138",
+          "provider_value": "https://cloud.culturedcode.com/",
+          "string": {
+            "byte_length": 32,
+            "encoding": "utf-8",
+            "encoding_status": "inferred",
+            "termination": "present_or_not_required"
+          },
+          "value": "https://cloud.culturedcode.com/"
+        },
+        {
+          "address": "0x24158",
+          "provider_value": "https://staging-cloud.culturedcode.com/",
+          "string": {
+            "byte_length": 40,
+            "encoding": "utf-8",
+            "encoding_status": "inferred",
+            "termination": "present_or_not_required"
+          },
+          "value": "https://staging-cloud.culturedcode.com/"
+        },
+        {
+          "address": "0x24223",
+          "provider_value": "Password %@",
+          "string": {
+            "byte_length": 12,
+            "encoding": "utf-8",
+            "encoding_status": "inferred",
+            "termination": "present_or_not_required"
+          },
+          "value": "Password %@"
+        },
+        {
+          "address": "0x2422f",
+          "provider_value": "Authorization",
+          "string": {
+            "byte_length": 14,
+            "encoding": "utf-8",
+            "encoding_status": "inferred",
+            "termination": "present_or_not_required"
+          },
+          "value": "Authorization"
+        },
+        {
+          "address": "0x2445f",
+          "provider_value": "%@version/1/history/%@/commit?ancestor-index=%ld&_cnt=%ld",
+          "string": {
+            "byte_length": 58,
+            "encoding": "utf-8",
+            "encoding_status": "inferred",
+            "termination": "present_or_not_required"
+          },
+          "value": "%@version/1/history/%@/commit?ancestor-index=%ld&_cnt=%ld"
+        },
+        {
+          "address": "0x2462d",
+          "provider_value": "%@version/1/history/%@/stage?ancestor-index=%ld&_idx=%ld&_cnt=%ld",
+          "string": {
+            "byte_length": 66,
+            "encoding": "utf-8",
+            "encoding_status": "inferred",
+            "termination": "present_or_not_required"
+          },
+          "value": "%@version/1/history/%@/stage?ancestor-index=%ld&_idx=%ld&_cnt=%ld"
+        },
+        {
+          "address": "0x249b0",
+          "provider_value": "kSCUserAccountPasswordKey",
+          "string": {
+            "byte_length": 26,
+            "encoding": "utf-8",
+            "encoding_status": "inferred",
+            "termination": "present_or_not_required"
+          },
+          "value": "kSCUserAccountPasswordKey"
+        },
+        {
+          "address": "0x25b8c",
+          "provider_value": "password",
+          "string": {
+            "byte_length": 9,
+            "encoding": "utf-8",
+            "encoding_status": "inferred",
+            "termination": "present_or_not_required"
+          },
+          "value": "password"
+        },
+        {
+          "address": "0x25c4d",
+          "provider_value": "/own-history-key",
+          "string": {
+            "byte_length": 17,
+            "encoding": "utf-8",
+            "encoding_status": "inferred",
+            "termination": "present_or_not_required"
+          },
+          "value": "/own-history-key"
+        },
+        {
+          "address": "0x25ca6",
+          "provider_value": "LegacySCAccountConnectionSendForgotPasswordEmail",
+          "string": {
+            "byte_length": 49,
+            "encoding": "utf-8",
+            "encoding_status": "inferred",
+            "termination": "present_or_not_required"
+          },
+          "value": "LegacySCAccountConnectionSendForgotPasswordEmail"
+        },
+        {
+          "address": "0x25ceb",
+          "provider_value": "LegacySCAccountConnectionSetPassword",
+          "string": {
+            "byte_length": 37,
+            "encoding": "utf-8",
+            "encoding_status": "inferred",
+            "termination": "present_or_not_required"
+          },
+          "value": "LegacySCAccountConnectionSetPassword"
+        },
+        {
+          "address": "0x25db5",
+          "provider_value": "/own-history-key/reset",
+          "string": {
+            "byte_length": 23,
+            "encoding": "utf-8",
+            "encoding_status": "inferred",
+            "termination": "present_or_not_required"
+          },
+          "value": "/own-history-key/reset"
+        },
+        {
+          "address": "0x25e75",
+          "provider_value": "%@version/1/history/%@",
+          "string": {
+            "byte_length": 23,
+            "encoding": "utf-8",
+            "encoding_status": "inferred",
+            "termination": "present_or_not_required"
+          },
+          "value": "%@version/1/history/%@"
+        },
+        {
+          "address": "0x25f1f",
+          "provider_value": "Invalid account password.",
+          "string": {
+            "byte_length": 26,
+            "encoding": "utf-8",
+            "encoding_status": "inferred",
+            "termination": "present_or_not_required"
+          },
+          "value": "Invalid account password."
+        },
+        {
+          "address": "0x25f69",
+          "provider_value": "No password was supplied for the creation of a new account.",
+          "string": {
+            "byte_length": 60,
+            "encoding": "utf-8",
+            "encoding_status": "inferred",
+            "termination": "present_or_not_required"
+          },
+          "value": "No password was supplied for the creation of a new account."
+        },
+        {
+          "address": "0x26474",
+          "provider_value": "legacyConnectionDidSetPassword:",
+          "string": {
+            "byte_length": 32,
+            "encoding": "utf-8",
+            "encoding_status": "inferred",
+            "termination": "present_or_not_required"
+          },
+          "value": "legacyConnectionDidSetPassword:"
+        },
+        {
+          "address": "0x274c0",
+          "provider_value": "configureWithEmail:password:",
+          "string": {
+            "byte_length": 29,
+            "encoding": "utf-8",
+            "encoding_status": "inferred",
+            "termination": "present_or_not_required"
+          },
+          "value": "configureWithEmail:password:"
+        },
+        {
+          "address": "0x27ea4",
+          "provider_value": "legacyConnectionDidSendForgotPasswordEmail:",
+          "string": {
+            "byte_length": 44,
+            "encoding": "utf-8",
+            "encoding_status": "inferred",
+            "termination": "present_or_not_required"
+          },
+          "value": "legacyConnectionDidSendForgotPasswordEmail:"
+        },
+        {
+          "address": "0x28067",
+          "provider_value": "password",
+          "string": {
+            "byte_length": 9,
+            "encoding": "utf-8",
+            "encoding_status": "inferred",
+            "termination": "present_or_not_required"
+          },
+          "value": "password"
+        },
+        {
+          "address": "0x28215",
+          "provider_value": "requestWithMethod:onResource:parameters:body:password:additionalHeaders:",
+          "string": {
+            "byte_length": 73,
+            "encoding": "utf-8",
+            "encoding_status": "inferred",
+            "termination": "present_or_not_required"
+          },
+          "value": "requestWithMethod:onResource:parameters:body:password:additionalHeaders:"
+        },
+        {
+          "address": "0x28445",
+          "provider_value": "sendForgotPasswordEmailUsingCredentials:",
+          "string": {
+            "byte_length": 41,
+            "encoding": "utf-8",
+            "encoding_status": "inferred",
+            "termination": "present_or_not_required"
+          },
+          "value": "sendForgotPasswordEmailUsingCredentials:"
+        },
+        {
+          "address": "0x285d5",
+          "provider_value": "setPassword:usingCredentials:",
+          "string": {
+            "byte_length": 30,
+            "encoding": "utf-8",
+            "encoding_status": "inferred",
+            "termination": "present_or_not_required"
+          },
+          "value": "setPassword:usingCredentials:"
+        }
+      ],
+      "operation": "search_strings",
+      "parameters": {
+        "case_sensitive": false,
+        "mode": "regex",
+        "pattern": "https?://|/version|/history|/own|authenticate|password|Authorization|user-key"
+      },
+      "predicate_type": "rea.analysis",
+      "provider": {
+        "id": "hopper",
+        "name": "Hopper Disassembler",
+        "version": "launcher-sha256:dad6f886261fad0d4cdd01aee6fcf57439c60d7b5c54e62fc97f0180116690e0"
+      },
+      "subject": {
+        "architecture": "arm64",
+        "digest": {
+          "sha256": "b1f0ae860163737a6c92f89b6f9008585f9c4eb8c44797faf354e13a67b0aeb1"
+        },
+        "format": "mach-o",
+        "local_path": "/Applications/Things3.app/Contents/Frameworks/Syncrony.framework/Versions/A/Syncrony",
+        "name": "Syncrony"
+      }
+    },
+    {
+      "analysis_profile": {
+        "digest": "c178d9e166de653782da081aa624ac593ad8add9d43b2f3ecdff2bb064539bc1",
+        "parameters": {
+          "architecture": "arm64",
+          "available_architectures": [
+            "arm64",
+            "x86_64"
+          ],
+          "loader": {
+            "arguments": [
+              "-l",
+              "FAT",
+              "--aarch64",
+              "-l",
+              "Mach-O"
+            ],
+            "source": "derived"
+          },
+          "macho_container": "fat32",
+          "target_format": "mach-o",
+          "target_kind": "executable"
+        },
+        "provider": {
+          "id": "hopper",
+          "name": "Hopper Disassembler",
+          "version": "launcher-sha256:dad6f886261fad0d4cdd01aee6fcf57439c60d7b5c54e62fc97f0180116690e0"
+        }
+      },
+      "authority": "shipped-artifact",
+      "confidence": "observed",
+      "environment": null,
+      "evidence_id": "ev_b767c007e0d471eb38649d73058b613a5e18357b3e51deffe973e0364d6e0b8f",
+      "evidence_links": [],
+      "limitations": [
+        "Results depend on Hopper's completed static analysis.",
+        "String values cover native typed objects. Hopper may split long literals into adjacent unterminated fragments; string searches match each object independently.",
+        "Undecodable typed objects retain native display text with an explicit decoding unknown; these values do not establish decoded source literals.",
+        "Reported string encodings are inferred from typed bytes and native display; the original source's intended encoding is unknown."
+      ],
+      "locations": [],
+      "normalized_result": {
+        "comments": [],
+        "limitations": [
+          "Native CallReference classifications are observed where available; detailed reference flags remain unknown.",
+          "Hopper's public Python API does not expose equivalent external or thunk classification in this dossier.",
+          "Native calls without resolved target addresses are not represented as edges; enumeration beyond reported CallReference objects is unknown.",
+          "Pseudocode and assembly are provider-specific representations, not original source."
+        ],
+        "procedure": {
+          "address": "0x1f410",
+          "body": {
+            "available": false,
+            "reason": "Hopper's public Python API does not expose complete function body ranges"
+          },
+          "classification": null,
+          "locals": [
+            {
+              "description": "saved_fp (stack displacement 0)",
+              "name": "saved_fp",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "0"
+            },
+            {
+              "description": "var_10 (stack displacement -16)",
+              "name": "var_10",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-16"
+            },
+            {
+              "description": "var_20 (stack displacement -32)",
+              "name": "var_20",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-32"
+            },
+            {
+              "description": "var_30 (stack displacement -48)",
+              "name": "var_30",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-48"
+            },
+            {
+              "description": "var_40 (stack displacement -64)",
+              "name": "var_40",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-64"
+            },
+            {
+              "description": "var_50 (stack displacement -80)",
+              "name": "var_50",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-80"
+            },
+            {
+              "description": "var_58 (stack displacement -88)",
+              "name": "var_58",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-88"
+            },
+            {
+              "description": "var_68 (stack displacement -104)",
+              "name": "var_68",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-104"
+            },
+            {
+              "description": "var_70 (stack displacement -112)",
+              "name": "var_70",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-112"
+            },
+            {
+              "description": "var_78 (stack displacement -120)",
+              "name": "var_78",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-120"
+            },
+            {
+              "description": "var_80 (stack displacement -128)",
+              "name": "var_80",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-128"
+            }
+          ],
+          "name": "+[SYConnectionUtilities requestWithMethod:onResource:parameters:body:password:additionalHeaders:]",
+          "signature": "/* @class SYConnectionUtilities */\n+(void *)requestWithMethod:(void *)arg2 onResource:(void *)arg3 parameters:(void *)arg4 body:(void *)arg5 password:(void *)arg6 additionalHeaders:(void *)arg7"
+        },
+        "pseudocode": "    r4 = arg4;\n    r31 = r31 - 0x90;\n    var_50 = r28;\n    decomp_var_48 = r27;\n    var_40 = r26;\n    decomp_var_38 = r25;\n    var_30 = r24;\n    decomp_var_28 = r23;\n    var_20 = r22;\n    decomp_var_18 = r21;\n    var_10 = r20;\n    decomp_var_8 = r19;\n    saved_fp = r29;\n    decomp_var_m8 = r30;\n    r21 = r4;\n    r25 = self;\n    r19 = [arg2 retain];\n    r20 = [arg3 retain];\n    r21 = [r21 retain];\n    r22 = [arg5 retain];\n    r23 = [arg6 retain];\n    r24 = [arg7 retain];\n    r26 = 0x0;\n    if (r19 != 0x0 && r20 != 0x0) {\n            if (r21 != 0x0) {\n                    if (r22 == 0x0) {\n                            r22 = objc_claimAutoreleasedReturnValue([*(0x36000 + \"/libobjc.A.dylib\") dictionary]);\n                    }\n            }\n            else {\n                    r21 = objc_claimAutoreleasedReturnValue([*(0x36000 + \"/libobjc.A.dylib\") dictionary]);\n                    if (r22 == 0x0) {\n                            r22 = objc_claimAutoreleasedReturnValue([*(0x36000 + \"/libobjc.A.dylib\") dictionary]);\n                    }\n            }\n            r27 = objc_claimAutoreleasedReturnValue([r25 _urlForBaseURLString:r20 withParameters:r21]);\n            r25 = objc_claimAutoreleasedReturnValue([NSMutableURLRequest requestWithURL:r27 cachePolicy:0x4 timeoutInterval:r4]);\n            [r27 release];\n            [r25 setHTTPMethod:r19];\n            [r25 addValue:@\"application/json; charset=UTF-8\" forHTTPHeaderField:@\"Content-Type\"];\n            [r25 addValue:@\"UTF8\" forHTTPHeaderField:@\"Content-Encoding\"];\n            if ([r22 count] != 0x0) {\n                    r26 = _SCCreateJSONDataWithObject(r22, 0x0);\n                    [r25 setHTTPBody:r26];\n                    [r26 release];\n            }\n            if (r23 != 0x0) {\n                    r26 = objc_claimAutoreleasedReturnValue([r23 stringByAddingPercentEscapesUsingEncoding:0x4]);\n                    r27 = objc_claimAutoreleasedReturnValue([*(0x36000 + \"1.dylib\") stringWithFormat:@\"Password %@\", r3]);\n                    [r25 addValue:r27 forHTTPHeaderField:@\"Authorization\"];\n                    [r27 release];\n                    [r26 release];\n            }\n            var_78 = *__NSConcreteStackBlock;\n            r0 = [r25 retain];\n            r26 = r0;\n            var_58 = r0;\n            [r24 enumerateKeysAndObjectsUsingBlock:&var_78];\n            [var_58 release];\n    }\n    [r24 release];\n    [r23 release];\n    [r22 release];\n    [r21 release];\n    [r20 release];\n    [r19 release];\n    r0 = [r26 autorelease];\n    return r0;\n",
+        "referenced_strings": []
+      },
+      "operation": "analyze_function",
+      "parameters": {
+        "procedure": "+[SYConnectionUtilities requestWithMethod:onResource:parameters:body:password:additionalHeaders:]"
+      },
+      "predicate_type": "rea.analysis",
+      "provider": {
+        "id": "hopper",
+        "name": "Hopper Disassembler",
+        "version": "launcher-sha256:dad6f886261fad0d4cdd01aee6fcf57439c60d7b5c54e62fc97f0180116690e0"
+      },
+      "subject": {
+        "architecture": "arm64",
+        "digest": {
+          "sha256": "b1f0ae860163737a6c92f89b6f9008585f9c4eb8c44797faf354e13a67b0aeb1"
+        },
+        "format": "mach-o",
+        "local_path": "/Applications/Things3.app/Contents/Frameworks/Syncrony.framework/Versions/A/Syncrony",
+        "name": "Syncrony"
+      }
+    },
+    {
+      "analysis_profile": {
+        "digest": "c178d9e166de653782da081aa624ac593ad8add9d43b2f3ecdff2bb064539bc1",
+        "parameters": {
+          "architecture": "arm64",
+          "available_architectures": [
+            "arm64",
+            "x86_64"
+          ],
+          "loader": {
+            "arguments": [
+              "-l",
+              "FAT",
+              "--aarch64",
+              "-l",
+              "Mach-O"
+            ],
+            "source": "derived"
+          },
+          "macho_container": "fat32",
+          "target_format": "mach-o",
+          "target_kind": "executable"
+        },
+        "provider": {
+          "id": "hopper",
+          "name": "Hopper Disassembler",
+          "version": "launcher-sha256:dad6f886261fad0d4cdd01aee6fcf57439c60d7b5c54e62fc97f0180116690e0"
+        }
+      },
+      "authority": "shipped-artifact",
+      "confidence": "observed",
+      "environment": null,
+      "evidence_id": "ev_d5a3a69a5afd046ae427c2ee4642201296a648d4f31bc12196c91a769a714667",
+      "evidence_links": [],
+      "limitations": [
+        "Results depend on Hopper's completed static analysis.",
+        "String values cover native typed objects. Hopper may split long literals into adjacent unterminated fragments; string searches match each object independently.",
+        "Undecodable typed objects retain native display text with an explicit decoding unknown; these values do not establish decoded source literals.",
+        "Reported string encodings are inferred from typed bytes and native display; the original source's intended encoding is unknown."
+      ],
+      "locations": [],
+      "normalized_result": {
+        "comments": [],
+        "limitations": [
+          "Native CallReference classifications are observed where available; detailed reference flags remain unknown.",
+          "Hopper's public Python API does not expose equivalent external or thunk classification in this dossier.",
+          "Native calls without resolved target addresses are not represented as edges; enumeration beyond reported CallReference objects is unknown.",
+          "Pseudocode and assembly are provider-specific representations, not original source."
+        ],
+        "procedure": {
+          "address": "0x97e0",
+          "body": {
+            "available": false,
+            "reason": "Hopper's public Python API does not expose complete function body ranges"
+          },
+          "classification": null,
+          "locals": [
+            {
+              "description": "saved_fp (stack displacement 0)",
+              "name": "saved_fp",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "0"
+            },
+            {
+              "description": "var_10 (stack displacement -16)",
+              "name": "var_10",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-16"
+            },
+            {
+              "description": "var_18 (stack displacement -24)",
+              "name": "var_18",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-24"
+            },
+            {
+              "description": "var_20 (stack displacement -32)",
+              "name": "var_20",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-32"
+            },
+            {
+              "description": "var_28 (stack displacement -40)",
+              "name": "var_28",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-40"
+            },
+            {
+              "description": "var_30 (stack displacement -48)",
+              "name": "var_30",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-48"
+            },
+            {
+              "description": "var_38 (stack displacement -56)",
+              "name": "var_38",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-56"
+            }
+          ],
+          "name": "__ZL39_HTTPConnectionDidCompleteCommitRequestP17_CCHTTPConnectionP14_CCHTTPMessagePv",
+          "signature": "int __ZL39_HTTPConnectionDidCompleteCommitRequestP17_CCHTTPConnectionP14_CCHTTPMessagePv(void * arg0, void * arg1, void * arg2)"
+        },
+        "pseudocode": "    r31 = r31 - 0x50;\n    var_10 = r20;\n    decomp_var_8 = r19;\n    saved_fp = r29;\n    decomp_var_m8 = r30;\n    r19 = arg2;\n    r20 = arg1;\n    SCPushConnectionClose(arg2);\n    r0 = _handleStageAndCommitErrors(r19, r20, 0x1);\n    if (r0 != 0x0) {\n            r0 = _CCHTTPMessageCopyBody(r20);\n            var_30 = r0;\n            if (r0 != 0x0) {\n                    var_38 = 0x0;\n                    var_20 = 0x0;\n                    r0 = _SCCreateObjectWithJSONData(r0, &var_20);\n                    var_28 = r0;\n                    if (r0 != 0x0) {\n                            r0 = CFDictionaryGetValue(r0, @\"server-head-index\");\n                            if (r0 != 0x0) {\n                                    r0 = CFNumberGetValue(r0, 0xe, &var_18);\n                                    if (r0 != 0x0) {\n                                            r20 = var_18;\n                                    }\n                                    else {\n                                            r0 = _CreateErrorFromCode(0x4, 0x0);\n                                            var_38 = r0;\n                                            r20 = 0xffffffffffffffff;\n                                    }\n                            }\n                            else {\n                                    r0 = _CreateErrorFromCode(0x4, 0x0);\n                                    var_38 = r0;\n                                    r20 = 0xffffffffffffffff;\n                            }\n                    }\n                    else {\n                            r0 = _CreateErrorFromCode(0x3, var_20);\n                            var_38 = r0;\n                            r20 = 0xffffffffffffffff;\n                    }\n                    things::cf::detail::Owned<__CFDictionary const*, __CFDictionary*>::~Owned();\n                    things::cf::detail::Owned<__CFError*, things::cf::detail::NoType>::~Owned();\n                    if (r20 != -0x1) {\n                            r8 = r19[0x5];\n                            if (r8 != 0x0) {\n                                    (r8[0x6])(r20, *r8);\n                            }\n                    }\n                    else {\n                            _FailWithError(r19, var_38);\n                    }\n                    things::cf::detail::Owned<__CFError*, things::cf::detail::NoType>::~Owned();\n            }\n            else {\n                    r20 = _CreateErrorFromCode(0x3, 0x0);\n                    _FailWithError(r19, r20);\n                    if (r20 != 0x0) {\n                            CFRelease(r20);\n                    }\n            }\n            r0 = things::cf::detail::Owned<__CFData const*, things::cf::detail::NoType>::~Owned();\n    }\n    return r0;\n",
+        "referenced_strings": []
+      },
+      "operation": "analyze_function",
+      "parameters": {
+        "procedure": "__ZL39_HTTPConnectionDidCompleteCommitRequestP17_CCHTTPConnectionP14_CCHTTPMessagePv"
+      },
+      "predicate_type": "rea.analysis",
+      "provider": {
+        "id": "hopper",
+        "name": "Hopper Disassembler",
+        "version": "launcher-sha256:dad6f886261fad0d4cdd01aee6fcf57439c60d7b5c54e62fc97f0180116690e0"
+      },
+      "subject": {
+        "architecture": "arm64",
+        "digest": {
+          "sha256": "b1f0ae860163737a6c92f89b6f9008585f9c4eb8c44797faf354e13a67b0aeb1"
+        },
+        "format": "mach-o",
+        "local_path": "/Applications/Things3.app/Contents/Frameworks/Syncrony.framework/Versions/A/Syncrony",
+        "name": "Syncrony"
+      }
+    }
+  ],
+  "scenarios": [],
+  "unknowns": [],
+  "export_note": "Selected normalized observations referenced by docs, retaining procedure and pseudocode or string observations. Raw responses, assembly, control-flow graphs and cross-reference listings are omitted. Full provider exports remain in the original investigation workspace."
+}

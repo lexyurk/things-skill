@@ -1,0 +1,5 @@
+{
+  "mcpServers": {
+    "things": {"command": "things-cli", "args": ["serve"]}
+  }
+}

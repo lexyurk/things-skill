@@ -23,9 +23,11 @@ Syncrony SHA-256:
 `b1f0ae860163737a6c92f89b6f9008585f9c4eb8c44797faf354e13a67b0aeb1`.
 ThingsModel SHA-256:
 `6b8547b85b8b8643d5a41c1e16cb76343b33ff9f34d788449cb947360dae534e`.
-The bundle [native-analysis.json](../evidence/native-analysis.json) preserves
-provider identity, exact observations, assembly, pseudocode, and limitations.
-The reminder bundles preserve the additional framework analyses.
+The compact bundle [native-analysis.json](../evidence/native-analysis.json)
+preserves provider identity, referenced string observations, procedure
+pseudocode, and limitations. The reminder bundles retain the referenced
+framework procedures. Full raw exports and assembly are retained in the
+original investigation workspace; this repository omits those bulky listings.
 
 The current Rust client at
 [db49137f](https://github.com/evanpurkhiser/things3-cloud/blob/db49137ff1153a074e942cbf2d9923f4e8af8daf/src/client.rs)

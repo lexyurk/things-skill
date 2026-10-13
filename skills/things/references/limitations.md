@@ -6,6 +6,8 @@ Cloud `todo delete` and `project delete` move items to Trash. Restore with `thin
 
 Task titles, notes, scheduling, deadlines, reminder times, tags, placement, ordering, completion, cancellation, checklists, projects, headings, areas, and tags have protocol implementations. Repeating tasks remain read-only. Headings support title, parent, and order edits. Account management, Apple push, Linux desktop notifications, calendar integration, attachments, and repeat-rule mutation are unsupported. Read-back verifies cloud history; it does not verify notification delivery or that a phone has downloaded a change.
 
+Project/heading creation uses the verified Anytime/Today snapshot. A project's future or Someday schedule can be set afterward with an update. Headings have no independent schedule or completion action.
+
 Cloud `show`/`app-search` return matching data. The Things URL `json` batch command requires `--backend local`; use documented cloud tools for individual mutations. Creation with reminders or child items consists of separate verified commits. Use a stable request ID to resume it without duplicating items; partial or uncertain outcomes stop further writes until reconciled.
 
 The native macOS backend reads Things SQLite and writes through Things URLs. Its deletes cancel the item (`canceled=true`) and its update/delete operations require the URL auth token in TMSettings. `--dry-run` previews URLs. Existing native view semantics remain available with `--backend local`.

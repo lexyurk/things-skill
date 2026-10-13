@@ -74,6 +74,14 @@ func TestCloudBackendRejectsConflictingFlags(t *testing.T) {
 	}
 }
 
+func TestInvalidFormatFailsBeforeLaunchingCloudRuntime(t *testing.T) {
+	root := newRootCommand(&app{})
+	root.SetArgs([]string{"--backend", "cloud", "--cloud-python", "/does-not-exist", "--format", "xml", "todo", "add", "--title", "Must not create"})
+	if err := root.Execute(); err == nil || !strings.Contains(err.Error(), "--format") {
+		t.Fatalf("expected format validation before starting the cloud client, got %v", err)
+	}
+}
+
 func TestStatusAndLogoutReusePrivatePersistedAccount(t *testing.T) {
 	python, err := exec.LookPath("python3")
 	if err != nil {

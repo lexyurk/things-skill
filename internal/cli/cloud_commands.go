@@ -131,6 +131,9 @@ func (a *app) routeCloudCommands(root *cobra.Command) {
 		}
 		original := command.RunE
 		command.RunE = func(cmd *cobra.Command, args []string) error {
+			if strings.ToLower(a.output) != "text" && strings.ToLower(a.output) != "json" {
+				return fmt.Errorf("--format must be either text or json")
+			}
 			use, err := a.useCloud()
 			if err != nil {
 				return err

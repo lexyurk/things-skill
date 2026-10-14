@@ -13,7 +13,7 @@ import (
 	"path/filepath"
 )
 
-//go:embed all:runtime
+//go:embed runtime/LICENSE runtime/*.md runtime/scripts/*.py runtime/things_cloud/*.py
 var runtimeFiles embed.FS
 
 // Client launches the shared CLI or its newline-delimited stdio MCP server.

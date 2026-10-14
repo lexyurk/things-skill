@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
+	"io/fs"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -32,6 +33,21 @@ func TestEmbeddedCLIWorksWithoutInstalledPythonPackage(t *testing.T) {
 	entries, err := os.ReadDir(client.TempDir)
 	if err != nil || len(entries) != 0 {
 		t.Fatal("extracted runtime was not cleaned up")
+	}
+}
+
+func TestEmbeddedRuntimeExcludesGeneratedPythonCaches(t *testing.T) {
+	err := fs.WalkDir(runtimeFiles, "runtime", func(path string, entry fs.DirEntry, err error) error {
+		if err != nil {
+			return err
+		}
+		if strings.Contains(path, "/__pycache__/") || strings.HasSuffix(path, ".pyc") {
+			t.Errorf("generated cache must not ship in the runtime: %s", path)
+		}
+		return nil
+	})
+	if err != nil {
+		t.Fatal(err)
 	}
 }
 

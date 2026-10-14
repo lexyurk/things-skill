@@ -2,7 +2,7 @@
 set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-BIN_NAME="things"
+BIN_NAME="things-cli"
 TARGET_DIR="${1:-}"
 
 choose_target_dir() {
@@ -32,8 +32,10 @@ trap 'rm -f "$tmp_bin"' EXIT
 cd "$ROOT_DIR"
 go build -trimpath -o "$tmp_bin" ./cmd/things
 install -m 0755 "$tmp_bin" "$TARGET_DIR/$BIN_NAME"
+install -m 0755 "$tmp_bin" "$TARGET_DIR/things"
 
 echo "Installed $BIN_NAME to $TARGET_DIR/$BIN_NAME"
+echo "Also installed the compatible things command. Run: things-cli login"
 if ! command -v "$BIN_NAME" >/dev/null 2>&1; then
   echo
   echo "NOTE: '$TARGET_DIR' is not currently in your PATH."

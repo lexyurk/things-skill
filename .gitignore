@@ -1,0 +1,10 @@
+.env
+.env.*
+!.env.example
+.local-state/
+__pycache__/
+*.py[cod]
+things
+things-cli
+bin/
+dist/

@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "things": {
+      "command": "python3",
+      "args": [
+        "-I",
+        "-c",
+        "\"\"\"Shared plugin launcher: find the installed CLI even outside a shell's PATH.\"\"\"\n\nimport os\nfrom pathlib import Path\nimport shutil\nimport sys\n\n\ndef main():\n    binary = os.environ.get(\"THINGS_CLI_BINARY\") or shutil.which(\"things-cli\") or str(Path.home() / \".local/bin/things-cli\")\n    try:\n        os.execv(binary, [binary, \"serve\"])\n    except OSError:\n        print(\"Cannot start Things CLI. Install the macOS/Linux package, then run things-cli login in your terminal.\", file=sys.stderr)\n        return 1\n\n\nif __name__ == \"__main__\":\n    raise SystemExit(main())\n"
+      ]
+    }
+  }
+}

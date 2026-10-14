@@ -1,0 +1,1124 @@
+{
+  "artifacts": [
+    {
+      "architecture": "arm64",
+      "digest": {
+        "sha256": "6b8547b85b8b8643d5a41c1e16cb76343b33ff9f34d788449cb947360dae534e"
+      },
+      "format": "mach-o"
+    }
+  ],
+  "captures": [],
+  "environments": [],
+  "providers": [
+    {
+      "id": "hopper",
+      "name": "Hopper Disassembler",
+      "version": "launcher-sha256:dad6f886261fad0d4cdd01aee6fcf57439c60d7b5c54e62fc97f0180116690e0"
+    }
+  ],
+  "records": [
+    {
+      "analysis_profile": {
+        "digest": "c178d9e166de653782da081aa624ac593ad8add9d43b2f3ecdff2bb064539bc1",
+        "parameters": {
+          "architecture": "arm64",
+          "available_architectures": [
+            "arm64",
+            "x86_64"
+          ],
+          "loader": {
+            "arguments": [
+              "-l",
+              "FAT",
+              "--aarch64",
+              "-l",
+              "Mach-O"
+            ],
+            "source": "derived"
+          },
+          "macho_container": "fat32",
+          "target_format": "mach-o",
+          "target_kind": "executable"
+        },
+        "provider": {
+          "id": "hopper",
+          "name": "Hopper Disassembler",
+          "version": "launcher-sha256:dad6f886261fad0d4cdd01aee6fcf57439c60d7b5c54e62fc97f0180116690e0"
+        }
+      },
+      "authority": "shipped-artifact",
+      "confidence": "observed",
+      "environment": null,
+      "evidence_id": "ev_2f0b6ef4b2985f79a91649ed6e106ad9b854c11ebc35ac6ab37b4f4336bfee6e",
+      "evidence_links": [],
+      "limitations": [
+        "Results depend on Hopper's completed static analysis.",
+        "String values cover native typed objects. Hopper may split long literals into adjacent unterminated fragments; string searches match each object independently.",
+        "Undecodable typed objects retain native display text with an explicit decoding unknown; these values do not establish decoded source literals.",
+        "Reported string encodings are inferred from typed bytes and native display; the original source's intended encoding is unknown."
+      ],
+      "locations": [],
+      "normalized_result": {
+        "comments": [],
+        "limitations": [
+          "Native CallReference classifications are observed where available; detailed reference flags remain unknown.",
+          "Hopper's public Python API does not expose equivalent external or thunk classification in this dossier.",
+          "Native calls without resolved target addresses are not represented as edges; enumeration beyond reported CallReference objects is unknown.",
+          "Pseudocode and assembly are provider-specific representations, not original source."
+        ],
+        "procedure": {
+          "address": "0xd9d7c",
+          "body": {
+            "available": false,
+            "reason": "Hopper's public Python API does not expose complete function body ranges"
+          },
+          "classification": null,
+          "locals": [
+            {
+              "description": "var_10 (stack displacement -16)",
+              "name": "var_10",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-16"
+            }
+          ],
+          "name": "_$s11ThingsModel19_THMTaskStartBucketO11descriptionSSvg",
+          "signature": "struct Swift::String _$s11ThingsModel19_THMTaskStartBucketO11descriptionSSvg(void * self)"
+        },
+        "pseudocode": "    if (r0 == 0x0) {\n            r0 = 0x746c7561666564;\n    }\n    else {\n            if (r0 == 0x1) {\n                    r0 = 0x676e696e657665;\n            }\n            else {\n                    r0 = sub_1074dc();\n                    asm { brk        #0x1 };\n            }\n    }\n    return r0;\n",
+        "referenced_strings": []
+      },
+      "operation": "analyze_function",
+      "parameters": {
+        "procedure": "0xd9d7c"
+      },
+      "predicate_type": "rea.analysis",
+      "provider": {
+        "id": "hopper",
+        "name": "Hopper Disassembler",
+        "version": "launcher-sha256:dad6f886261fad0d4cdd01aee6fcf57439c60d7b5c54e62fc97f0180116690e0"
+      },
+      "subject": {
+        "architecture": "arm64",
+        "digest": {
+          "sha256": "6b8547b85b8b8643d5a41c1e16cb76343b33ff9f34d788449cb947360dae534e"
+        },
+        "format": "mach-o",
+        "local_path": "/Applications/Things3.app/Contents/Frameworks/ThingsModel.framework/Versions/A/ThingsModel",
+        "name": "ThingsModel"
+      }
+    },
+    {
+      "analysis_profile": {
+        "digest": "c178d9e166de653782da081aa624ac593ad8add9d43b2f3ecdff2bb064539bc1",
+        "parameters": {
+          "architecture": "arm64",
+          "available_architectures": [
+            "arm64",
+            "x86_64"
+          ],
+          "loader": {
+            "arguments": [
+              "-l",
+              "FAT",
+              "--aarch64",
+              "-l",
+              "Mach-O"
+            ],
+            "source": "derived"
+          },
+          "macho_container": "fat32",
+          "target_format": "mach-o",
+          "target_kind": "executable"
+        },
+        "provider": {
+          "id": "hopper",
+          "name": "Hopper Disassembler",
+          "version": "launcher-sha256:dad6f886261fad0d4cdd01aee6fcf57439c60d7b5c54e62fc97f0180116690e0"
+        }
+      },
+      "authority": "shipped-artifact",
+      "confidence": "observed",
+      "environment": null,
+      "evidence_id": "ev_c66de17776c32b4f34390e0e0dbcc70b8c11a3cf5369f0947f8b06024eb18289",
+      "evidence_links": [],
+      "limitations": [
+        "Results depend on Hopper's completed static analysis.",
+        "String values cover native typed objects. Hopper may split long literals into adjacent unterminated fragments; string searches match each object independently.",
+        "Undecodable typed objects retain native display text with an explicit decoding unknown; these values do not establish decoded source literals.",
+        "Reported string encodings are inferred from typed bytes and native display; the original source's intended encoding is unknown."
+      ],
+      "locations": [],
+      "normalized_result": {
+        "comments": [],
+        "limitations": [
+          "Native CallReference classifications are observed where available; detailed reference flags remain unknown.",
+          "Hopper's public Python API does not expose equivalent external or thunk classification in this dossier.",
+          "Native calls without resolved target addresses are not represented as edges; enumeration beyond reported CallReference objects is unknown.",
+          "Pseudocode and assembly are provider-specific representations, not original source."
+        ],
+        "procedure": {
+          "address": "0xdc5b4",
+          "body": {
+            "available": false,
+            "reason": "Hopper's public Python API does not expose complete function body ranges"
+          },
+          "classification": null,
+          "locals": [
+            {
+              "description": "Unnamed local (stack displacement -72)",
+              "name": null,
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-72"
+            },
+            {
+              "description": "Unnamed local (stack displacement -80)",
+              "name": null,
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-80"
+            },
+            {
+              "description": "var_60 (stack displacement -96)",
+              "name": "var_60",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-96"
+            },
+            {
+              "description": "var_67 (stack displacement -103)",
+              "name": "var_67",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-103"
+            },
+            {
+              "description": "var_68 (stack displacement -104)",
+              "name": "var_68",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-104"
+            },
+            {
+              "description": "var_70 (stack displacement -112)",
+              "name": "var_70",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-112"
+            },
+            {
+              "description": "var_7C (stack displacement -124)",
+              "name": "var_7C",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-124"
+            },
+            {
+              "description": "var_80 (stack displacement -128)",
+              "name": "var_80",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-128"
+            },
+            {
+              "description": "var_90 (stack displacement -144)",
+              "name": "var_90",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-144"
+            },
+            {
+              "description": "var_97 (stack displacement -151)",
+              "name": "var_97",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-151"
+            },
+            {
+              "description": "var_98 (stack displacement -152)",
+              "name": "var_98",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-152"
+            },
+            {
+              "description": "var_A0 (stack displacement -160)",
+              "name": "var_A0",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-160"
+            },
+            {
+              "description": "var_AC (stack displacement -172)",
+              "name": "var_AC",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-172"
+            },
+            {
+              "description": "var_B0 (stack displacement -176)",
+              "name": "var_B0",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-176"
+            },
+            {
+              "description": "var_C0 (stack displacement -192)",
+              "name": "var_C0",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-192"
+            },
+            {
+              "description": "var_C7 (stack displacement -199)",
+              "name": "var_C7",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-199"
+            },
+            {
+              "description": "var_C8 (stack displacement -200)",
+              "name": "var_C8",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-200"
+            },
+            {
+              "description": "var_D0 (stack displacement -208)",
+              "name": "var_D0",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-208"
+            },
+            {
+              "description": "var_DC (stack displacement -220)",
+              "name": "var_DC",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-220"
+            },
+            {
+              "description": "var_E0 (stack displacement -224)",
+              "name": "var_E0",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-224"
+            },
+            {
+              "description": "var_150 (stack displacement -336)",
+              "name": "var_150",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-336"
+            },
+            {
+              "description": "var_157 (stack displacement -343)",
+              "name": "var_157",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-343"
+            },
+            {
+              "description": "var_158 (stack displacement -344)",
+              "name": "var_158",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-344"
+            },
+            {
+              "description": "var_160 (stack displacement -352)",
+              "name": "var_160",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-352"
+            },
+            {
+              "description": "var_16C (stack displacement -364)",
+              "name": "var_16C",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-364"
+            },
+            {
+              "description": "var_170 (stack displacement -368)",
+              "name": "var_170",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-368"
+            },
+            {
+              "description": "var_180 (stack displacement -384)",
+              "name": "var_180",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-384"
+            },
+            {
+              "description": "var_198 (stack displacement -408)",
+              "name": "var_198",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-408"
+            },
+            {
+              "description": "var_1A0 (stack displacement -416)",
+              "name": "var_1A0",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-416"
+            },
+            {
+              "description": "var_1A8 (stack displacement -424)",
+              "name": "var_1A8",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-424"
+            },
+            {
+              "description": "var_1C8 (stack displacement -456)",
+              "name": "var_1C8",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-456"
+            },
+            {
+              "description": "var_1D0 (stack displacement -464)",
+              "name": "var_1D0",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-464"
+            },
+            {
+              "description": "var_1E0 (stack displacement -480)",
+              "name": "var_1E0",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-480"
+            },
+            {
+              "description": "var_1E8 (stack displacement -488)",
+              "name": "var_1E8",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-488"
+            },
+            {
+              "description": "var_1F0 (stack displacement -496)",
+              "name": "var_1F0",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-496"
+            },
+            {
+              "description": "var_200 (stack displacement -512)",
+              "name": "var_200",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-512"
+            },
+            {
+              "description": "var_208 (stack displacement -520)",
+              "name": "var_208",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-520"
+            },
+            {
+              "description": "var_210 (stack displacement -528)",
+              "name": "var_210",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-528"
+            },
+            {
+              "description": "var_218 (stack displacement -536)",
+              "name": "var_218",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-536"
+            },
+            {
+              "description": "var_220 (stack displacement -544)",
+              "name": "var_220",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-544"
+            },
+            {
+              "description": "var_228 (stack displacement -552)",
+              "name": "var_228",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-552"
+            },
+            {
+              "description": "var_230 (stack displacement -560)",
+              "name": "var_230",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-560"
+            },
+            {
+              "description": "var_238 (stack displacement -568)",
+              "name": "var_238",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-568"
+            },
+            {
+              "description": "var_240 (stack displacement -576)",
+              "name": "var_240",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-576"
+            },
+            {
+              "description": "var_248 (stack displacement -584)",
+              "name": "var_248",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-584"
+            },
+            {
+              "description": "var_250 (stack displacement -592)",
+              "name": "var_250",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-592"
+            },
+            {
+              "description": "var_258 (stack displacement -600)",
+              "name": "var_258",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-600"
+            },
+            {
+              "description": "var_260 (stack displacement -608)",
+              "name": "var_260",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-608"
+            },
+            {
+              "description": "var_268 (stack displacement -616)",
+              "name": "var_268",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-616"
+            }
+          ],
+          "name": "sub_dc5b4",
+          "signature": "int sub_dc5b4(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9)"
+        },
+        "pseudocode": "    var_A0 = r27;\n    var_98 = r26;\n    var_90 = r25;\n    decomp_var_88 = r24;\n    var_80 = r23;\n    decomp_var_78 = r22;\n    var_70 = r20;\n    var_68 = r19;\n    var_60 = r29;\n    decomp_var_58 = r30;\n    r31 = r31 + 0xffffffffffffffa0 - 0x1c0;\n    r24 = r21;\n    arg_8 = arg4;\n    r25 = arg3;\n    r26 = arg2;\n    r22 = arg1;\n    r27 = arg0;\n    r23 = ___swift_instantiateConcreteTypeFromMangledNameV2(0x14e920, 0x1179b0);\n    sub_1064f8();\n    r8 = var_80;\n    if (var_7C == 0x1) {\n            r8 = 0x0;\n    }\n    if (r27 != r8) {\n            var_80 = *(int128_t *)r22;\n            r20 = r22[0x2];\n            r0 = type metadata accessor for ThingsModel.THMTaskEntityStoreBindingStorage();\n            r0 = swift_allocObject(r0, 0x28, 0x7);\n            r0[0x2] = 0x0;\n            r0[0x18] = 0x0;\n            r0[0x4] = 0x0;\n            var_70 = r20;\n            var_68 = 0x1;\n            var_60 = r0;\n            var_200 = r27;\n            [r20 retain];\n            sub_106684();\n            r0 = sub_24e28(&var_80, 0x14e920, 0x1179b0);\n            ___swift_destroy_boxed_opaque_existential_1Tm(&var_200);\n            Base.BSStoreBoundEntity<>.setNeedsUserModificationDateUpdate(r22);\n    }\n    sub_146f0(0x0);\n    sub_1064f8();\n    r8 = var_AC;\n    if ((r26 & 0xff00000000) == 0x100000000) {\n            if (r8 != 0x1) {\n                    var_B0 = *(int128_t *)r22;\n                    r20 = r22[0x2];\n                    r0 = type metadata accessor for ThingsModel.THMTaskEntityStoreBindingStorage();\n                    r0 = swift_allocObject(r0, 0x28, 0x7);\n                    r0[0x2] = 0x0;\n                    r0[0x18] = 0x0;\n                    r0[0x4] = 0x0;\n                    var_A0 = r20;\n                    var_98 = 0x1;\n                    var_90 = r0;\n                    [r20 retain];\n                    sub_dc1c8(r26 & 0xffffffffff, 0x10, sub_146f0, *0x147940);\n                    r0 = sub_24e28(&var_B0, 0x14e920, 0x1179b0);\n                    Base.BSStoreBoundEntity<>.setNeedsUserModificationDateUpdate(r22);\n            }\n    }\n    else {\n            if (r8 != 0x1) {\n                    if ((sub_106d74() & 0x1) == 0x0) {\n                            var_B0 = *(int128_t *)r22;\n                            r20 = r22[0x2];\n                            r0 = type metadata accessor for ThingsModel.THMTaskEntityStoreBindingStorage();\n                            r0 = swift_allocObject(r0, 0x28, 0x7);\n                            r0[0x2] = 0x0;\n                            r0[0x18] = 0x0;\n                            r0[0x4] = 0x0;\n                            var_A0 = r20;\n                            var_98 = 0x1;\n                            var_90 = r0;\n                            [r20 retain];\n                            sub_dc1c8(r26 & 0xffffffffff, 0x10, sub_146f0, *0x147940);\n                            r0 = sub_24e28(&var_B0, 0x14e920, 0x1179b0);\n                            Base.BSStoreBoundEntity<>.setNeedsUserModificationDateUpdate(r22);\n                    }\n            }\n            else {\n                    var_B0 = *(int128_t *)r22;\n                    r20 = r22[0x2];\n                    r0 = type metadata accessor for ThingsModel.THMTaskEntityStoreBindingStorage();\n                    r0 = swift_allocObject(r0, 0x28, 0x7);\n                    r0[0x2] = 0x0;\n                    r0[0x18] = 0x0;\n                    r0[0x4] = 0x0;\n                    var_A0 = r20;\n                    var_98 = 0x1;\n                    var_90 = r0;\n                    [r20 retain];\n                    sub_dc1c8(r26 & 0xffffffffff, 0x10, sub_146f0, *0x147940);\n                    r0 = sub_24e28(&var_B0, 0x14e920, 0x1179b0);\n                    Base.BSStoreBoundEntity<>.setNeedsUserModificationDateUpdate(r22);\n            }\n    }\n    sub_1064f8();\n    r8 = var_E0;\n    if (var_DC == 0x1) {\n            r8 = 0x0;\n    }\n    if (r25 != r8) {\n            var_E0 = *(int128_t *)r22;\n            r20 = r22[0x2];\n            r0 = type metadata accessor for ThingsModel.THMTaskEntityStoreBindingStorage();\n            r0 = swift_allocObject(r0, 0x28, 0x7);\n            r0[0x2] = 0x0;\n            r0[0x18] = 0x0;\n            r0[0x4] = 0x0;\n            [r20 retain];\n            Base.BSStoreBoundEntity<>.startBucket.setter(&var_E0, r25);\n            sub_24e28(&var_E0, 0x14e920, 0x1179b0);\n            Base.BSStoreBoundEntity<>.setNeedsUserModificationDateUpdate(r22);\n    }\n    sub_14680(0x0);\n    r0 = sub_1064f8();\n    r8 = var_16C;\n    if ((arg_8 & 0xff00000000) == 0x100000000) {\n            if (r8 != 0x1) {\n                    var_208 = r24;\n                    r20 = r22[0x2];\n                    r0 = type metadata accessor for ThingsModel.THMTaskEntityStoreBindingStorage();\n                    r0 = swift_allocObject(r0, 0x28, 0x7);\n                    r0[0x2] = 0x0;\n                    r0[0x18] = 0x0;\n                    r0[0x4] = 0x0;\n                    var_210 = r22[0xf];\n                    q0 = *(int128_t *)r22;\n                    var_218 = r22[0xe];\n                    var_220 = r22[0xd];\n                    var_228 = r22[0xc];\n                    var_230 = r22[0xb];\n                    var_238 = r22[0xa];\n                    var_240 = r22[0x9];\n                    var_248 = r22[0x8];\n                    var_250 = r22[0x7];\n                    var_258 = r22[0x6];\n                    var_260 = r22[0x5];\n                    var_268 = r22[0x4];\n                    r26 = r22[0x3];\n                    r27 = r22[0x2];\n                    r28 = r22[0x1];\n                    r19 = *(int8_t *)r22;\n                    var_170 = q0;\n                    r24 = [r20 retain];\n                    Base.BSStoreBoundEntity<>.reminderTime.setter(&var_170, arg_8 & 0xffffffffff);\n                    sub_24e28(&var_170, 0x14e920, 0x1179b0);\n                    var_1A0 = 0x0;\n                    if ((r22[0x18] & 0x1) != 0x0) {\n                            r23 = [objc_allocWithZone(@class(NSNull)) init];\n                            sub_351b8(0x0, qword_14e838, &@class(NSNull));\n                            var_200 = r23;\n                            sub_106684();\n                            ___swift_destroy_boxed_opaque_existential_1Tm(&var_200);\n                            r24 = var_208;\n                    }\n                    else {\n                            r19 = r24;\n                            var_200 = *r22;\n                            sub_147a8(0x0);\n                            sub_1064f8();\n                            r24 = var_208;\n                            if (var_1A8 != 0x1) {\n                                    sub_1066f0();\n                                    r24 = r24;\n                            }\n                    }\n                    r0 = Base.BSStoreBoundEntity<>.setNeedsUserModificationDateUpdate(r22);\n            }\n    }\n    else {\n            if (r8 != 0x1) {\n                    r0 = sub_106eb8();\n                    if ((r0 & 0x1) == 0x0) {\n                            var_208 = r24;\n                            r20 = r22[0x2];\n                            r0 = type metadata accessor for ThingsModel.THMTaskEntityStoreBindingStorage();\n                            r0 = swift_allocObject(r0, 0x28, 0x7);\n                            r0[0x2] = 0x0;\n                            r0[0x18] = 0x0;\n                            r0[0x4] = 0x0;\n                            var_210 = r22[0xf];\n                            q0 = *(int128_t *)r22;\n                            var_218 = r22[0xe];\n                            var_220 = r22[0xd];\n                            var_228 = r22[0xc];\n                            var_230 = r22[0xb];\n                            var_238 = r22[0xa];\n                            var_240 = r22[0x9];\n                            var_248 = r22[0x8];\n                            var_250 = r22[0x7];\n                            var_258 = r22[0x6];\n                            var_260 = r22[0x5];\n                            var_268 = r22[0x4];\n                            r26 = r22[0x3];\n                            r27 = r22[0x2];\n                            r28 = r22[0x1];\n                            r19 = *(int8_t *)r22;\n                            var_170 = q0;\n                            r24 = [r20 retain];\n                            Base.BSStoreBoundEntity<>.reminderTime.setter(&var_170, arg_8 & 0xffffffffff);\n                            sub_24e28(&var_170, 0x14e920, 0x1179b0);\n                            var_1A0 = 0x0;\n                            if ((r22[0x18] & 0x1) != 0x0) {\n                                    r23 = [objc_allocWithZone(@class(NSNull)) init];\n                                    sub_351b8(0x0, qword_14e838, &@class(NSNull));\n                                    var_200 = r23;\n                                    sub_106684();\n                                    ___swift_destroy_boxed_opaque_existential_1Tm(&var_200);\n                                    r24 = var_208;\n                            }\n                            else {\n                                    r19 = r24;\n                                    var_200 = *r22;\n                                    sub_147a8(0x0);\n                                    sub_1064f8();\n                                    r24 = var_208;\n                                    if (var_1A8 != 0x1) {\n                                            sub_1066f0();\n                                            r24 = r24;\n                                    }\n                            }\n                            r0 = Base.BSStoreBoundEntity<>.setNeedsUserModificationDateUpdate(r22);\n                    }\n            }\n            else {\n                    var_208 = r24;\n                    r20 = r22[0x2];\n                    r0 = type metadata accessor for ThingsModel.THMTaskEntityStoreBindingStorage();\n                    r0 = swift_allocObject(r0, 0x28, 0x7);\n                    r0[0x2] = 0x0;\n                    r0[0x18] = 0x0;\n                    r0[0x4] = 0x0;\n                    var_210 = r22[0xf];\n                    q0 = *(int128_t *)r22;\n                    var_218 = r22[0xe];\n                    var_220 = r22[0xd];\n                    var_228 = r22[0xc];\n                    var_230 = r22[0xb];\n                    var_238 = r22[0xa];\n                    var_240 = r22[0x9];\n                    var_248 = r22[0x8];\n                    var_250 = r22[0x7];\n                    var_258 = r22[0x6];\n                    var_260 = r22[0x5];\n                    var_268 = r22[0x4];\n                    r26 = r22[0x3];\n                    r27 = r22[0x2];\n                    r28 = r22[0x1];\n                    r19 = *(int8_t *)r22;\n                    var_170 = q0;\n                    r24 = [r20 retain];\n                    Base.BSStoreBoundEntity<>.reminderTime.setter(&var_170, arg_8 & 0xffffffffff);\n                    sub_24e28(&var_170, 0x14e920, 0x1179b0);\n                    var_1A0 = 0x0;\n                    if ((r22[0x18] & 0x1) != 0x0) {\n                            r23 = [objc_allocWithZone(@class(NSNull)) init];\n                            sub_351b8(0x0, qword_14e838, &@class(NSNull));\n                            var_200 = r23;\n                            sub_106684();\n                            ___swift_destroy_boxed_opaque_existential_1Tm(&var_200);\n                            r24 = var_208;\n                    }\n                    else {\n                            r19 = r24;\n                            var_200 = *r22;\n                            sub_147a8(0x0);\n                            sub_1064f8();\n                            r24 = var_208;\n                            if (var_1A8 != 0x1) {\n                                    sub_1066f0();\n                                    r24 = r24;\n                            }\n                    }\n                    r0 = Base.BSStoreBoundEntity<>.setNeedsUserModificationDateUpdate(r22);\n            }\n    }\n    return r0;\n",
+        "referenced_strings": []
+      },
+      "operation": "analyze_function",
+      "parameters": {
+        "procedure": "0xdc5b4"
+      },
+      "predicate_type": "rea.analysis",
+      "provider": {
+        "id": "hopper",
+        "name": "Hopper Disassembler",
+        "version": "launcher-sha256:dad6f886261fad0d4cdd01aee6fcf57439c60d7b5c54e62fc97f0180116690e0"
+      },
+      "subject": {
+        "architecture": "arm64",
+        "digest": {
+          "sha256": "6b8547b85b8b8643d5a41c1e16cb76343b33ff9f34d788449cb947360dae534e"
+        },
+        "format": "mach-o",
+        "local_path": "/Applications/Things3.app/Contents/Frameworks/ThingsModel.framework/Versions/A/ThingsModel",
+        "name": "ThingsModel"
+      }
+    },
+    {
+      "analysis_profile": {
+        "digest": "c178d9e166de653782da081aa624ac593ad8add9d43b2f3ecdff2bb064539bc1",
+        "parameters": {
+          "architecture": "arm64",
+          "available_architectures": [
+            "arm64",
+            "x86_64"
+          ],
+          "loader": {
+            "arguments": [
+              "-l",
+              "FAT",
+              "--aarch64",
+              "-l",
+              "Mach-O"
+            ],
+            "source": "derived"
+          },
+          "macho_container": "fat32",
+          "target_format": "mach-o",
+          "target_kind": "executable"
+        },
+        "provider": {
+          "id": "hopper",
+          "name": "Hopper Disassembler",
+          "version": "launcher-sha256:dad6f886261fad0d4cdd01aee6fcf57439c60d7b5c54e62fc97f0180116690e0"
+        }
+      },
+      "authority": "shipped-artifact",
+      "confidence": "observed",
+      "environment": null,
+      "evidence_id": "ev_f9ce44b92b5f33eca79d45e5cba39583c8e847f002ca6e077495fc58af19ed81",
+      "evidence_links": [],
+      "limitations": [
+        "Results depend on Hopper's completed static analysis.",
+        "String values cover native typed objects. Hopper may split long literals into adjacent unterminated fragments; string searches match each object independently.",
+        "Undecodable typed objects retain native display text with an explicit decoding unknown; these values do not establish decoded source literals.",
+        "Reported string encodings are inferred from typed bytes and native display; the original source's intended encoding is unknown."
+      ],
+      "locations": [],
+      "normalized_result": {
+        "comments": [],
+        "limitations": [
+          "Native CallReference classifications are observed where available; detailed reference flags remain unknown.",
+          "Hopper's public Python API does not expose equivalent external or thunk classification in this dossier.",
+          "Native calls without resolved target addresses are not represented as edges; enumeration beyond reported CallReference objects is unknown.",
+          "Pseudocode and assembly are provider-specific representations, not original source."
+        ],
+        "procedure": {
+          "address": "0x6ac1c",
+          "body": {
+            "available": false,
+            "reason": "Hopper's public Python API does not expose complete function body ranges"
+          },
+          "classification": null,
+          "locals": [
+            {
+              "description": "saved_fp (stack displacement 0)",
+              "name": "saved_fp",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "0"
+            },
+            {
+              "description": "var_10 (stack displacement -16)",
+              "name": "var_10",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-16"
+            },
+            {
+              "description": "var_20 (stack displacement -32)",
+              "name": "var_20",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-32"
+            },
+            {
+              "description": "var_30 (stack displacement -48)",
+              "name": "var_30",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-48"
+            },
+            {
+              "description": "var_40 (stack displacement -64)",
+              "name": "var_40",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-64"
+            },
+            {
+              "description": "var_50 (stack displacement -80)",
+              "name": "var_50",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-80"
+            },
+            {
+              "description": "var_60 (stack displacement -96)",
+              "name": "var_60",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-96"
+            },
+            {
+              "description": "var_68 (stack displacement -104)",
+              "name": "var_68",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-104"
+            },
+            {
+              "description": "var_80 (stack displacement -128)",
+              "name": "var_80",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-128"
+            },
+            {
+              "description": "var_88 (stack displacement -136)",
+              "name": "var_88",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-136"
+            },
+            {
+              "description": "var_90 (stack displacement -144)",
+              "name": "var_90",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-144"
+            },
+            {
+              "description": "var_98 (stack displacement -152)",
+              "name": "var_98",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-152"
+            },
+            {
+              "description": "var_A0 (stack displacement -160)",
+              "name": "var_A0",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-160"
+            },
+            {
+              "description": "var_A8 (stack displacement -168)",
+              "name": "var_A8",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-168"
+            },
+            {
+              "description": "var_B0 (stack displacement -176)",
+              "name": "var_B0",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-176"
+            },
+            {
+              "description": "var_B8 (stack displacement -184)",
+              "name": "var_B8",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-184"
+            },
+            {
+              "description": "var_C0 (stack displacement -192)",
+              "name": "var_C0",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-192"
+            },
+            {
+              "description": "var_C8 (stack displacement -200)",
+              "name": "var_C8",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-200"
+            },
+            {
+              "description": "var_D0 (stack displacement -208)",
+              "name": "var_D0",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-208"
+            },
+            {
+              "description": "var_D8 (stack displacement -216)",
+              "name": "var_D8",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-216"
+            },
+            {
+              "description": "var_E0 (stack displacement -224)",
+              "name": "var_E0",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-224"
+            },
+            {
+              "description": "var_E8 (stack displacement -232)",
+              "name": "var_E8",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-232"
+            },
+            {
+              "description": "var_F0 (stack displacement -240)",
+              "name": "var_F0",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-240"
+            },
+            {
+              "description": "var_F8 (stack displacement -248)",
+              "name": "var_F8",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-248"
+            },
+            {
+              "description": "var_100 (stack displacement -256)",
+              "name": "var_100",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-256"
+            }
+          ],
+          "name": "sub_6ac1c",
+          "signature": "int sub_6ac1c()"
+        },
+        "pseudocode": "    r31 = r31 - 0x110;\n    var_50 = r28;\n    decomp_var_48 = r27;\n    var_40 = r26;\n    decomp_var_38 = r25;\n    var_30 = r24;\n    decomp_var_28 = r23;\n    var_20 = r22;\n    decomp_var_18 = r21;\n    var_10 = r20;\n    decomp_var_8 = r19;\n    saved_fp = r29;\n    decomp_var_m8 = r30;\n    var_B0 = r20;\n    var_A8 = sub_10657c();\n    var_B8 = sub_14768(0x0);\n    r0 = sub_10684c();\n    var_C8 = r1;\n    var_C0 = r0;\n    r0 = ___swift_instantiateConcreteTypeFromMangledNameV2(0x14e728, 0x117600);\n    r0 = swift_allocObject(r0, 0x180, 0x7);\n    r25 = r0;\n    q0 = 2.17389e-322;\n    r0[0x1] = 2.17389e-322;\n    sub_106618();\n    r0 = sub_106354();\n    r27 = r0;\n    var_98 = r0;\n    var_80 = q0;\n    sub_10684c();\n    r0 = *__swiftEmptyArrayStorage;\n    r28 = r0;\n    r26 = sub_6e2c4(r0);\n    r19 = sub_106600();\n    swift_bridgeObjectRelease(r1);\n    swift_bridgeObjectRelease(r26);\n    sub_24e28(&var_80, qword_14e928, 0x1179c0);\n    r25[0x4] = r19;\n    var_80 = q0;\n    r27 = r28;\n    r26 = sub_6e2c4(r28);\n    r19 = sub_106600();\n    swift_bridgeObjectRelease(r26);\n    sub_24e28(&var_80, qword_14e928, 0x1179c0);\n    r25[0x5] = r19;\n    r0 = sub_106384();\n    var_A0 = r0;\n    var_80 = 0x0;\n    r28 = sub_6e2c4(r28);\n    r26 = sub_106600();\n    swift_bridgeObjectRelease(r28);\n    sub_24e28(&var_80, qword_14e928, 0x1179c0);\n    r25[0x6] = r26;\n    r0 = sub_10636c();\n    var_90 = r0;\n    var_80 = 0x0;\n    r22 = sub_6e2c4(r27);\n    r28 = sub_106600();\n    swift_bridgeObjectRelease(r22);\n    sub_24e28(&var_80, qword_14e928, 0x1179c0);\n    r25[0x7] = r28;\n    r0 = sub_106378();\n    r28 = r0;\n    var_80 = 0x0;\n    r27 = sub_6e2c4(r27);\n    r22 = sub_106600();\n    swift_bridgeObjectRelease(r27);\n    sub_24e28(&var_80, qword_14e928, 0x1179c0);\n    r25[0x8] = r22;\n    var_80 = 0x0;\n    r24 = *__swiftEmptyArrayStorage;\n    r27 = sub_6e2c4(r24);\n    r22 = sub_106600();\n    swift_bridgeObjectRelease(r27);\n    sub_24e28(&var_80, qword_14e928, 0x1179c0);\n    r25[0x9] = r22;\n    var_80 = 0x1;\n    r27 = sub_6e2c4(r24);\n    r22 = sub_106600();\n    swift_bridgeObjectRelease(r27);\n    sub_24e28(&var_80, qword_14e928, 0x1179c0);\n    r25[0xa] = r22;\n    r0 = sub_106330();\n    r24 = r0;\n    var_88 = r0;\n    var_80 = q0;\n    r21 = *__swiftEmptyArrayStorage;\n    r27 = sub_6e2c4(r21);\n    r22 = sub_106600();\n    swift_bridgeObjectRelease(r27);\n    sub_24e28(&var_80, qword_14e928, 0x1179c0);\n    r25[0xb] = r22;\n    r23 = var_90;\n    var_80 = 0x0;\n    r27 = sub_6e2c4(r21);\n    r22 = sub_106600();\n    swift_bridgeObjectRelease(r27);\n    sub_24e28(&var_80, qword_14e928, 0x1179c0);\n    r25[0xc] = r22;\n    var_80 = q0;\n    r27 = sub_6e2c4(r21);\n    r22 = sub_106600();\n    swift_bridgeObjectRelease(r27);\n    sub_24e28(&var_80, qword_14e928, 0x1179c0);\n    r25[0xd] = r22;\n    r26 = r23;\n    var_80 = 0x0;\n    r23 = *__swiftEmptyArrayStorage;\n    r27 = sub_6e2c4(r23);\n    r22 = sub_106600();\n    swift_bridgeObjectRelease(r27);\n    sub_24e28(&var_80, qword_14e928, 0x1179c0);\n    r25[0xe] = r22;\n    var_80 = q0;\n    r27 = sub_6e2c4(r23);\n    r22 = sub_106600();\n    swift_bridgeObjectRelease(r27);\n    sub_24e28(&var_80, qword_14e928, 0x1179c0);\n    r25[0xf] = r22;\n    var_80 = 0x0;\n    r27 = sub_6e2c4(*__swiftEmptyArrayStorage);\n    r22 = sub_106600();\n    swift_bridgeObjectRelease(r27);\n    sub_24e28(&var_80, qword_14e928, 0x1179c0);\n    r25[0x10] = r22;\n    var_80 = 0x0;\n    r23 = *__swiftEmptyArrayStorage;\n    r27 = sub_6e2c4(r23);\n    r22 = sub_106600();\n    swift_bridgeObjectRelease(r27);\n    sub_24e28(&var_80, qword_14e928, 0x1179c0);\n    r25[0x11] = r22;\n    var_80 = q0;\n    r27 = sub_6e2c4(r23);\n    r22 = sub_106600();\n    swift_bridgeObjectRelease(r27);\n    sub_24e28(&var_80, qword_14e928, 0x1179c0);\n    r25[0x12] = r22;\n    *sub_106360();\n    var_80 = q0;\n    r27 = sub_6e2c4(r23);\n    r22 = sub_106600();\n    swift_bridgeObjectRelease(r27);\n    sub_24e28(&var_80, qword_14e928, 0x1179c0);\n    r25[0x13] = r22;\n    var_80 = q0;\n    r27 = sub_6e2c4(r23);\n    r22 = sub_106600();\n    swift_bridgeObjectRelease(r27);\n    sub_24e28(&var_80, qword_14e928, 0x1179c0);\n    r25[0x14] = r22;\n    r23 = r26;\n    var_80 = 0x0;\n    r19 = *__swiftEmptyArrayStorage;\n    r27 = sub_6e2c4(r19);\n    r22 = sub_106600();\n    swift_bridgeObjectRelease(r27);\n    sub_24e28(&var_80, qword_14e928, 0x1179c0);\n    r25[0x15] = r22;\n    var_80 = 0x0;\n    r27 = sub_6e2c4(r19);\n    r22 = sub_106600();\n    swift_bridgeObjectRelease(r27);\n    sub_24e28(&var_80, qword_14e928, 0x1179c0);\n    r25[0x16] = r22;\n    var_80 = q0;\n    r27 = sub_6e2c4(r19);\n    r22 = sub_106600();\n    swift_bridgeObjectRelease(r27);\n    sub_24e28(&var_80, qword_14e928, 0x1179c0);\n    r25[0x17] = r22;\n    r26 = var_A0;\n    var_80 = 0x0;\n    r21 = sub_6e2c4(r19);\n    r22 = sub_106600();\n    swift_bridgeObjectRelease(r21);\n    sub_24e28(&var_80, qword_14e928, 0x1179c0);\n    r25[0x18] = r22;\n    if (*qword_14f650 != -0x1) {\n            swift_once(qword_14f650, sub_68554, 0x1179c0);\n    }\n    var_80 = q0;\n    r21 = *__swiftEmptyArrayStorage;\n    r23 = sub_6e2c4(r21);\n    r22 = sub_106600();\n    swift_bridgeObjectRelease(r23);\n    sub_24e28(&var_80, qword_14e928, 0x1179c0);\n    r25[0x19] = r22;\n    var_80 = 0x0;\n    r22 = sub_6e2c4(r21);\n    r19 = sub_106600();\n    swift_bridgeObjectRelease(r22);\n    sub_24e28(&var_80, qword_14e928, 0x1179c0);\n    r25[0x1a] = r19;\n    var_80 = q0;\n    r22 = sub_6e2c4(r21);\n    r19 = sub_106600();\n    swift_bridgeObjectRelease(r22);\n    sub_24e28(&var_80, qword_14e928, 0x1179c0);\n    r25[0x1b] = r19;\n    var_80 = 0x0;\n    r22 = sub_6e2c4(r21);\n    r19 = sub_106600();\n    swift_bridgeObjectRelease(r22);\n    sub_24e28(&var_80, qword_14e928, 0x1179c0);\n    r25[0x1c] = r19;\n    var_80 = q0;\n    r21 = sub_6e2c4(r21);\n    r19 = sub_106600();\n    swift_bridgeObjectRelease(r21);\n    sub_24e28(&var_80, qword_14e928, 0x1179c0);\n    r25[0x1d] = r19;\n    if (*qword_14f660 != -0x1) {\n            swift_once(qword_14f660, sub_6859c, 0x1179c0);\n    }\n    var_80 = q0;\n    r19 = *__swiftEmptyArrayStorage;\n    r22 = sub_6e2c4(r19);\n    r24 = sub_106600();\n    swift_bridgeObjectRelease(r22);\n    sub_24e28(&var_80, qword_14e928, 0x1179c0);\n    r25[0x1e] = r24;\n    var_80 = q0;\n    r24 = sub_6e2c4(r19);\n    var_98 = 0xd000000000000015;\n    r22 = sub_106600();\n    swift_bridgeObjectRelease(r24);\n    sub_24e28(&var_80, qword_14e928, 0x1179c0);\n    r25[0x1f] = r22;\n    if (*qword_14f678 != -0x1) {\n            swift_once(qword_14f678, sub_68674, 0x1179c0);\n    }\n    var_80 = q0;\n    r0 = ___swift_instantiateConcreteTypeFromMangledNameV2(0x14f758, 0x118760);\n    r0 = swift_allocObject(r0, 0x48, 0x7);\n    r22 = r0;\n    r0[0x1] = 4.94066e-324;\n    r22[0x4] = sub_107614();\n    r22[0x8] = *0x146b30;\n    r22[0x5] = 0x1;\n    r23 = sub_6e2c4(r22);\n    swift_setDeallocating(r22);\n    sub_24e28(r22 + 0x20, 0x14f760, 0x118768);\n    swift_deallocClassInstance(r22, 0x20, 0x7);\n    r22 = sub_106600();\n    swift_bridgeObjectRelease(r23);\n    sub_24e28(&var_80, qword_14e928, 0x1179c0);\n    r25[0x20] = r22;\n    var_80 = 0xffffffff;\n    r22 = sub_1065dc();\n    sub_24e28(&var_80, qword_14e928, 0x1179c0);\n    r25[0x21] = r22;\n    var_80 = 0xffffffff;\n    r22 = sub_1065dc();\n    sub_24e28(&var_80, qword_14e928, 0x1179c0);\n    r25[0x22] = r22;\n    var_80 = 0xffffffff;\n    r22 = sub_1065dc();\n    sub_24e28(&var_80, qword_14e928, 0x1179c0);\n    r25[0x23] = r22;\n    var_80 = 0xffffffff;\n    r22 = sub_1065dc();\n    sub_24e28(&var_80, qword_14e928, 0x1179c0);\n    r25[0x24] = r22;\n    r24 = sub_106cb4();\n    sub_146f0(0x0);\n    var_80 = r24;\n    r22 = sub_1065dc();\n    sub_24e28(&var_80, qword_14e928, 0x1179c0);\n    r25[0x25] = r22;\n    sub_10684c();\n    r22 = sub_1065c4();\n    swift_bridgeObjectRelease(r1);\n    r25[0x26] = r22;\n    sub_10684c();\n    r22 = sub_1065c4();\n    swift_bridgeObjectRelease(r1);\n    r25[0x27] = r22;\n    sub_10684c();\n    r22 = sub_1065c4();\n    swift_bridgeObjectRelease(r1);\n    r25[0x28] = r22;\n    r25[0x29] = sub_1065d0();\n    r25[0x2a] = sub_1065c4();\n    sub_10684c();\n    r19 = sub_1065c4();\n    swift_bridgeObjectRelease(r1);\n    r25[0x2b] = r19;\n    r25[0x2c] = sub_1065e8();\n    r25[0x2d] = sub_1065e8();\n    r25[0x2e] = sub_1065e8();\n    r25[0x2f] = sub_1065e8();\n    sub_1483c(0x14e820, sub_14768, protocol conformance descriptor for __C.THMTaskEntity : Base.BSEntityProtocol_SupportingBSObject in ThingsModel);\n    r21 = [var_B0 retain];\n    r19 = sub_106564();\n    r20 = *direct field offset for ThingsModel.THMModelDescription.taskEntityDescription : Base.BSEntityDescription?;\n    swift_beginAccess(r21 + r20, &var_80, 0x1, 0x0);\n    r0 = *(r21 + r20);\n    *(r21 + r20) = r19;\n    [r0 release];\n    r19 = [r19 retain];\n    sub_1064a4();\n    r0 = [r19 release];\n    return r0;\n",
+        "referenced_strings": [
+          {
+            "address": "0x110830",
+            "provider_value": "sqlite_autoindex_TMTask_1",
+            "source_address": "0x6acc4",
+            "string": {
+              "byte_length": 26,
+              "encoding": "utf-8",
+              "encoding_status": "inferred",
+              "termination": "present_or_not_required"
+            },
+            "value": "sqlite_autoindex_TMTask_1"
+          },
+          {
+            "address": "0x110850",
+            "provider_value": "userModificationDate",
+            "source_address": "0x6acb4",
+            "string": {
+              "byte_length": 21,
+              "encoding": "utf-8",
+              "encoding_status": "inferred",
+              "termination": "present_or_not_required"
+            },
+            "value": "userModificationDate"
+          },
+          {
+            "address": "0x110850",
+            "provider_value": "userModificationDate",
+            "source_address": "0x6b20c",
+            "string": {
+              "byte_length": 21,
+              "encoding": "utf-8",
+              "encoding_status": "inferred",
+              "termination": "present_or_not_required"
+            },
+            "value": "userModificationDate"
+          },
+          {
+            "address": "0x110870",
+            "provider_value": "t2_deadlineOffset",
+            "source_address": "0x6b208",
+            "string": {
+              "byte_length": 18,
+              "encoding": "utf-8",
+              "encoding_status": "inferred",
+              "termination": "present_or_not_required"
+            },
+            "value": "t2_deadlineOffset"
+          },
+          {
+            "address": "0x110870",
+            "provider_value": "t2_deadlineOffset",
+            "source_address": "0x6b290",
+            "string": {
+              "byte_length": 18,
+              "encoding": "utf-8",
+              "encoding_status": "inferred",
+              "termination": "present_or_not_required"
+            },
+            "value": "t2_deadlineOffset"
+          },
+          {
+            "address": "0x110890",
+            "provider_value": "deadlineSuppressionDate",
+            "source_address": "0x6b28c",
+            "string": {
+              "byte_length": 24,
+              "encoding": "utf-8",
+              "encoding_status": "inferred",
+              "termination": "present_or_not_required"
+            },
+            "value": "deadlineSuppressionDate"
+          },
+          {
+            "address": "0x110890",
+            "provider_value": "deadlineSuppressionDate",
+            "source_address": "0x6b6a0",
+            "string": {
+              "byte_length": 24,
+              "encoding": "utf-8",
+              "encoding_status": "inferred",
+              "termination": "present_or_not_required"
+            },
+            "value": "deadlineSuppressionDate"
+          },
+          {
+            "address": "0x1108b0",
+            "provider_value": "lastReminderInteractionDate",
+            "source_address": "0x6b69c",
+            "string": {
+              "byte_length": 28,
+              "encoding": "utf-8",
+              "encoding_status": "inferred",
+              "termination": "present_or_not_required"
+            },
+            "value": "lastReminderInteractionDate"
+          },
+          {
+            "address": "0x1108b0",
+            "provider_value": "lastReminderInteractionDate",
+            "source_address": "0x6b870",
+            "string": {
+              "byte_length": 28,
+              "encoding": "utf-8",
+              "encoding_status": "inferred",
+              "termination": "present_or_not_required"
+            },
+            "value": "lastReminderInteractionDate"
+          },
+          {
+            "address": "0x1108d0",
+            "provider_value": "todayIndexReferenceDate",
+            "source_address": "0x6b86c",
+            "string": {
+              "byte_length": 24,
+              "encoding": "utf-8",
+              "encoding_status": "inferred",
+              "termination": "present_or_not_required"
+            },
+            "value": "todayIndexReferenceDate"
+          },
+          {
+            "address": "0x1108d0",
+            "provider_value": "todayIndexReferenceDate",
+            "source_address": "0x6b9c8",
+            "string": {
+              "byte_length": 24,
+              "encoding": "utf-8",
+              "encoding_status": "inferred",
+              "termination": "present_or_not_required"
+            },
+            "value": "todayIndexReferenceDate"
+          },
+          {
+            "address": "0x1108f0",
+            "provider_value": "rt1_recurrenceRule",
+            "source_address": "0x6b9c0",
+            "string": {
+              "byte_length": 19,
+              "encoding": "utf-8",
+              "encoding_status": "inferred",
+              "termination": "present_or_not_required"
+            },
+            "value": "rt1_recurrenceRule"
+          },
+          {
+            "address": "0x1108f0",
+            "provider_value": "rt1_recurrenceRule",
+            "source_address": "0x6ba8c",
+            "string": {
+              "byte_length": 19,
+              "encoding": "utf-8",
+              "encoding_status": "inferred",
+              "termination": "present_or_not_required"
+            },
+            "value": "rt1_recurrenceRule"
+          },
+          {
+            "address": "0x110910",
+            "provider_value": "rt1_instanceCreationPaused",
+            "source_address": "0x6ba80",
+            "string": {
+              "byte_length": 27,
+              "encoding": "utf-8",
+              "encoding_status": "inferred",
+              "termination": "present_or_not_required"
+            },
+            "value": "rt1_instanceCreationPaused"
+          },
+          {
+            "address": "0x110910",
+            "provider_value": "rt1_instanceCreationPaused",
+            "source_address": "0x6bb10",
+            "string": {
+              "byte_length": 27,
+              "encoding": "utf-8",
+              "encoding_status": "inferred",
+              "termination": "present_or_not_required"
+            },
+            "value": "rt1_instanceCreationPaused"
+          },
+          {
+            "address": "0x110930",
+            "provider_value": "rt1_instanceCreationStartDate",
+            "source_address": "0x6bb0c",
+            "string": {
+              "byte_length": 30,
+              "encoding": "utf-8",
+              "encoding_status": "inferred",
+              "termination": "present_or_not_required"
+            },
+            "value": "rt1_instanceCreationStartDate"
+          },
+          {
+            "address": "0x110930",
+            "provider_value": "rt1_instanceCreationStartDate",
+            "source_address": "0x6bbbc",
+            "string": {
+              "byte_length": 30,
+              "encoding": "utf-8",
+              "encoding_status": "inferred",
+              "termination": "present_or_not_required"
+            },
+            "value": "rt1_instanceCreationStartDate"
+          },
+          {
+            "address": "0x110950",
+            "provider_value": "rt1_instanceCreationCount",
+            "source_address": "0x6bbb8",
+            "string": {
+              "byte_length": 26,
+              "encoding": "utf-8",
+              "encoding_status": "inferred",
+              "termination": "present_or_not_required"
+            },
+            "value": "rt1_instanceCreationCount"
+          },
+          {
+            "address": "0x110950",
+            "provider_value": "rt1_instanceCreationCount",
+            "source_address": "0x6bc44",
+            "string": {
+              "byte_length": 26,
+              "encoding": "utf-8",
+              "encoding_status": "inferred",
+              "termination": "present_or_not_required"
+            },
+            "value": "rt1_instanceCreationCount"
+          },
+          {
+            "address": "0x110970",
+            "provider_value": "rt1_afterCompletionReferenceDate",
+            "source_address": "0x6bc40",
+            "string": {
+              "byte_length": 33,
+              "encoding": "utf-8",
+              "encoding_status": "inferred",
+              "termination": "present_or_not_required"
+            },
+            "value": "rt1_afterCompletionReferenceDate"
+          },
+          {
+            "address": "0x1109a0",
+            "provider_value": "repeaterMigrationDate",
+            "source_address": "0x6bd8c",
+            "string": {
+              "byte_length": 22,
+              "encoding": "utf-8",
+              "encoding_status": "inferred",
+              "termination": "present_or_not_required"
+            },
+            "value": "repeaterMigrationDate"
+          },
+          {
+            "address": "0x1109a0",
+            "provider_value": "repeaterMigrationDate",
+            "source_address": "0x6bfa8",
+            "string": {
+              "byte_length": 22,
+              "encoding": "utf-8",
+              "encoding_status": "inferred",
+              "termination": "present_or_not_required"
+            },
+            "value": "repeaterMigrationDate"
+          },
+          {
+            "address": "0x1109c0",
+            "provider_value": "untrashedLeafActionsCount",
+            "source_address": "0x6bfa4",
+            "string": {
+              "byte_length": 26,
+              "encoding": "utf-8",
+              "encoding_status": "inferred",
+              "termination": "present_or_not_required"
+            },
+            "value": "untrashedLeafActionsCount"
+          },
+          {
+            "address": "0x1109c0",
+            "provider_value": "untrashedLeafActionsCount",
+            "source_address": "0x6bff0",
+            "string": {
+              "byte_length": 26,
+              "encoding": "utf-8",
+              "encoding_status": "inferred",
+              "termination": "present_or_not_required"
+            },
+            "value": "untrashedLeafActionsCount"
+          },
+          {
+            "address": "0x1109e0",
+            "provider_value": "openUntrashedLeafActionsCount",
+            "source_address": "0x6bfec",
+            "string": {
+              "byte_length": 30,
+              "encoding": "utf-8",
+              "encoding_status": "inferred",
+              "termination": "present_or_not_required"
+            },
+            "value": "openUntrashedLeafActionsCount"
+          },
+          {
+            "address": "0x1109e0",
+            "provider_value": "openUntrashedLeafActionsCount",
+            "source_address": "0x6c038",
+            "string": {
+              "byte_length": 30,
+              "encoding": "utf-8",
+              "encoding_status": "inferred",
+              "termination": "present_or_not_required"
+            },
+            "value": "openUntrashedLeafActionsCount"
+          },
+          {
+            "address": "0x110a00",
+            "provider_value": "checklistItemsCount",
+            "source_address": "0x6c034",
+            "string": {
+              "byte_length": 20,
+              "encoding": "utf-8",
+              "encoding_status": "inferred",
+              "termination": "present_or_not_required"
+            },
+            "value": "checklistItemsCount"
+          },
+          {
+            "address": "0x110a00",
+            "provider_value": "checklistItemsCount",
+            "source_address": "0x6c080",
+            "string": {
+              "byte_length": 20,
+              "encoding": "utf-8",
+              "encoding_status": "inferred",
+              "termination": "present_or_not_required"
+            },
+            "value": "checklistItemsCount"
+          },
+          {
+            "address": "0x110a20",
+            "provider_value": "openChecklistItemsCount",
+            "source_address": "0x6c07c",
+            "string": {
+              "byte_length": 24,
+              "encoding": "utf-8",
+              "encoding_status": "inferred",
+              "termination": "present_or_not_required"
+            },
+            "value": "openChecklistItemsCount"
+          },
+          {
+            "address": "0x110a20",
+            "provider_value": "openChecklistItemsCount",
+            "source_address": "0x6c0e8",
+            "string": {
+              "byte_length": 24,
+              "encoding": "utf-8",
+              "encoding_status": "inferred",
+              "termination": "present_or_not_required"
+            },
+            "value": "openChecklistItemsCount"
+          },
+          {
+            "address": "0x110a40",
+            "provider_value": "rt1_nextInstanceStartDate",
+            "source_address": "0x6c0e4",
+            "string": {
+              "byte_length": 26,
+              "encoding": "utf-8",
+              "encoding_status": "inferred",
+              "termination": "present_or_not_required"
+            },
+            "value": "rt1_nextInstanceStartDate"
+          },
+          {
+            "address": "0x110a40",
+            "provider_value": "rt1_nextInstanceStartDate",
+            "source_address": "0x6c310",
+            "string": {
+              "byte_length": 26,
+              "encoding": "utf-8",
+              "encoding_status": "inferred",
+              "termination": "present_or_not_required"
+            },
+            "value": "rt1_nextInstanceStartDate"
+          },
+          {
+            "address": "0x110a60",
+            "provider_value": "rt1_repeatingTemplate",
+            "source_address": "0x6c30c",
+            "string": {
+              "byte_length": 22,
+              "encoding": "utf-8",
+              "encoding_status": "inferred",
+              "termination": "present_or_not_required"
+            },
+            "value": "rt1_repeatingTemplate"
+          }
+        ]
+      },
+      "operation": "analyze_function",
+      "parameters": {
+        "procedure": "0x6ac1c"
+      },
+      "predicate_type": "rea.analysis",
+      "provider": {
+        "id": "hopper",
+        "name": "Hopper Disassembler",
+        "version": "launcher-sha256:dad6f886261fad0d4cdd01aee6fcf57439c60d7b5c54e62fc97f0180116690e0"
+      },
+      "subject": {
+        "architecture": "arm64",
+        "digest": {
+          "sha256": "6b8547b85b8b8643d5a41c1e16cb76343b33ff9f34d788449cb947360dae534e"
+        },
+        "format": "mach-o",
+        "local_path": "/Applications/Things3.app/Contents/Frameworks/ThingsModel.framework/Versions/A/ThingsModel",
+        "name": "ThingsModel"
+      }
+    }
+  ],
+  "scenarios": [],
+  "unknowns": [],
+  "export_note": "Selected normalized observations referenced by docs, retaining procedure and pseudocode or string observations. Raw responses, assembly, control-flow graphs and cross-reference listings are omitted. Full provider exports remain in the original investigation workspace."
+}

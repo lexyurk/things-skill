@@ -1,0 +1,22 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "things",
+  "version": "2.0.2",
+  "description": "Things Cloud tasks on macOS and Linux through the Things CLI and MCP server.",
+  "author": {"name": "lexyurk"},
+  "repository": "https://github.com/lexyurk/things-skill",
+  "license": "MIT",
+  "keywords": ["things", "tasks", "mcp", "macos", "linux"],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Things Cloud",
+        "shortDescription": "Read and manage your Things Cloud tasks.",
+        "longDescription": "Connect once through things-cli login. This local MCP server shares the CLI's account and synchronizes task actions with Things Cloud. Requires the Things CLI package and Python 3.9+.",
+        "developerName": "lexyurk",
+        "category": "Productivity",
+        "capabilities": ["Read", "Write"]
+      }
+    }
+  }
+}

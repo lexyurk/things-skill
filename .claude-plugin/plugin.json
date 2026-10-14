@@ -1,0 +1,8 @@
+{
+  "name": "things",
+  "version": "2.0.2",
+  "description": "Things Cloud task sync for Linux and macOS, through things-cli and a stdio MCP server.",
+  "author": {"name": "lexyurk"},
+  "repository": "https://github.com/lexyurk/things-skill",
+  "license": "MIT"
+}

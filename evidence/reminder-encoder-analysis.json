@@ -1,0 +1,428 @@
+{
+  "artifacts": [
+    {
+      "architecture": "arm64",
+      "digest": {
+        "sha256": "550893a8352db3a3be210bfd0611984cf5f2aa788c91e773638697771da1c4be"
+      },
+      "format": "mach-o"
+    }
+  ],
+  "captures": [],
+  "environments": [],
+  "providers": [
+    {
+      "id": "hopper",
+      "name": "Hopper Disassembler",
+      "version": "launcher-sha256:dad6f886261fad0d4cdd01aee6fcf57439c60d7b5c54e62fc97f0180116690e0"
+    }
+  ],
+  "records": [
+    {
+      "analysis_profile": {
+        "digest": "c178d9e166de653782da081aa624ac593ad8add9d43b2f3ecdff2bb064539bc1",
+        "parameters": {
+          "architecture": "arm64",
+          "available_architectures": [
+            "arm64",
+            "x86_64"
+          ],
+          "loader": {
+            "arguments": [
+              "-l",
+              "FAT",
+              "--aarch64",
+              "-l",
+              "Mach-O"
+            ],
+            "source": "derived"
+          },
+          "macho_container": "fat32",
+          "target_format": "mach-o",
+          "target_kind": "executable"
+        },
+        "provider": {
+          "id": "hopper",
+          "name": "Hopper Disassembler",
+          "version": "launcher-sha256:dad6f886261fad0d4cdd01aee6fcf57439c60d7b5c54e62fc97f0180116690e0"
+        }
+      },
+      "authority": "shipped-artifact",
+      "confidence": "observed",
+      "environment": null,
+      "evidence_id": "ev_94478c8ea1e876bc5608429f94e12a5891935e589883d35ba51b7aa6d5b63361",
+      "evidence_links": [],
+      "limitations": [
+        "Results depend on Hopper's completed static analysis.",
+        "String values cover native typed objects. Hopper may split long literals into adjacent unterminated fragments; string searches match each object independently.",
+        "Undecodable typed objects retain native display text with an explicit decoding unknown; these values do not establish decoded source literals.",
+        "Reported string encodings are inferred from typed bytes and native display; the original source's intended encoding is unknown."
+      ],
+      "locations": [],
+      "normalized_result": {
+        "comments": [],
+        "limitations": [
+          "Native CallReference classifications are observed where available; detailed reference flags remain unknown.",
+          "Hopper's public Python API does not expose equivalent external or thunk classification in this dossier.",
+          "Native calls without resolved target addresses are not represented as edges; enumeration beyond reported CallReference objects is unknown.",
+          "Pseudocode and assembly are provider-specific representations, not original source."
+        ],
+        "procedure": {
+          "address": "0xaceb8",
+          "body": {
+            "available": false,
+            "reason": "Hopper's public Python API does not expose complete function body ranges"
+          },
+          "classification": null,
+          "locals": [],
+          "name": "sub_aceb8",
+          "signature": "void sub_aceb8()"
+        },
+        "pseudocode": "    loc_cdc48();\n    return;\n",
+        "referenced_strings": []
+      },
+      "operation": "analyze_function",
+      "parameters": {
+        "procedure": "0xaceb8"
+      },
+      "predicate_type": "rea.analysis",
+      "provider": {
+        "id": "hopper",
+        "name": "Hopper Disassembler",
+        "version": "launcher-sha256:dad6f886261fad0d4cdd01aee6fcf57439c60d7b5c54e62fc97f0180116690e0"
+      },
+      "subject": {
+        "architecture": "arm64",
+        "digest": {
+          "sha256": "550893a8352db3a3be210bfd0611984cf5f2aa788c91e773638697771da1c4be"
+        },
+        "format": "mach-o",
+        "local_path": "/Applications/Things3.app/Contents/Frameworks/Base.framework/Versions/A/Base",
+        "name": "Base"
+      }
+    },
+    {
+      "analysis_profile": {
+        "digest": "c178d9e166de653782da081aa624ac593ad8add9d43b2f3ecdff2bb064539bc1",
+        "parameters": {
+          "architecture": "arm64",
+          "available_architectures": [
+            "arm64",
+            "x86_64"
+          ],
+          "loader": {
+            "arguments": [
+              "-l",
+              "FAT",
+              "--aarch64",
+              "-l",
+              "Mach-O"
+            ],
+            "source": "derived"
+          },
+          "macho_container": "fat32",
+          "target_format": "mach-o",
+          "target_kind": "executable"
+        },
+        "provider": {
+          "id": "hopper",
+          "name": "Hopper Disassembler",
+          "version": "launcher-sha256:dad6f886261fad0d4cdd01aee6fcf57439c60d7b5c54e62fc97f0180116690e0"
+        }
+      },
+      "authority": "shipped-artifact",
+      "confidence": "observed",
+      "environment": null,
+      "evidence_id": "ev_d2c1d2166290b99b18211d4de3be4775bcf0c794b7d872d7cb7438e21e630606",
+      "evidence_links": [],
+      "limitations": [
+        "Results depend on Hopper's completed static analysis.",
+        "String values cover native typed objects. Hopper may split long literals into adjacent unterminated fragments; string searches match each object independently.",
+        "Undecodable typed objects retain native display text with an explicit decoding unknown; these values do not establish decoded source literals.",
+        "Reported string encodings are inferred from typed bytes and native display; the original source's intended encoding is unknown."
+      ],
+      "locations": [],
+      "normalized_result": {
+        "comments": [],
+        "limitations": [
+          "Native CallReference classifications are observed where available; detailed reference flags remain unknown.",
+          "Hopper's public Python API does not expose equivalent external or thunk classification in this dossier.",
+          "Native calls without resolved target addresses are not represented as edges; enumeration beyond reported CallReference objects is unknown.",
+          "Pseudocode and assembly are provider-specific representations, not original source."
+        ],
+        "procedure": {
+          "address": "0x9a260",
+          "body": {
+            "available": false,
+            "reason": "Hopper's public Python API does not expose complete function body ranges"
+          },
+          "classification": null,
+          "locals": [
+            {
+              "description": "saved_fp (stack displacement 0)",
+              "name": "saved_fp",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "0"
+            },
+            {
+              "description": "var_10 (stack displacement -16)",
+              "name": "var_10",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-16"
+            },
+            {
+              "description": "var_20 (stack displacement -32)",
+              "name": "var_20",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-32"
+            },
+            {
+              "description": "var_30 (stack displacement -48)",
+              "name": "var_30",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-48"
+            },
+            {
+              "description": "var_40 (stack displacement -64)",
+              "name": "var_40",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-64"
+            },
+            {
+              "description": "var_50 (stack displacement -80)",
+              "name": "var_50",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-80"
+            },
+            {
+              "description": "var_60 (stack displacement -96)",
+              "name": "var_60",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-96"
+            },
+            {
+              "description": "var_70 (stack displacement -112)",
+              "name": "var_70",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-112"
+            },
+            {
+              "description": "var_78 (stack displacement -120)",
+              "name": "var_78",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-120"
+            },
+            {
+              "description": "var_80 (stack displacement -128)",
+              "name": "var_80",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-128"
+            }
+          ],
+          "name": "_$s4Base18BSSyncValueEncoderC6decode_3for9valueTypeAA06BSNodeC0_pyp_So10BSPropertyaAA07BSValueH0VtF",
+          "signature": "int _$s4Base18BSSyncValueEncoderC6decode_3for9valueTypeAA06BSNodeC0_pyp_So10BSPropertyaAA07BSValueH0VtF(void * self, int arg1, int arg2, int arg3)"
+        },
+        "pseudocode": "    var_40 = d9;\n    decomp_var_38 = d8;\n    var_30 = r24;\n    decomp_var_28 = r23;\n    r31 = r31 + 0xffffffffffffffb0 - 0x30;\n    r22 = arg3;\n    r20 = arg1;\n    r19 = r8;\n    r24 = *(sub_ac528() + 0xfffffffffffffff8);\n    r0 = ___chkstk_darwin_cca70();\n    r21 = &var_70 - (r8 + 0xf & 0xfffffffffffffff0);\n    &var_70 = r21;\n    if (r22 <= 0x3) {\n            if (r22 <= 0x1) {\n                    if (r22 == 0x0) {\n                            sub_19d5c(r20, &var_60);\n                            r0 = swift_dynamicCast(&var_70, &var_60, *0xcd530 + 0x8, *0xcd468, 0x6);\n                            if (r0 != 0x0) {\n                                    r19[0x3] = *0xcd468;\n                                    r19[0x4] = protocol witness table for Swift.Int32 : Base.BSNodeValue in Base;\n                                    *(int32_t *)r19 = var_70;\n                                    &var_70 = &var_40;\n                            }\n                            else {\n                                    r22 = *0xcd530;\n                                    sub_19d5c(r20, &var_60);\n                                    r0 = sub_19d98(0x0, qword_d4c60, &@class(NSNumber));\n                                    r0 = swift_dynamicCast(&var_70, &var_60, r22 + 0x8, r0, 0x6);\n                                    if (r0 != 0x0) {\n                                            r21 = *0xcd468;\n                                            r22 = [var_70 intValue];\n                                            r0 = [var_70 release];\n                                            r19[0x3] = r21;\n                                            r19[0x4] = protocol witness table for Swift.Int32 : Base.BSNodeValue in Base;\n                                            *(int32_t *)r19 = r22;\n                                            &var_70 = &var_40;\n                                    }\n                                    else {\n                                            r21 = [objc_allocWithZone(@class(NSNull)) init];\n                                            r0 = sub_19d98(0x0, qword_d4940, &@class(NSNull));\n                                            r19[0x3] = r0;\n                                            r19[0x4] = protocol witness table for __C.NSNull : Base.BSNodeValue in Base;\n                                            *r19 = r21;\n                                            &var_70 = &var_40;\n                                    }\n                            }\n                    }\n                    else {\n                            if (r22 == 0x1) {\n                                    sub_19d5c(r20, &var_60);\n                                    r0 = swift_dynamicCast(&var_70, &var_60, *0xcd530 + 0x8, *0xccf30, 0x6);\n                                    if (r0 != 0x0) {\n                                            r19[0x3] = *0xccf30;\n                                            r19[0x4] = protocol witness table for Swift.Double : Base.BSNodeValue in Base;\n                                            *r19 = var_70;\n                                            &var_70 = &var_40;\n                                    }\n                                    else {\n                                            r22 = *0xcd530;\n                                            sub_19d5c(r20, &var_60);\n                                            r0 = sub_19d98(0x0, qword_d4c60, &@class(NSNumber));\n                                            r0 = swift_dynamicCast(&var_70, &var_60, r22 + 0x8, r0, 0x6);\n                                            if (r0 != 0x0) {\n                                                    r21 = *0xccf30;\n                                                    [var_70 doubleValue];\n                                                    r0 = [var_70 release];\n                                                    r19[0x3] = r21;\n                                                    r19[0x4] = protocol witness table for Swift.Double : Base.BSNodeValue in Base;\n                                                    *r19 = d8;\n                                                    &var_70 = &var_40;\n                                            }\n                                            else {\n                                                    r21 = [objc_allocWithZone(@class(NSNull)) init];\n                                                    r0 = sub_19d98(0x0, qword_d4940, &@class(NSNull));\n                                                    r19[0x3] = r0;\n                                                    r19[0x4] = protocol witness table for __C.NSNull : Base.BSNodeValue in Base;\n                                                    *r19 = r21;\n                                                    &var_70 = &var_40;\n                                            }\n                                    }\n                            }\n                            else {\n                                    r0 = sub_ad218();\n                                    asm { brk        #0x1 };\n                            }\n                    }\n            }\n            else {\n                    if (r22 == 0x2) {\n                            sub_19d5c(r20, &var_60);\n                            r0 = swift_dynamicCast(&var_70, &var_60, *0xcd530 + 0x8, *0xccf20, 0x6);\n                            if (r0 != 0x0) {\n                                    r19[0x3] = *0xccf20;\n                                    r19[0x4] = protocol witness table for Swift.Bool : Base.BSNodeValue in Base;\n                                    *(int8_t *)r19 = var_70;\n                                    &var_70 = &var_40;\n                            }\n                            else {\n                                    r22 = *0xcd530;\n                                    sub_19d5c(r20, &var_60);\n                                    r0 = sub_19d98(0x0, qword_d4c60, &@class(NSNumber));\n                                    r0 = swift_dynamicCast(&var_70, &var_60, r22 + 0x8, r0, 0x6);\n                                    if (r0 != 0x0) {\n                                            r21 = *0xccf20;\n                                            r22 = [var_70 boolValue];\n                                            r0 = [var_70 release];\n                                            r19[0x3] = r21;\n                                            r19[0x4] = protocol witness table for Swift.Bool : Base.BSNodeValue in Base;\n                                            *(int8_t *)r19 = r22;\n                                            &var_70 = &var_40;\n                                    }\n                                    else {\n                                            r21 = [objc_allocWithZone(@class(NSNull)) init];\n                                            r0 = sub_19d98(0x0, qword_d4940, &@class(NSNull));\n                                            r19[0x3] = r0;\n                                            r19[0x4] = protocol witness table for __C.NSNull : Base.BSNodeValue in Base;\n                                            *r19 = r21;\n                                            &var_70 = &var_40;\n                                    }\n                            }\n                    }\n                    else {\n                            if (r22 == 0x3) {\n                                    sub_19d5c(r20, &var_60);\n                                    r0 = swift_dynamicCast(&var_70, &var_60, *0xcd530 + 0x8, *0xcce10, 0x6);\n                                    if (r0 != 0x0) {\n                                            r19[0x3] = *0xcce10;\n                                            r19[0x4] = protocol witness table for Swift.String : Base.BSNodeValue in Base;\n                                            *r19 = var_70;\n                                            r19[0x1] = decomp_var_68;\n                                            &var_70 = &var_40;\n                                    }\n                                    else {\n                                            r21 = [objc_allocWithZone(@class(NSNull)) init];\n                                            r0 = sub_19d98(0x0, qword_d4940, &@class(NSNull));\n                                            r19[0x3] = r0;\n                                            r19[0x4] = protocol witness table for __C.NSNull : Base.BSNodeValue in Base;\n                                            *r19 = r21;\n                                            &var_70 = &var_40;\n                                    }\n                            }\n                            else {\n                                    r0 = sub_ad218();\n                                    asm { brk        #0x1 };\n                            }\n                    }\n            }\n    }\n    else {\n            if (r22 <= 0x5) {\n                    if (r22 == 0x4) {\n                            r22 = r0;\n                            sub_19d5c(r20, &var_60);\n                            r0 = swift_dynamicCast(&var_70, &var_60, *0xcd530 + 0x8, *0xccf30, 0x6);\n                            if (r0 != 0x0) {\n                                    sub_ac510();\n                                    sub_ac51c();\n                                    (r24[0x1])(r21, r22);\n                                    r0 = sub_b7a8(0x0);\n                                    r19[0x3] = r0;\n                                    r19[0x4] = protocol witness table for __C.FADate : Base.BSNodeValue in Base;\n                                    *r19 = d8;\n                                    &var_70 = &var_40;\n                            }\n                            else {\n                                    r21 = [objc_allocWithZone(@class(NSNull)) init];\n                                    r0 = sub_19d98(0x0, qword_d4940, &@class(NSNull));\n                                    r19[0x3] = r0;\n                                    r19[0x4] = protocol witness table for __C.NSNull : Base.BSNodeValue in Base;\n                                    *r19 = r21;\n                                    &var_70 = &var_40;\n                            }\n                    }\n                    else {\n                            if (r22 == 0x5) {\n                                    r23 = r0;\n                                    sub_19d5c(r20, &var_60);\n                                    r0 = swift_dynamicCast(&var_70, &var_60, *0xcd530 + 0x8, *0xccf30, 0x6);\n                                    if (r0 != 0x0) {\n                                            sub_ac510();\n                                            sub_ac51c();\n                                            (r24[0x1])(r21, r23);\n                                            r20 = sub_ace94();\n                                            r0 = sub_b810(0x0);\n                                            r19[0x3] = r0;\n                                            r19[0x4] = protocol witness table for __C.FADay : Base.BSNodeValue in Base;\n                                            *(int32_t *)r19 = r20;\n                                            &var_70 = &var_40;\n                                    }\n                                    else {\n                                            r21 = [objc_allocWithZone(@class(NSNull)) init];\n                                            r0 = sub_19d98(0x0, qword_d4940, &@class(NSNull));\n                                            r19[0x3] = r0;\n                                            r19[0x4] = protocol witness table for __C.NSNull : Base.BSNodeValue in Base;\n                                            *r19 = r21;\n                                            &var_70 = &var_40;\n                                    }\n                            }\n                            else {\n                                    r0 = sub_ad218();\n                                    asm { brk        #0x1 };\n                            }\n                    }\n            }\n            else {\n                    if (r22 == 0x6) {\n                            sub_19d5c(r20, &var_60);\n                            r0 = swift_dynamicCast(&var_70, &var_60, *0xcd530 + 0x8, *0xccfd8, 0x6);\n                            if (r0 != 0x0) {\n                                    r20 = sub_aceac();\n                                    r0 = sub_b824(0x0);\n                                    r19[0x3] = r0;\n                                    r19[0x4] = protocol witness table for __C.FATime : Base.BSNodeValue in Base;\n                                    *(int32_t *)r19 = r20;\n                                    &var_70 = &var_40;\n                            }\n                            else {\n                                    r21 = [objc_allocWithZone(@class(NSNull)) init];\n                                    r0 = sub_19d98(0x0, qword_d4940, &@class(NSNull));\n                                    r19[0x3] = r0;\n                                    r19[0x4] = protocol witness table for __C.NSNull : Base.BSNodeValue in Base;\n                                    *r19 = r21;\n                                    &var_70 = &var_40;\n                            }\n                    }\n                    else {\n                            if (r22 == 0x7) {\n                                    sub_19d5c(r20, &var_60);\n                                    r0 = swift_dynamicCast(&var_70, &var_60, *0xcd530 + 0x8, *0xcce10, 0x6);\n                                    if ((r0 & 0x1) != 0x0) {\n                                            r20 = sub_ac498();\n                                            r21 = r1;\n                                            r0 = swift_bridgeObjectRelease(decomp_var_68);\n                                            if (r21 >> 0x3c <= 0xe) {\n                                                    r19[0x3] = *0xcc808;\n                                                    r19[0x4] = protocol witness table for Foundation.Data : Base.BSNodeValue in Base;\n                                                    *r19 = r20;\n                                                    r19[0x1] = r21;\n                                                    &var_70 = &var_40;\n                                            }\n                                            else {\n                                                    r21 = [objc_allocWithZone(@class(NSNull)) init];\n                                                    r0 = sub_19d98(0x0, qword_d4940, &@class(NSNull));\n                                                    r19[0x3] = r0;\n                                                    r19[0x4] = protocol witness table for __C.NSNull : Base.BSNodeValue in Base;\n                                                    *r19 = r21;\n                                                    &var_70 = &var_40;\n                                            }\n                                    }\n                                    else {\n                                            r21 = [objc_allocWithZone(@class(NSNull)) init];\n                                            r0 = sub_19d98(0x0, qword_d4940, &@class(NSNull));\n                                            r19[0x3] = r0;\n                                            r19[0x4] = protocol witness table for __C.NSNull : Base.BSNodeValue in Base;\n                                            *r19 = r21;\n                                            &var_70 = &var_40;\n                                    }\n                            }\n                            else {\n                                    r0 = sub_ad218();\n                                    asm { brk        #0x1 };\n                            }\n                    }\n            }\n    }\n    return r0;\n",
+        "referenced_strings": [
+          {
+            "address": "0xb2a10",
+            "provider_value": "Fatal error",
+            "source_address": "0x9a7d4",
+            "string": {
+              "byte_length": 12,
+              "encoding": "utf-8",
+              "encoding_status": "inferred",
+              "termination": "present_or_not_required"
+            },
+            "value": "Fatal error"
+          },
+          {
+            "address": "0xb3550",
+            "provider_value": "Base/BSSyncValueEncoder.swift",
+            "source_address": "0x9a7dc",
+            "string": {
+              "byte_length": 30,
+              "encoding": "utf-8",
+              "encoding_status": "inferred",
+              "termination": "present_or_not_required"
+            },
+            "value": "Base/BSSyncValueEncoder.swift"
+          }
+        ]
+      },
+      "operation": "analyze_function",
+      "parameters": {
+        "procedure": "0x9a260"
+      },
+      "predicate_type": "rea.analysis",
+      "provider": {
+        "id": "hopper",
+        "name": "Hopper Disassembler",
+        "version": "launcher-sha256:dad6f886261fad0d4cdd01aee6fcf57439c60d7b5c54e62fc97f0180116690e0"
+      },
+      "subject": {
+        "architecture": "arm64",
+        "digest": {
+          "sha256": "550893a8352db3a3be210bfd0611984cf5f2aa788c91e773638697771da1c4be"
+        },
+        "format": "mach-o",
+        "local_path": "/Applications/Things3.app/Contents/Frameworks/Base.framework/Versions/A/Base",
+        "name": "Base"
+      }
+    },
+    {
+      "analysis_profile": {
+        "digest": "c178d9e166de653782da081aa624ac593ad8add9d43b2f3ecdff2bb064539bc1",
+        "parameters": {
+          "architecture": "arm64",
+          "available_architectures": [
+            "arm64",
+            "x86_64"
+          ],
+          "loader": {
+            "arguments": [
+              "-l",
+              "FAT",
+              "--aarch64",
+              "-l",
+              "Mach-O"
+            ],
+            "source": "derived"
+          },
+          "macho_container": "fat32",
+          "target_format": "mach-o",
+          "target_kind": "executable"
+        },
+        "provider": {
+          "id": "hopper",
+          "name": "Hopper Disassembler",
+          "version": "launcher-sha256:dad6f886261fad0d4cdd01aee6fcf57439c60d7b5c54e62fc97f0180116690e0"
+        }
+      },
+      "authority": "shipped-artifact",
+      "confidence": "observed",
+      "environment": null,
+      "evidence_id": "ev_d6c560b3cd060757420fbc7702560b5d2b369192fcc6fbdea7485b1b02b8e373",
+      "evidence_links": [],
+      "limitations": [
+        "Results depend on Hopper's completed static analysis.",
+        "String values cover native typed objects. Hopper may split long literals into adjacent unterminated fragments; string searches match each object independently.",
+        "Undecodable typed objects retain native display text with an explicit decoding unknown; these values do not establish decoded source literals.",
+        "Reported string encodings are inferred from typed bytes and native display; the original source's intended encoding is unknown."
+      ],
+      "locations": [],
+      "normalized_result": {
+        "comments": [],
+        "limitations": [
+          "Native CallReference classifications are observed where available; detailed reference flags remain unknown.",
+          "Hopper's public Python API does not expose equivalent external or thunk classification in this dossier.",
+          "Native calls without resolved target addresses are not represented as edges; enumeration beyond reported CallReference objects is unknown.",
+          "Pseudocode and assembly are provider-specific representations, not original source."
+        ],
+        "procedure": {
+          "address": "0x99c44",
+          "body": {
+            "available": false,
+            "reason": "Hopper's public Python API does not expose complete function body ranges"
+          },
+          "classification": null,
+          "locals": [
+            {
+              "description": "saved_fp (stack displacement 0)",
+              "name": "saved_fp",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "0"
+            },
+            {
+              "description": "var_10 (stack displacement -16)",
+              "name": "var_10",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-16"
+            },
+            {
+              "description": "var_20 (stack displacement -32)",
+              "name": "var_20",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-32"
+            },
+            {
+              "description": "var_30 (stack displacement -48)",
+              "name": "var_30",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-48"
+            },
+            {
+              "description": "var_68 (stack displacement -104)",
+              "name": "var_68",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-104"
+            },
+            {
+              "description": "var_78 (stack displacement -120)",
+              "name": "var_78",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-120"
+            },
+            {
+              "description": "var_80 (stack displacement -128)",
+              "name": "var_80",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-128"
+            }
+          ],
+          "name": "_$s4Base18BSSyncValueEncoderC6encode_3for9valueTypeypAA06BSNodeC0_p_So10BSPropertyaAA07BSValueH0VtF",
+          "signature": "int _$s4Base18BSSyncValueEncoderC6encode_3for9valueTypeypAA06BSNodeC0_p_So10BSPropertyaAA07BSValueH0VtF(void * self, int arg1, int arg2, int arg3)"
+        },
+        "pseudocode": "    r2 = arg3;\n    r31 = r31 - 0x90;\n    var_30 = r24;\n    decomp_var_28 = r23;\n    var_20 = r22;\n    decomp_var_18 = r21;\n    var_10 = self;\n    decomp_var_8 = r19;\n    saved_fp = r29;\n    decomp_var_m8 = r30;\n    r20 = arg1;\n    r19 = r8;\n    if (r2 <= 0x3) {\n            if (r2 <= 0x1) {\n                    if (r2 == 0x0) {\n                            sub_b9e0(r20, &decomp_var_58);\n                            r21 = ___swift_instantiateConcreteTypeFromMangledNameV2(0xd47a0, 0xb5d70);\n                            r0 = swift_dynamicCast(&var_68, &decomp_var_58, r21, *0xcd468, 0x6);\n                            if (r0 != 0x0) {\n                                    r19[0x3] = *0xcd468;\n                                    *(int32_t *)r19 = var_68;\n                            }\n                            else {\n                                    sub_b9e0(r20, &decomp_var_58);\n                                    r20 = sub_19d98(0x0, qword_d4940, &@class(NSNull));\n                                    r0 = swift_dynamicCast(&var_68, &decomp_var_58, r21, r20, 0x6);\n                                    if (r0 == 0x0) {\n                                            asm { brk        #0x1 };\n                                    }\n                                    else {\n                                            [var_68 release];\n                                            r0 = objc_allocWithZone(@class(NSNull));\n                                            r0 = [r0 init];\n                                            r19[0x3] = r20;\n                                            *r19 = r0;\n                                    }\n                            }\n                    }\n                    else {\n                            if (r2 == 0x1) {\n                                    sub_b9e0(r20, &decomp_var_58);\n                                    r21 = ___swift_instantiateConcreteTypeFromMangledNameV2(0xd47a0, 0xb5d70);\n                                    r0 = swift_dynamicCast(&var_68, &decomp_var_58, r21, *0xccf30, 0x6);\n                                    if (r0 != 0x0) {\n                                            r19[0x3] = *0xccf30;\n                                            *r19 = var_68;\n                                    }\n                                    else {\n                                            sub_b9e0(r20, &decomp_var_58);\n                                            r20 = sub_19d98(0x0, qword_d4940, &@class(NSNull));\n                                            r0 = swift_dynamicCast(&var_68, &decomp_var_58, r21, r20, 0x6);\n                                            if (r0 == 0x0) {\n                                                    asm { brk        #0x1 };\n                                            }\n                                            else {\n                                                    [var_68 release];\n                                                    r0 = objc_allocWithZone(@class(NSNull));\n                                                    r0 = [r0 init];\n                                                    r19[0x3] = r20;\n                                                    *r19 = r0;\n                                            }\n                                    }\n                            }\n                            else {\n                                    r0 = sub_ad218();\n                                    asm { brk        #0x1 };\n                            }\n                    }\n            }\n            else {\n                    if (r2 == 0x2) {\n                            sub_b9e0(r20, &decomp_var_58);\n                            r21 = ___swift_instantiateConcreteTypeFromMangledNameV2(0xd47a0, 0xb5d70);\n                            r0 = swift_dynamicCast(&var_68, &decomp_var_58, r21, *0xccf20, 0x6);\n                            if (r0 != 0x0) {\n                                    r19[0x3] = *0xccf20;\n                                    *(int8_t *)r19 = var_68;\n                            }\n                            else {\n                                    sub_b9e0(r20, &decomp_var_58);\n                                    r20 = sub_19d98(0x0, qword_d4940, &@class(NSNull));\n                                    r0 = swift_dynamicCast(&var_68, &decomp_var_58, r21, r20, 0x6);\n                                    if (r0 == 0x0) {\n                                            asm { brk        #0x1 };\n                                    }\n                                    else {\n                                            [var_68 release];\n                                            r0 = objc_allocWithZone(@class(NSNull));\n                                            r0 = [r0 init];\n                                            r19[0x3] = r20;\n                                            *r19 = r0;\n                                    }\n                            }\n                    }\n                    else {\n                            if (r2 == 0x3) {\n                                    sub_b9e0(r20, &decomp_var_58);\n                                    r21 = ___swift_instantiateConcreteTypeFromMangledNameV2(0xd47a0, 0xb5d70);\n                                    r0 = swift_dynamicCast(&var_68, &decomp_var_58, r21, *0xcce10, 0x6);\n                                    if (r0 != 0x0) {\n                                            r19[0x3] = *0xcce10;\n                                            *r19 = var_68;\n                                            r19[0x1] = decomp_var_60;\n                                    }\n                                    else {\n                                            sub_b9e0(r20, &decomp_var_58);\n                                            r20 = sub_19d98(0x0, qword_d4940, &@class(NSNull));\n                                            r0 = swift_dynamicCast(&var_68, &decomp_var_58, r21, r20, 0x6);\n                                            if (r0 == 0x0) {\n                                                    asm { brk        #0x1 };\n                                            }\n                                            else {\n                                                    [var_68 release];\n                                                    r0 = objc_allocWithZone(@class(NSNull));\n                                                    r0 = [r0 init];\n                                                    r19[0x3] = r20;\n                                                    *r19 = r0;\n                                            }\n                                    }\n                            }\n                            else {\n                                    r0 = sub_ad218();\n                                    asm { brk        #0x1 };\n                            }\n                    }\n            }\n    }\n    else {\n            if (r2 <= 0x5) {\n                    if (r2 == 0x4) {\n                            sub_b9e0(r20, &decomp_var_58);\n                            r21 = ___swift_instantiateConcreteTypeFromMangledNameV2(0xd47a0, 0xb5d70);\n                            r0 = sub_b7a8(0x0);\n                            r0 = swift_dynamicCast(&var_68, &decomp_var_58, r21, r0, 0x6);\n                            if (r0 != 0x0) {\n                                    d0 = var_68;\n                                    r19[0x3] = *0xccf30;\n                                    *r19 = d0;\n                            }\n                            else {\n                                    sub_b9e0(r20, &decomp_var_58);\n                                    r20 = sub_19d98(0x0, qword_d4940, &@class(NSNull));\n                                    r0 = swift_dynamicCast(&var_68, &decomp_var_58, r21, r20, 0x6);\n                                    if (r0 == 0x0) {\n                                            asm { brk        #0x1 };\n                                    }\n                                    else {\n                                            [var_68 release];\n                                            r0 = objc_allocWithZone(@class(NSNull));\n                                            r0 = [r0 init];\n                                            r19[0x3] = r20;\n                                            *r19 = r0;\n                                    }\n                            }\n                    }\n                    else {\n                            if (r2 == 0x5) {\n                                    sub_b9e0(r20, &decomp_var_58);\n                                    r21 = ___swift_instantiateConcreteTypeFromMangledNameV2(0xd47a0, 0xb5d70);\n                                    r0 = sub_b810(0x0);\n                                    r0 = swift_dynamicCast(&var_68, &decomp_var_58, r21, r0, 0x6);\n                                    if (r0 != 0x0) {\n                                            r0 = sub_ace70();\n                                            r19[0x3] = *0xccf30;\n                                            *r19 = d0;\n                                    }\n                                    else {\n                                            sub_b9e0(r20, &decomp_var_58);\n                                            r20 = sub_19d98(0x0, qword_d4940, &@class(NSNull));\n                                            r0 = swift_dynamicCast(&var_68, &decomp_var_58, r21, r20, 0x6);\n                                            if (r0 == 0x0) {\n                                                    asm { brk        #0x1 };\n                                            }\n                                            else {\n                                                    [var_68 release];\n                                                    r0 = objc_allocWithZone(@class(NSNull));\n                                                    r0 = [r0 init];\n                                                    r19[0x3] = r20;\n                                                    *r19 = r0;\n                                            }\n                                    }\n                            }\n                            else {\n                                    r0 = sub_ad218();\n                                    asm { brk        #0x1 };\n                            }\n                    }\n            }\n            else {\n                    if (r2 == 0x6) {\n                            sub_b9e0(r20, &decomp_var_58);\n                            r21 = ___swift_instantiateConcreteTypeFromMangledNameV2(0xd47a0, 0xb5d70);\n                            r0 = sub_b824(0x0);\n                            r0 = swift_dynamicCast(&var_68, &decomp_var_58, r21, r0, 0x6);\n                            if (r0 != 0x0) {\n                                    r0 = sub_aceb8();\n                                    r19[0x3] = *0xccfd8;\n                                    *r19 = r0;\n                            }\n                            else {\n                                    sub_b9e0(r20, &decomp_var_58);\n                                    r20 = sub_19d98(0x0, qword_d4940, &@class(NSNull));\n                                    r0 = swift_dynamicCast(&var_68, &decomp_var_58, r21, r20, 0x6);\n                                    if (r0 == 0x0) {\n                                            asm { brk        #0x1 };\n                                    }\n                                    else {\n                                            [var_68 release];\n                                            r0 = objc_allocWithZone(@class(NSNull));\n                                            r0 = [r0 init];\n                                            r19[0x3] = r20;\n                                            *r19 = r0;\n                                    }\n                            }\n                    }\n                    else {\n                            if (r2 == 0x7) {\n                                    sub_b9e0(r20, &decomp_var_58);\n                                    r21 = ___swift_instantiateConcreteTypeFromMangledNameV2(0xd47a0, 0xb5d70);\n                                    r0 = swift_dynamicCast(&var_68, &decomp_var_58, r21, *0xcc808, 0x6);\n                                    if (r0 != 0x0) {\n                                            r22 = sub_ac4d4();\n                                            r0 = loc_af74(var_68, var_68);\n                                            r19[0x3] = *0xcce10;\n                                            *r19 = r22;\n                                            r19[0x1] = r1;\n                                    }\n                                    else {\n                                            sub_b9e0(r20, &decomp_var_58);\n                                            r20 = sub_19d98(0x0, qword_d4940, &@class(NSNull));\n                                            r0 = swift_dynamicCast(&var_68, &decomp_var_58, r21, r20, 0x6);\n                                            if (r0 != 0x0) {\n                                                    [var_68 release];\n                                                    r0 = objc_allocWithZone(@class(NSNull));\n                                                    r0 = [r0 init];\n                                                    r19[0x3] = r20;\n                                                    *r19 = r0;\n                                            }\n                                            else {\n                                                    asm { brk        #0x1 };\n                                            }\n                                    }\n                            }\n                            else {\n                                    r0 = sub_ad218();\n                                    asm { brk        #0x1 };\n                            }\n                    }\n            }\n    }\n    return r0;\n",
+        "referenced_strings": [
+          {
+            "address": "0xb2a10",
+            "provider_value": "Fatal error",
+            "source_address": "0x9a234",
+            "string": {
+              "byte_length": 12,
+              "encoding": "utf-8",
+              "encoding_status": "inferred",
+              "termination": "present_or_not_required"
+            },
+            "value": "Fatal error"
+          },
+          {
+            "address": "0xb3550",
+            "provider_value": "Base/BSSyncValueEncoder.swift",
+            "source_address": "0x9a23c",
+            "string": {
+              "byte_length": 30,
+              "encoding": "utf-8",
+              "encoding_status": "inferred",
+              "termination": "present_or_not_required"
+            },
+            "value": "Base/BSSyncValueEncoder.swift"
+          }
+        ]
+      },
+      "operation": "analyze_function",
+      "parameters": {
+        "procedure": "0x99c44"
+      },
+      "predicate_type": "rea.analysis",
+      "provider": {
+        "id": "hopper",
+        "name": "Hopper Disassembler",
+        "version": "launcher-sha256:dad6f886261fad0d4cdd01aee6fcf57439c60d7b5c54e62fc97f0180116690e0"
+      },
+      "subject": {
+        "architecture": "arm64",
+        "digest": {
+          "sha256": "550893a8352db3a3be210bfd0611984cf5f2aa788c91e773638697771da1c4be"
+        },
+        "format": "mach-o",
+        "local_path": "/Applications/Things3.app/Contents/Frameworks/Base.framework/Versions/A/Base",
+        "name": "Base"
+      }
+    }
+  ],
+  "scenarios": [],
+  "unknowns": [],
+  "export_note": "Selected normalized observations referenced by docs, retaining procedure and pseudocode or string observations. Raw responses, assembly, control-flow graphs and cross-reference listings are omitted. Full provider exports remain in the original investigation workspace."
+}

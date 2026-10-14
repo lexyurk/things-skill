@@ -15,9 +15,12 @@ import (
 )
 
 type app struct {
-	dbPath string
-	output string
-	dryRun bool
+	dbPath       string
+	output       string
+	dryRun       bool
+	backend      string
+	cloudPython  string
+	cloudDataDir string
 }
 
 func Execute() error {
@@ -28,9 +31,10 @@ func Execute() error {
 
 func newRootCommand(a *app) *cobra.Command {
 	rootCmd := &cobra.Command{
-		Use:   "things",
-		Short: "Things 3 CLI with MCP-style operations",
-		Long:  "A Go CLI for Things 3 that mirrors the capabilities of the Things MCP server.",
+		Use:     "things-cli",
+		Version: "2.0.2",
+		Short:   "Things 3 tasks through Cloud sync or the local macOS app",
+		Long:    "Manage Things Cloud from Linux or macOS, or run the same task service as a stdio MCP server.",
 	}
 
 	rootCmd.PersistentFlags().StringVar(&a.dbPath, "db-path", "", "Path to Things SQLite database (defaults to THINGSDB/standard paths)")
@@ -39,6 +43,8 @@ func newRootCommand(a *app) *cobra.Command {
 
 	a.addReadCommands(rootCmd)
 	a.addWriteCommands(rootCmd)
+	a.addCloudCommands(rootCmd)
+	a.routeCloudCommands(rootCmd)
 
 	return rootCmd
 }

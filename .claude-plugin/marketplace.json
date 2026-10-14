@@ -1,0 +1,6 @@
+{
+  "name": "lexyurk-things",
+  "description": "Things Cloud tools from lexyurk/things-skill.",
+  "owner": {"name": "lexyurk"},
+  "plugins": [{"name": "things", "source": "./", "description": "Things Cloud CLI, MCP server, and agent skill."}]
+}

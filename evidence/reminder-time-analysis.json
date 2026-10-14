@@ -1,0 +1,198 @@
+{
+  "artifacts": [
+    {
+      "architecture": "arm64",
+      "digest": {
+        "sha256": "2ff2f293098fc071cfdc40dc9596f454cd3003c10775261805f581c34316933a"
+      },
+      "format": "mach-o"
+    }
+  ],
+  "captures": [],
+  "environments": [],
+  "providers": [
+    {
+      "id": "hopper",
+      "name": "Hopper Disassembler",
+      "version": "launcher-sha256:dad6f886261fad0d4cdd01aee6fcf57439c60d7b5c54e62fc97f0180116690e0"
+    }
+  ],
+  "records": [
+    {
+      "analysis_profile": {
+        "digest": "c178d9e166de653782da081aa624ac593ad8add9d43b2f3ecdff2bb064539bc1",
+        "parameters": {
+          "architecture": "arm64",
+          "available_architectures": [
+            "arm64",
+            "x86_64"
+          ],
+          "loader": {
+            "arguments": [
+              "-l",
+              "FAT",
+              "--aarch64",
+              "-l",
+              "Mach-O"
+            ],
+            "source": "derived"
+          },
+          "macho_container": "fat32",
+          "target_format": "mach-o",
+          "target_kind": "executable"
+        },
+        "provider": {
+          "id": "hopper",
+          "name": "Hopper Disassembler",
+          "version": "launcher-sha256:dad6f886261fad0d4cdd01aee6fcf57439c60d7b5c54e62fc97f0180116690e0"
+        }
+      },
+      "authority": "shipped-artifact",
+      "confidence": "observed",
+      "environment": null,
+      "evidence_id": "ev_25215a2570d763721e5f88da2b36048092b58118e0a28eea21bf05281e74bc45",
+      "evidence_links": [],
+      "limitations": [
+        "Results depend on Hopper's completed static analysis.",
+        "String values cover native typed objects. Hopper may split long literals into adjacent unterminated fragments; string searches match each object independently.",
+        "Undecodable typed objects retain native display text with an explicit decoding unknown; these values do not establish decoded source literals.",
+        "Reported string encodings are inferred from typed bytes and native display; the original source's intended encoding is unknown."
+      ],
+      "locations": [],
+      "normalized_result": {
+        "comments": [],
+        "limitations": [
+          "Native CallReference classifications are observed where available; detailed reference flags remain unknown.",
+          "Hopper's public Python API does not expose equivalent external or thunk classification in this dossier.",
+          "Native calls without resolved target addresses are not represented as edges; enumeration beyond reported CallReference objects is unknown.",
+          "Pseudocode and assembly are provider-specific representations, not original source."
+        ],
+        "procedure": {
+          "address": "0x84b8",
+          "body": {
+            "available": false,
+            "reason": "Hopper's public Python API does not expose complete function body ranges"
+          },
+          "classification": null,
+          "locals": [],
+          "name": "_FATimeMakeWithDeprecatedTimeOffset",
+          "signature": "int _FATimeMakeWithDeprecatedTimeOffset(int arg0)"
+        },
+        "pseudocode": "    r8 = arg0 & !(arg0 / 0x8000000000000000);\n    if (r8 >= 0x1517f) {\n            r8 = 0x1517f;\n    }\n    r9 = r8 * 0x123457 >> 0x20;\n    r10 = (r8 - r9 * 0xe10 & 0xffff) * 0x8889 >> 0x15;\n    r8 = r8 - r9 * 0xe10 - r10 * 0x3c;\n    r9 = r9 << 0x1a | r10 * 0x100000;\n    asm { ubfiz      w8, w8, #0xe, #0x10 };\n    r0 = r9 | r8;\n    return r0;\n",
+        "referenced_strings": []
+      },
+      "operation": "analyze_function",
+      "parameters": {
+        "procedure": "0x84b8"
+      },
+      "predicate_type": "rea.analysis",
+      "provider": {
+        "id": "hopper",
+        "name": "Hopper Disassembler",
+        "version": "launcher-sha256:dad6f886261fad0d4cdd01aee6fcf57439c60d7b5c54e62fc97f0180116690e0"
+      },
+      "subject": {
+        "architecture": "arm64",
+        "digest": {
+          "sha256": "2ff2f293098fc071cfdc40dc9596f454cd3003c10775261805f581c34316933a"
+        },
+        "format": "mach-o",
+        "local_path": "/Applications/Things3.app/Contents/Frameworks/FoundationAdditions.framework/Versions/A/FoundationAdditions",
+        "name": "FoundationAdditions"
+      }
+    },
+    {
+      "analysis_profile": {
+        "digest": "c178d9e166de653782da081aa624ac593ad8add9d43b2f3ecdff2bb064539bc1",
+        "parameters": {
+          "architecture": "arm64",
+          "available_architectures": [
+            "arm64",
+            "x86_64"
+          ],
+          "loader": {
+            "arguments": [
+              "-l",
+              "FAT",
+              "--aarch64",
+              "-l",
+              "Mach-O"
+            ],
+            "source": "derived"
+          },
+          "macho_container": "fat32",
+          "target_format": "mach-o",
+          "target_kind": "executable"
+        },
+        "provider": {
+          "id": "hopper",
+          "name": "Hopper Disassembler",
+          "version": "launcher-sha256:dad6f886261fad0d4cdd01aee6fcf57439c60d7b5c54e62fc97f0180116690e0"
+        }
+      },
+      "authority": "shipped-artifact",
+      "confidence": "observed",
+      "environment": null,
+      "evidence_id": "ev_740006a7a10eda86d4f85ac367b7945870342d235ff317efd184601bd1306d28",
+      "evidence_links": [],
+      "limitations": [
+        "Results depend on Hopper's completed static analysis.",
+        "String values cover native typed objects. Hopper may split long literals into adjacent unterminated fragments; string searches match each object independently.",
+        "Undecodable typed objects retain native display text with an explicit decoding unknown; these values do not establish decoded source literals.",
+        "Reported string encodings are inferred from typed bytes and native display; the original source's intended encoding is unknown."
+      ],
+      "locations": [],
+      "normalized_result": {
+        "comments": [],
+        "limitations": [
+          "Native CallReference classifications are observed where available; detailed reference flags remain unknown.",
+          "Hopper's public Python API does not expose equivalent external or thunk classification in this dossier.",
+          "Native calls without resolved target addresses are not represented as edges; enumeration beyond reported CallReference objects is unknown.",
+          "Pseudocode and assembly are provider-specific representations, not original source."
+        ],
+        "procedure": {
+          "address": "0x8510",
+          "body": {
+            "available": false,
+            "reason": "Hopper's public Python API does not expose complete function body ranges"
+          },
+          "classification": null,
+          "locals": [
+            {
+              "description": "var_10 (stack displacement -16)",
+              "name": "var_10",
+              "provenance": "hopper-public-python-api",
+              "stack_displacement": "-16"
+            }
+          ],
+          "name": "_FATimeGetDeprecatedTimeOffsetAbortingIfLossy",
+          "signature": "int _FATimeGetDeprecatedTimeOffsetAbortingIfLossy()"
+        },
+        "pseudocode": "    if ((r0 & 0x3ff1) != objc_ivar_offset__TtC19FoundationAdditions13FAJSONRPCPeer) {\n            abort();\n    }\n    asm { ubfx       x8, x0, #0x1a, #0x5 };\n    asm { ubfx       x9, x0, #0x14, #0x6 };\n    asm { ubfx       x10, x0, #0xe, #0x6 };\n    asm { umaddl     x9, w9, w11, x10 };\n    asm { umaddl     x0, w8, w10, x9 };\n    return r0;\n",
+        "referenced_strings": []
+      },
+      "operation": "analyze_function",
+      "parameters": {
+        "procedure": "0x8510"
+      },
+      "predicate_type": "rea.analysis",
+      "provider": {
+        "id": "hopper",
+        "name": "Hopper Disassembler",
+        "version": "launcher-sha256:dad6f886261fad0d4cdd01aee6fcf57439c60d7b5c54e62fc97f0180116690e0"
+      },
+      "subject": {
+        "architecture": "arm64",
+        "digest": {
+          "sha256": "2ff2f293098fc071cfdc40dc9596f454cd3003c10775261805f581c34316933a"
+        },
+        "format": "mach-o",
+        "local_path": "/Applications/Things3.app/Contents/Frameworks/FoundationAdditions.framework/Versions/A/FoundationAdditions",
+        "name": "FoundationAdditions"
+      }
+    }
+  ],
+  "scenarios": [],
+  "unknowns": [],
+  "export_note": "Selected normalized observations referenced by docs, retaining procedure and pseudocode or string observations. Raw responses, assembly, control-flow graphs and cross-reference listings are omitted. Full provider exports remain in the original investigation workspace."
+}

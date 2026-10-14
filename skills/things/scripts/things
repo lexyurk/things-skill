@@ -1,12 +1,22 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+if [[ -n "${THINGS_CLI_BINARY:-}" ]]; then
+  exec "$THINGS_CLI_BINARY" "$@"
+fi
 if command -v things-cli >/dev/null 2>&1; then
   exec things-cli "$@"
+fi
+if [[ -x "$HOME/.local/bin/things-cli" ]]; then
+  exec "$HOME/.local/bin/things-cli" "$@"
 fi
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../../.." && pwd)"
 cd "$ROOT_DIR"
 
-exec go run ./cmd/things "$@"
+if [[ -f go.mod ]]; then
+  exec go run ./cmd/things "$@"
+fi
+echo "Install the Things CLI package, then run things-cli login in your terminal." >&2
+exit 1
 

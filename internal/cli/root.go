@@ -31,9 +31,10 @@ func Execute() error {
 
 func newRootCommand(a *app) *cobra.Command {
 	rootCmd := &cobra.Command{
-		Use:   "things-cli",
-		Short: "Things 3 tasks through Cloud sync or the local macOS app",
-		Long:  "Manage Things Cloud from Linux or macOS, or run the same task service as a stdio MCP server.",
+		Use:     "things-cli",
+		Version: "2.0.1",
+		Short:   "Things 3 tasks through Cloud sync or the local macOS app",
+		Long:    "Manage Things Cloud from Linux or macOS, or run the same task service as a stdio MCP server.",
 	}
 
 	rootCmd.PersistentFlags().StringVar(&a.dbPath, "db-path", "", "Path to Things SQLite database (defaults to THINGSDB/standard paths)")

@@ -1,7 +1,7 @@
 BIN_NAME := things-cli
 BINDIR ?= $(HOME)/.local/bin
 
-.PHONY: build install uninstall test vet fmt
+.PHONY: build install uninstall test vet fmt package
 
 build:
 	go build -trimpath -o ./bin/$(BIN_NAME) ./cmd/things
@@ -20,6 +20,10 @@ uninstall:
 test:
 	go test ./...
 	PYTHONPATH=internal/cloud/runtime python3 -m unittest discover -s internal/cloud/tests -v
+	python3 -m unittest discover -s tests -v
+
+package:
+	python3 scripts/package.py
 
 vet:
 	go vet ./...

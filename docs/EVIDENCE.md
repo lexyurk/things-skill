@@ -63,13 +63,13 @@ legacy IDs use the documented byte-exact migration derivation.
 
 | Operation | Implemented basis | Verification boundary |
 | --- | --- | --- |
-| Connect and read current lists/search/task details | Native authentication + source history readers | Offline tests; live login pending |
-| Create ordinary task/project/heading | Complete 34-property Task7 snapshot, `md:null` | Upstream disposable-account verification + offline tests |
-| Edit title, notes, dates, tags, placement, order | Sparse Task7 patches | Upstream scope + offline tests |
-| Complete/reopen and Trash/restore | Status/date pairs and Trash bit | Upstream scope + offline tests |
+| Connect and read current lists/search/task details | Native authentication + source history readers | Live account login, history download, Inbox query, and task read-back verified |
+| Create ordinary task/project/heading | Complete 34-property Task7 snapshot, `md:null` | Ordinary task creation verified live; project/heading coverage remains upstream + offline |
+| Edit title, notes, dates, tags, placement, order | Sparse Task7 patches | Notes, deadline, area/Inbox placement verified live; other variants remain upstream + offline |
+| Complete/reopen and Trash/restore | Status/date pairs and Trash bit | Trash verified live; other variants remain upstream + offline |
 | Cancel | Source/native status 2 | Source-based; outside upstream Go live acceptance matrix |
 | Reminder and Evening | Native field registration, time encoder, and schedule setter | Static evidence + offline tests; live notification delivery pending |
-| Areas/tags/checklists | Current source entity shapes and strict parent checks | Source-based + offline tests; broad native round trips pending |
+| Areas/tags/checklists | Current source entity shapes and strict parent checks | App-originated checklist reads verified live; mutations remain source-based + offline |
 | Permanent leaf deletion | Tombstone2 | Source-based + offline tests; live purge pending |
 | Repeating tasks | Read and preserve existing raw data | Mutations blocked; companion recurrence lifecycle unimplemented |
 | Heading edits | Title, parent project, and order | Scheduling/completion excluded |

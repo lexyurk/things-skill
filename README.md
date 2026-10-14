@@ -1,5 +1,7 @@
 # Things Skill: Cloud CLI and MCP
 
+Installable macOS/Linux CLI archives and a plugin package for **Codex, Claude Code, and Cursor** are built with `make package`. See [complete installation instructions](docs/INSTALL.md). All three hosts launch this repository's installed Go CLI and share its persisted login. Python 3.9+ remains a runtime dependency.
+
 Manage your Things Cloud tasks from Linux or macOS with `things-cli`, or connect this same service to Codex, Claude Code, and other stdio MCP hosts. Login persists across CLI invocations and MCP sessions. Every task read downloads current changes; every write synchronizes first, commits once, then verifies the resulting event in cloud history.
 
 The Go CLI bundles the dependency-free Python protocol package. Both interfaces use its account access key, SQLite cache, write journal, and process lock. This repository also retains its original macOS SQLite/Things URL backend.
@@ -9,7 +11,7 @@ The Go CLI bundles the dependency-free Python protocol package. Both interfaces 
 Build requirements: Go 1.22.2+ and Python 3.9+. Running the installed Cloud client requires Python and network access to Things Cloud; the Things app is not required on Linux.
 
 ```bash
-git clone https://github.com/lexyurk/things-skill.git
+git clone --branch feat/cloud-mcp https://github.com/lexyurk/things-skill.git
 cd things-skill
 make install
 export PATH="$HOME/.local/bin:$PATH"
@@ -40,6 +42,8 @@ The file is ignored by Git and never loaded automatically. No password belongs i
 Alternative installation: `bash scripts/install.sh /your/bin/directory`. Uninstall both commands with `make uninstall`.
 
 ## Connect an MCP host
+
+For native plugins, follow [Codex, Claude Code, or Cursor setup](docs/INSTALL.md). The repository includes portable `plugin.json`/`mcp.json`, all three host manifests, and Codex/Claude marketplace catalogs. Direct MCP registration is also supported:
 
 After terminal login, register the installed server:
 

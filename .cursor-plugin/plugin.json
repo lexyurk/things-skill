@@ -1,0 +1,12 @@
+{
+  "name": "things",
+  "version": "2.0.1",
+  "description": "Things Cloud tasks on macOS and Linux through the Things CLI and MCP server.",
+  "author": {"name": "lexyurk"},
+  "repository": "https://github.com/lexyurk/things-skill",
+  "license": "MIT",
+  "category": "productivity",
+  "tags": ["things", "tasks", "mcp"],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json"
+}

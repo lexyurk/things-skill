@@ -4,7 +4,7 @@ description: Manage Things 3 tasks through the things-cli Cloud client or its MC
 license: MIT
 metadata:
   author: lexyurk
-  version: "2.0.0"
+  version: "2.0.2"
 ---
 
 # Things CLI Skill

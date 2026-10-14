@@ -64,13 +64,13 @@ legacy IDs use the documented byte-exact migration derivation.
 | Operation | Implemented basis | Verification boundary |
 | --- | --- | --- |
 | Connect and read current lists/search/task details | Native authentication + source history readers | Live account login, history download, Inbox query, and task read-back verified |
-| Create ordinary task/project/heading | Complete 34-property Task7 snapshot, `md:null` | Ordinary task creation verified live; project/heading coverage remains upstream + offline |
-| Edit title, notes, dates, tags, placement, order | Sparse Task7 patches | Notes, deadline, area/Inbox placement verified live; other variants remain upstream + offline |
-| Complete/reopen and Trash/restore | Status/date pairs and Trash bit | Trash verified live; other variants remain upstream + offline |
-| Cancel | Source/native status 2 | Source-based; outside upstream Go live acceptance matrix |
-| Reminder and Evening | Native field registration, time encoder, and schedule setter | Static evidence + offline tests; live notification delivery pending |
-| Areas/tags/checklists | Current source entity shapes and strict parent checks | App-originated checklist reads verified live; mutations remain source-based + offline |
-| Permanent leaf deletion | Tombstone2 | Source-based + offline tests; live purge pending |
+| Create ordinary task/project/heading | Complete 34-property Task7 snapshot, `md:null` | Disposable task, project, and heading creation verified live |
+| Edit title, notes, dates, tags, placement, order | Sparse Task7 patches | Title, Unicode notes, scheduling/deadline, tag assignment/removal, area/project/heading/Inbox placement, and ordering verified through live commits/read-back |
+| Complete/reopen and Trash/restore | Status/date pairs and Trash bit | Completion, reopening, Trash, and restore verified live |
+| Cancel | Source/native status 2 | Cancellation and reopening verified live |
+| Reminder and Evening | Native field registration, time encoder, and schedule setter | Reminder field round-trip, clearing, and Evening verified live; device notification delivery unobserved |
+| Areas/tags/checklists | Current source entity shapes and strict parent checks | Disposable creation, edits, checklist status/order changes, and deletion verified live; app-originated checklist reads also verified |
+| Permanent leaf deletion | Tombstone2 | Live disposable cleanup passed with zero remaining entities |
 | Repeating tasks | Read and preserve existing raw data | Mutations blocked; companion recurrence lifecycle unimplemented |
 | Heading edits | Title, parent project, and order | Scheduling/completion excluded |
 | Push/background sync | Polling and on-demand sync | Apple push and Linux reminder notifications unimplemented |
@@ -82,3 +82,7 @@ advancing the cache. Incomplete recurrence markers remain read-only. Account
 management, calendar integration, attachment support, repeat-rule mutation,
 multi-action atomic batches, and Linux desktop notifications are outside this
 implementation.
+
+The broad live run on 2026-10-14 exercised all 13 MCP handlers and removed only
+the six disposable entities it created. See [validation](VALIDATION.md) for the
+transport tests, platform checks, and remaining verification boundaries.

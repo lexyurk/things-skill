@@ -4,7 +4,18 @@ The CLI and all three plugin hosts use the same Go executable and the same persi
 
 ## Binary package
 
-Choose `darwin-arm64` for Apple Silicon, `darwin-amd64` for Intel Macs, `linux-amd64` for Intel/AMD Linux PCs, or `linux-arm64` for ARM Linux machines. Extract the matching `things-cli-VERSION-PLATFORM.tar.gz`, then run:
+Download version **2.0.2** from [GitHub Releases](https://github.com/lexyurk/things-skill/releases/tag/cloud-v2.0.2). Choose the archive for your machine:
+
+| Machine | Archive |
+| --- | --- |
+| Apple Silicon Mac | `things-cli-2.0.2-darwin-arm64.tar.gz` |
+| Intel Mac | `things-cli-2.0.2-darwin-amd64.tar.gz` |
+| Intel/AMD Linux PC | `things-cli-2.0.2-linux-amd64.tar.gz` |
+| ARM Linux machine | `things-cli-2.0.2-linux-arm64.tar.gz` |
+
+`SHA256SUMS` contains the checksums of all packages. On Linux, download it alongside your chosen archive and run `sha256sum --ignore-missing --check SHA256SUMS`. On macOS, use `shasum -a 256 ARCHIVE` and compare the result to the matching line in `SHA256SUMS`.
+
+Extract the matching archive into its own directory, then run:
 
 ```bash
 ./install.sh
@@ -17,10 +28,10 @@ The installer adds `things-cli` and the compatible `things` alias to `~/.local/b
 
 ## Source package
 
-Until PR #3 is merged, install from the Cloud branch:
+Build from the repository's default branch:
 
 ```bash
-git clone --branch feat/cloud-mcp https://github.com/lexyurk/things-skill.git
+git clone https://github.com/lexyurk/things-skill.git
 cd things-skill
 make install
 export PATH="$HOME/.local/bin:$PATH"
@@ -38,7 +49,7 @@ codex plugin marketplace add .
 codex plugin add things@lexyurk-things
 ```
 
-For the published Git branch, you can instead add `lexyurk/things-skill --ref feat/cloud-mcp`. Older Codex clients can use the Plugins Directory after adding the marketplace, or register the MCP server directly. The repository contains a portable Agent Plugins manifest, Codex compatibility manifest, and `.agents/plugins/marketplace.json` catalog. See the [official packaging documentation](https://developers.openai.com/plugins/build/plugins).
+To install directly from GitHub, use `codex plugin marketplace add lexyurk/things-skill` in place of the first command. Older Codex clients can use the Plugins Directory after adding the marketplace, or register the MCP server directly. The repository contains a portable Agent Plugins manifest, Codex compatibility manifest, and `.agents/plugins/marketplace.json` catalog. See the [official packaging documentation](https://developers.openai.com/plugins/build/plugins).
 
 ## Claude Code plugin
 
@@ -49,7 +60,7 @@ claude plugin marketplace add .
 claude plugin install things@lexyurk-things
 ```
 
-For development, `claude --plugin-dir /absolute/path/to/things-skill` loads the checkout. The repository includes `.claude-plugin/plugin.json`, its marketplace, and the shared MCP entry. See the [Claude manifest reference](https://code.claude.com/docs/en/plugins-reference).
+To install directly from GitHub, use `claude plugin marketplace add lexyurk/things-skill` in place of the first command. For development, `claude --plugin-dir /absolute/path/to/things-skill` loads the checkout. The repository includes `.claude-plugin/plugin.json`, its marketplace, and the shared MCP entry. See the [Claude manifest reference](https://code.claude.com/docs/en/plugins-reference).
 
 ## Cursor plugin
 
@@ -71,6 +82,12 @@ Use the installed binary's absolute path if the host does not inherit your shell
 
 Restart the host session after installing. MCP discovery works before login, while task actions ask you to connect through the terminal. Task commands synchronize automatically; cached CLI `status` remains available for diagnostics. Repeating task edits and desktop notifications are unsupported.
 
+## Updates and removal
+
+To update the CLI, download the new matching archive and run its installer. It replaces the executable and preserves the login and task cache. Update the host plugin through its marketplace, or copy the new packaged plugin into Cursor's local plugin directory and reload the host.
+
+To disconnect, run `things-cli logout`. To remove the CLI, delete `~/.local/bin/things-cli` and `~/.local/bin/things` (or the copies in your custom installation directory). Uninstall the Things plugin in your host; for a local Cursor installation, remove `~/.cursor/plugins/local/things`. For a direct MCP registration, remove the `things` server from the host instead. None of these steps deletes your cloud tasks.
+
 ## Maintainer packaging
 
 ```bash
@@ -78,3 +95,5 @@ make package
 ```
 
 This builds macOS/Linux binaries for x86-64 and ARM64, produces four installable archives and one portable plugin ZIP, and writes `dist/SHA256SUMS`. Packages contain an explicit file allowlist; credentials, cloud history, task caches, Git metadata, and local state are excluded.
+
+Release tags use the `cloud-vVERSION` prefix. The CLI remains a Go module with its original import path; the prefix avoids implying an incompatible Go module major-version path.

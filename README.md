@@ -1,17 +1,27 @@
-# Things Skill: Cloud CLI and MCP
+# Things Cloud: CLI, MCP server, and agent plugins
 
-Installable macOS/Linux CLI archives and a plugin package for **Codex, Claude Code, and Cursor** are built with `make package`. See [complete installation instructions](docs/INSTALL.md). All three hosts launch this repository's installed Go CLI and share its persisted login. Python 3.9+ remains a runtime dependency.
+Manage Things Cloud from **Linux and macOS**, in your terminal or through **Codex, Claude Code, and Cursor**. [Download the installable CLI and plugin packages](https://github.com/lexyurk/things-skill/releases/latest), then follow the [installation guide](docs/INSTALL.md). All three hosts launch this repository's Go CLI and share its persisted login. Python 3.9+ is required at runtime.
 
-Manage your Things Cloud tasks from Linux or macOS with `things-cli`, or connect this same service to Codex, Claude Code, and other stdio MCP hosts. Login persists across CLI invocations and MCP sessions. Every task read downloads current changes; every write synchronizes first, commits once, then verifies the resulting event in cloud history.
+Create, read, search, edit, schedule, complete, and delete tasks with `things-cli` or any stdio MCP host. Login persists across CLI invocations and MCP sessions. Every task read downloads current changes; every write synchronizes first, commits once, then verifies the resulting event in cloud history. Projects, areas, tags, headings, and checklists are supported too.
 
 The Go CLI bundles the dependency-free Python protocol package. Both interfaces use its account access key, SQLite cache, write journal, and process lock. This repository also retains its original macOS SQLite/Things URL backend.
 
 ## Install and log in
 
-Build requirements: Go 1.22.2+ and Python 3.9+. Running the installed Cloud client requires Python and network access to Things Cloud; the Things app is not required on Linux.
+Download the archive matching your OS and CPU from [Releases](https://github.com/lexyurk/things-skill/releases/latest), extract it, and run:
 
 ```bash
-git clone --branch feat/cloud-mcp https://github.com/lexyurk/things-skill.git
+./install.sh
+export PATH="$HOME/.local/bin:$PATH"
+things-cli login
+```
+
+The binary package needs Python 3.9+ and network access to Things Cloud. No Go installation, pip packages, or Things app is required to use it on Linux. Each CLI archive also includes the plugin files for all three hosts.
+
+To build from source, install Go 1.22.2+ (current stable Go is recommended on macOS) and Python 3.9+, then run:
+
+```bash
+git clone https://github.com/lexyurk/things-skill.git
 cd things-skill
 make install
 export PATH="$HOME/.local/bin:$PATH"
@@ -52,16 +62,19 @@ codex mcp add things -- things-cli serve
 claude mcp add --transport stdio --scope user things -- things-cli serve
 ```
 
-Use the absolute binary path if the host does not inherit your shell's PATH. These commands register **this repository's server**. It speaks newline-delimited JSON-RPC on stdout and shares the CLI's persisted login. Codex setup follows its [official stdio MCP documentation](https://learn.chatgpt.com/docs/developer-commands#codex-mcp).
+Use the absolute binary path if the host does not inherit your shell's PATH. These commands register **this repository's server**. It speaks newline-delimited JSON-RPC on stdout and shares the CLI's persisted login. Codex setup follows its [official MCP documentation](https://developers.openai.com/codex/mcp).
 
-For a Claude plugin with the included skill and MCP configuration, install the CLI first, then load the local checkout with `claude --plugin-dir /absolute/path/to/things-skill`. Once this change is on the repository's default branch, the included marketplace supports:
+Install the CLI first, then add the repository's marketplace to your host:
 
 ```bash
+codex plugin marketplace add lexyurk/things-skill
+codex plugin add things@lexyurk-things
+
 claude plugin marketplace add lexyurk/things-skill
 claude plugin install things@lexyurk-things
 ```
 
-Plugin packaging follows the [Claude manifest reference](https://code.claude.com/docs/en/plugins-reference). Use either direct MCP registration or the plugin's MCP entry to avoid registering the same server twice.
+For Cursor, copy the packaged `plugin/` folder to `~/.cursor/plugins/local/things` and reload the window. See [the install guide](docs/INSTALL.md) for local-package setup, updates, and removal. Plugin packaging follows the [Agent Plugins documentation](https://developers.openai.com/plugins/build/plugins) and [Claude manifest reference](https://code.claude.com/docs/en/plugins-reference). Use either direct MCP registration or the plugin's MCP entry to avoid registering the same server twice.
 
 The 13 tools cover status, sync, task lists/search, task details, task create/update/complete/delete, entity list/create/update/delete, and checklist create/update/delete. Connected tool calls synchronize automatically. Additional fields are available through the shared CLI:
 
